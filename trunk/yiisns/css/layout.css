@@ -1,0 +1,14 @@
+#page-container {}
+	#page {text-align: left;}
+		#header-container {}
+			#header {}
+				#header-content {}
+		#canvas-container {}
+			#canvas {}
+				#canvas-content {}
+					.action {}
+						.action-header {}
+						.action-content {}
+		#footer-container {}
+			#footer {}
+				#footer-content {}

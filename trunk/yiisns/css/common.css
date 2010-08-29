@@ -1,0 +1,106 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,form,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight: inherit;font-style: inherit;font-size:100%;font-family: inherit;vertical-align:baseline;}
+body{ line-height:1;}
+a img{ border: none;}
+abbr,acronym{ border:0;font-variant: normal;}
+address,caption,cite,code,dfn,em,strong,th,var{ font-style: normal;font-weight: normal;}
+blockquote:before,blockquote:after,q:before,q:after{ content: "";}
+blockquote,q{ quotes: "" "";}
+caption,th,td{ text-align: left;font-weight: normal;}
+table{ border-collapse: separate;border-spacing:0;}
+table,td,th{ vertical-align: middle;}
+h1,h2,h3,h4,h5,h6{ font-size:100%;font-weight: normal;}
+sup{ vertical-align: text-top;}
+sub{ vertical-align: text-bottom;}
+li{ list-style: none;}
+input,textarea,select{font-family: inherit;font-size: inherit;font-weight: inherit;}
+legend{color:#000;}
+
+.clearfix:after{content: "\0020";display:block;height:0;clear:both;visibility: hidden;overflow: hidden;}
+.clearfix{display:block;}
+.clear{clear:both;}
+
+/*general*/
+body{background-color:#FFFFFF;color:#333;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.5em;text-align:center;}
+a{color:#36679F;text-decoration: none;}
+a:hover{text-decoration: underline;}
+a:active{color:#688DB7;}
+hr{margin:0;padding:0;border: none;height:1px;background:#cccccc;}
+legend{font-weight:bold;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;margin:10px 0;}
+h1{font-size:150%;}
+h2{font-size:140%;}
+h3{font-size:130%;}
+h4{font-size:120%;}
+h5{font-size:110%;}
+h6{font-size:105%;}
+ 
+/*forms*/
+form {}
+form .form-header {}
+form .form-header .title {border-bottom: 1px solid #D9D9D9;font-size: 16px;font-weight: normal;line-height: 14px;margin: 5px 0;padding: 0px 0px 8px 0px;}
+form .form-header .sub-title {margin-bottom: 10px;}
+form .errorSummary{border: 2px solid #CB3300;padding: 7px 7px 9px 7px;margin: 10px 0 10px 0;background: #FEE;}
+form .errorSummary p {margin: 0;padding: 5px;}
+form .errorSummary ul {margin: 0;padding: 0 0 0 20px;}
+form fieldset {margin:0; padding:0;border:none;}
+form fieldset.top {padding-top: 5px; padding-bottom: 5px;}
+form fieldset.bottom {padding-bottom: 5px; padding-top: 0px; border-bottom: none;}
+form fieldset .row {margin: 5px 0;}
+form fieldset .row.top {margin-top:0;}
+form fieldset .row.bottom {margin-bottom:0;}
+form fieldset .row input.text {width: 150px;}
+form fieldset .row label {display: block; margin-bottom: 2px;font-weight: bold;cursor: pointer;}
+form fieldset .row label.inline {display: inline;float: none;font-weight: normal;vertical-align: middle;margin: 0;padding: 0;}
+form fieldset .row label.required {}
+form fieldset .row label.error, form fieldset .row label span.required {color: #CB3300;}
+form fieldset .row label span {font-weight: normal;}
+form fieldset .row input.text, form fieldset .row textarea{background-color: #FFF;border: 1px solid #CCC;color: #333;font: 12px Arial, Helvetica, sans-serif;padding: 5px 4px 4px;}
+form fieldset .row input.text.focus, form fieldset .row input.text.active, form fieldset .row textarea.focus, form fieldset .row select.focus, form fieldset .row input.text:focus, form fieldset .row textarea:focus, form fieldset .row select:focus {border: 1px solid #94B4D1;}
+form fieldset .row select {border: 1px solid #C9C9C9;font-size: 11px;margin-right: 4px;padding: 4px;}
+form fieldset .row input.radio, form fieldset .row input.checkbox {display: inline;vertical-align: middle;margin: 0 0 0 0;}
+form fieldset .row div.error input, form fieldset .row div.error textarea, form fieldset .row div.error select, form fieldset .row input.error, form fieldset .row textarea.error, form fieldset .row select.error{background: #FEE;border-color: #C00;}
+form fieldset .row div.success input, form fieldset .row div.success textarea, form fieldset .row div.success select, form fieldset .row input.success, form fieldset .row textarea.success, form fieldset .row select.success{background: #E6EFC2;border-color: #C6D880;}
+form fieldset.buttons {margin-top: 3px;}
+form fieldset.buttons input.submit, form fieldset.buttons button {cursor: pointer;}
+form .form-footer {}
+form .form-footer .links {}
+form .form-footer .links a {display: inline-block; margin-top: 3px;}
+
+
+/*wide forms*/
+form.wf .form-header .title {padding: 10px;}
+form.wf .form-header .sub-title {padding: 10px;}
+form.wf {}
+form.wf .errorSummary {margin: 10px;}
+form.wf fieldset {border-bottom: 1px solid #E5E5E5;}
+form.wf fieldset span.indent {display: block;margin: 5px 20px 0 160px;padding: 0;}
+form.wf fieldset .row {}
+form.wf fieldset .row label {width: 140px;display: block;float: left;text-align: right;margin: 0 10px;cursor: pointer;vertical-align: top;font-weight: bold;padding: 5px 0 4px 0;}
+form.wf fieldset .row label.inline {display: inline;float: none;font-weight: normal;vertical-align: middle;margin: 0;padding: 0;}
+form.wf fieldset .row input.text {margin: 0 10px 0 0;width: 250px;}
+form.wf fieldset .row textarea {width: 250px;height: 50px;}
+form.wf fieldset .row div.errorMessage {color: #CB3300;padding: 0 0 0 160px;}
+form.wf fieldset .row div.tip {color: #8A8A8A; margin:5px 20px 0 160px; padding: 0;}
+form.wf fieldset .row.indent {padding: 0 0 0 160px;}
+form.wf fieldset.buttons {padding-left: 160px; border: 0; text-align: left;}
+form.wf fieldset.buttons input.submit {}
+form.wf .form-footer {padding-left: 160px;}
+form.wf .form-footer .links {}
+ 
+/*flash messages*/
+.flash-error, .flash-notice, .flash-success {padding: 9px;border: 1px solid #ddd;}
+.flash-error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.flash-notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.flash-success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.flash-error a {color:#8a1f11;}
+.flash-notice a {color:#514721;}
+.flash-success a {color:#264409;}
+
+
+/*misc*/
+.thin {padding: 0 !important;}
+.top-heavy {padding-bottom: 0 !important;}
+.first {margin-left: 0 !important;}
+.last {margin-right: 0 !important;}
+.top {margin-top: 0 !important;}
+.bottom {margin-bottom: 0 !important;}
