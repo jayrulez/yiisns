@@ -68,8 +68,8 @@ form .form-footer .links a {display: inline-block; margin-top: 3px;}
 
 
 /*wide forms*/
-form.wf .form-header .title {padding: 10px;}
-form.wf .form-header .sub-title {padding: 10px;}
+form.wf .form-header .title {}
+form.wf .form-header .sub-title {}
 form.wf {}
 form.wf .errorSummary {margin: 10px;}
 form.wf fieldset {border-bottom: 1px solid #E5E5E5;}

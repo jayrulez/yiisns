@@ -9,7 +9,21 @@ class AuthController extends Controller
 
 	public function actionLogin()
 	{
-		$this->render('login');
+		$form = new LoginForm;
+		
+		if(($post = Yii::app()->getRequest()->getPost('LoginForm')) !== null)
+		{
+			$form->attributes = $post;
+			
+			if($form->validate() && $form->login())
+			{
+				$this->redirect(Yii::app()->homeUrl);
+			}
+		}
+		
+		$this->render('login', array(
+			'form'=>$form,
+		));
 	}
 
 	public function actionLogout()

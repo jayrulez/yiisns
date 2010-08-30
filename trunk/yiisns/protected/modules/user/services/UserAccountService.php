@@ -3,9 +3,7 @@
 Yii::import('lib.service.ActiveRecordService');
 
 class UserAccountService extends ActiveRecordService
-{
-	const AUTOLOGIN_DURATION = 2592000;
-	
+{	
 	public function modelClass()
 	{
 		return 'User';
@@ -13,28 +11,19 @@ class UserAccountService extends ActiveRecordService
 	
 	public function login($params)
 	{
-		$this->getResult()->reset();
+		$form = new LoginForm;
 		
-		$username = $this->getParam($params, 'username');
-		$password = $this->getParam($params, 'password');
+		$form->attributes = $params;
 		
-		$identity = Yii::app()->getUser()->getIdentityInstance($username, $password);
-		
-		$identity->authenticate();
-		
-		if($identity->errorCode === $identity::ERROR_NONE)
+		if($form->validate() && $form->login())
 		{
-			$duration = isset($params['rememberMe']) && $params['rememberMe'] ? self::AUTOLOGIN_DURATION : 0;
-			
-			Yii::app()->getUser()->login($identity, $duration);
-			
 			$this->getResult()->success();
-			
-			return true;
+		}else{
+			$this->getResult()->fail(ServiceResult::ERROR_SERVICE_ERROR, $form->getErrors());
 		}
 		
-		$this->getResult()->fail(ServiceResult::ERROR_SERVICE_ERROR, $identity->errorMessage);
+		$this->getResult()->setReturnData($form);
 		
-		return false;
+		return $this->getResult()->getIsSuccessful();
 	}
 }
