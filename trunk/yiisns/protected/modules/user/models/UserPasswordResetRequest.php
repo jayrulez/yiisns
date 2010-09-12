@@ -7,6 +7,9 @@
  * @property string $user_id
  * @property string $code
  * @property string $create_time
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
 class UserPasswordResetRequest extends CActiveRecord
 {
@@ -80,9 +83,7 @@ class UserPasswordResetRequest extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id,true);
-
 		$criteria->compare('code',$this->code,true);
-
 		$criteria->compare('create_time',$this->create_time,true);
 
 		return new CActiveDataProvider(get_class($this), array(

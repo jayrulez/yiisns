@@ -1,9 +1,9 @@
 <?php
 
-class SiteController extends Controller
+class DefaultController extends Controller
 {
 	public function actionIndex()
-	{	
+	{
 		$this->render('index');
 	}
 }

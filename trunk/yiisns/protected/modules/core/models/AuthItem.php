@@ -1,20 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.post_comment".
+ * This is the model class for table "yiisns.auth_item".
  *
- * The followings are the available columns in table 'yiisns.post_comment':
- * @property string $id
- * @property string $user_id
- * @property string $post_id
- * @property string $content
- * @property string $create_time
+ * The followings are the available columns in table 'yiisns.auth_item':
+ * @property string $name
+ * @property string $type
+ * @property string $description
+ * @property string $bizrule
+ * @property string $data
+ *
+ * The followings are the available model relations:
+ * @property User[] $users
+ * @property AuthItemChild[] $authItemChildren
  */
-class PostComment extends CActiveRecord
+class AuthItem extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return PostComment the static model class
+	 * @return AuthItem the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +30,7 @@ class PostComment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.post_comment';
+		return 'yiisns.auth_item';
 	}
 
 	/**
@@ -37,11 +41,13 @@ class PostComment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, post_id, content, create_time', 'required'),
-			array('user_id, post_id, create_time', 'length', 'max'=>10),
+			array('name, type', 'required'),
+			array('name', 'length', 'max'=>255),
+			array('type', 'length', 'max'=>10),
+			array('description, bizrule, data', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, post_id, content, create_time', 'safe', 'on'=>'search'),
+			array('name, type, description, bizrule, data', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,9 +59,8 @@ class PostComment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'post' => array(self::BELONGS_TO, 'Post', 'post_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'users' => array(self::MANY_MANY, 'User', 'post_comment_mention(comment_id, user_id)'),
+			'users' => array(self::MANY_MANY, 'User', 'auth_assignment(itemname, userid)'),
+			'authItemChildren' => array(self::HAS_MANY, 'AuthItemChild', 'parent'),
 		);
 	}
 
@@ -65,11 +70,11 @@ class PostComment extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'user_id' => 'User',
-			'post_id' => 'Post',
-			'content' => 'Content',
-			'create_time' => 'Create Time',
+			'name' => 'Name',
+			'type' => 'Type',
+			'description' => 'Description',
+			'bizrule' => 'Bizrule',
+			'data' => 'Data',
 		);
 	}
 
@@ -84,15 +89,11 @@ class PostComment extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-
-		$criteria->compare('user_id',$this->user_id,true);
-
-		$criteria->compare('post_id',$this->post_id,true);
-
-		$criteria->compare('content',$this->content,true);
-
-		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('type',$this->type,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('bizrule',$this->bizrule,true);
+		$criteria->compare('data',$this->data,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

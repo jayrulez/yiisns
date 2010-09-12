@@ -1,21 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.post".
+ * This is the model class for table "yiisns.auth_assignment".
  *
- * The followings are the available columns in table 'yiisns.post':
- * @property string $id
- * @property string $user_id
- * @property string $content
- * @property string $location_id
- * @property string $create_time
- * @property string $update_time
+ * The followings are the available columns in table 'yiisns.auth_assignment':
+ * @property string $itemname
+ * @property string $userid
+ * @property string $bizrule
+ * @property string $data
+ *
+ * The followings are the available model relations:
  */
-class Post extends CActiveRecord
+class AuthAssignment extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Post the static model class
+	 * @return AuthAssignment the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -27,7 +27,7 @@ class Post extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.post';
+		return 'yiisns.auth_assignment';
 	}
 
 	/**
@@ -38,11 +38,13 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, content, create_time', 'required'),
-			array('user_id, location_id, create_time, update_time', 'length', 'max'=>10),
+			array('itemname, userid', 'required'),
+			array('itemname', 'length', 'max'=>255),
+			array('userid', 'length', 'max'=>10),
+			array('bizrule, data', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, content, location_id, create_time, update_time', 'safe', 'on'=>'search'),
+			array('itemname, userid, bizrule, data', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,10 +56,6 @@ class Post extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'location' => array(self::BELONGS_TO, 'Location', 'location_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'postComments' => array(self::HAS_MANY, 'PostComment', 'post_id'),
-			'users' => array(self::MANY_MANY, 'User', 'post_mention(post_id, user_id)'),
 		);
 	}
 
@@ -67,12 +65,10 @@ class Post extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'user_id' => 'User',
-			'content' => 'Content',
-			'location_id' => 'Location',
-			'create_time' => 'Create Time',
-			'update_time' => 'Update Time',
+			'itemname' => 'Itemname',
+			'userid' => 'Userid',
+			'bizrule' => 'Bizrule',
+			'data' => 'Data',
 		);
 	}
 
@@ -87,17 +83,10 @@ class Post extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-
-		$criteria->compare('user_id',$this->user_id,true);
-
-		$criteria->compare('content',$this->content,true);
-
-		$criteria->compare('location_id',$this->location_id,true);
-
-		$criteria->compare('create_time',$this->create_time,true);
-
-		$criteria->compare('update_time',$this->update_time,true);
+		$criteria->compare('itemname',$this->itemname,true);
+		$criteria->compare('userid',$this->userid,true);
+		$criteria->compare('bizrule',$this->bizrule,true);
+		$criteria->compare('data',$this->data,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

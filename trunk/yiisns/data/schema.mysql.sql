@@ -1,9 +1,16 @@
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+
+
 CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `itemname` varchar(255) NOT NULL,
   `userid` int(10) unsigned NOT NULL,
   `bizrule` text,
   `data` text,
-  PRIMARY KEY (`itemname`,`userid`)
+  PRIMARY KEY (`itemname`,`userid`),
+  KEY `FK_auth_assignment_user` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -22,7 +29,8 @@ CREATE TABLE IF NOT EXISTS `auth_item` (
 CREATE TABLE IF NOT EXISTS `auth_item_child` (
   `parent` varchar(255) NOT NULL,
   `child` varchar(255) NOT NULL,
-  PRIMARY KEY (`parent`,`child`)
+  PRIMARY KEY (`parent`,`child`),
+  KEY `FK_auth_item_child_auth_item_child` (`child`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -43,7 +51,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   `location_id` int(10) unsigned DEFAULT NULL,
   `create_time` int(10) unsigned NOT NULL,
   `update_time` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_post_location` (`location_id`),
+  KEY `FK_post_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -54,7 +64,9 @@ CREATE TABLE IF NOT EXISTS `post_comment` (
   `post_id` int(10) unsigned NOT NULL,
   `content` text NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_post_comment_post` (`post_id`),
+  KEY `FK_post_comment_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -62,7 +74,8 @@ CREATE TABLE IF NOT EXISTS `post_comment` (
 CREATE TABLE IF NOT EXISTS `post_comment_like` (
   `user_id` int(10) unsigned NOT NULL,
   `comment_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`comment_id`)
+  PRIMARY KEY (`user_id`,`comment_id`),
+  KEY `FK_post_comment_like_post_comment` (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -70,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `post_comment_like` (
 CREATE TABLE IF NOT EXISTS `post_comment_mention` (
   `user_id` int(10) unsigned NOT NULL,
   `comment_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`comment_id`)
+  PRIMARY KEY (`user_id`,`comment_id`),
+  KEY `FK_post_comment_mention_post_comment` (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -78,7 +92,8 @@ CREATE TABLE IF NOT EXISTS `post_comment_mention` (
 CREATE TABLE IF NOT EXISTS `post_favourite` (
   `user_id` int(10) unsigned NOT NULL,
   `post_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`post_id`)
+  PRIMARY KEY (`user_id`,`post_id`),
+  KEY `FK_post_favourite_post` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -86,7 +101,8 @@ CREATE TABLE IF NOT EXISTS `post_favourite` (
 CREATE TABLE IF NOT EXISTS `post_like` (
   `user_id` int(10) unsigned NOT NULL,
   `post_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`post_id`)
+  PRIMARY KEY (`user_id`,`post_id`),
+  KEY `FK_post_like_post` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -94,7 +110,8 @@ CREATE TABLE IF NOT EXISTS `post_like` (
 CREATE TABLE IF NOT EXISTS `post_mention` (
   `user_id` int(10) unsigned NOT NULL,
   `post_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`post_id`)
+  PRIMARY KEY (`user_id`,`post_id`),
+  KEY `FK_post_mention_post` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -112,7 +129,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `active_time` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `primary_email_id` (`primary_email_id`)
+  UNIQUE KEY `primary_email_id` (`primary_email_id`),
+  KEY `FK_user_location` (`location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -124,7 +142,8 @@ CREATE TABLE IF NOT EXISTS `user_email` (
   `confirmed` tinyint(1) NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email_address` (`email_address`)
+  UNIQUE KEY `email_address` (`email_address`),
+  KEY `FK_user_email_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -134,7 +153,8 @@ CREATE TABLE IF NOT EXISTS `user_email_confirm_request` (
   `email_id` int(10) unsigned NOT NULL,
   `code` varchar(32) NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`email_id`,`code`)
+  PRIMARY KEY (`user_id`,`email_id`,`code`),
+  KEY `FK_user_email_confirm_request_user_email` (`email_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -143,7 +163,8 @@ CREATE TABLE IF NOT EXISTS `user_follow` (
   `user_id` int(10) unsigned NOT NULL,
   `follower_id` int(10) unsigned NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`follower_id`)
+  PRIMARY KEY (`user_id`,`follower_id`),
+  KEY `FK_user_follow_follower` (`follower_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -153,7 +174,8 @@ CREATE TABLE IF NOT EXISTS `user_follow_invite` (
   `inviter_id` int(10) unsigned NOT NULL,
   `status` tinyint(1) unsigned NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`inviter_id`)
+  PRIMARY KEY (`user_id`,`inviter_id`),
+  KEY `FK_user_follow_invite_inviter` (`inviter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -163,7 +185,8 @@ CREATE TABLE IF NOT EXISTS `user_follow_request` (
   `follower_id` int(10) unsigned NOT NULL,
   `status` tinyint(1) unsigned NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`follower_id`)
+  PRIMARY KEY (`user_id`,`follower_id`),
+  KEY `FK_user_follow_request_follower` (`follower_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -172,17 +195,19 @@ CREATE TABLE IF NOT EXISTS `user_location_alias` (
   `user_id` int(10) unsigned NOT NULL,
   `location_id` int(10) unsigned NOT NULL,
   `alias` varchar(100) NOT NULL,
-  PRIMARY KEY (`user_id`,`location_id`)
+  PRIMARY KEY (`user_id`,`location_id`),
+  KEY `FK_user_location_alias_location` (`location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
-CREATE TABLE IF NOT EXISTS `user_login` (
+CREATE TABLE IF NOT EXISTS `user_login_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
   `ip` varchar(39) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_user_login_log_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -213,7 +238,9 @@ CREATE TABLE IF NOT EXISTS `user_view` (
   `user_id` int(10) unsigned NOT NULL,
   `viewer_id` int(10) unsigned NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_user_view_user` (`user_id`),
+  KEY `FK_user_view_viewer` (`viewer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -280,8 +307,8 @@ ALTER TABLE `user_location_alias`
   ADD CONSTRAINT `FK_user_location_alias_location` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_user_location_alias_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `user_login`
-  ADD CONSTRAINT `FK_user_login_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `user_login_log`
+  ADD CONSTRAINT `FK_user_login_log_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `user_password_reset_request`
   ADD CONSTRAINT `FK_user_password_reset_request_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

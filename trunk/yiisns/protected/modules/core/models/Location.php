@@ -1,17 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.post_comment_mention".
+ * This is the model class for table "yiisns.location".
  *
- * The followings are the available columns in table 'yiisns.post_comment_mention':
- * @property string $user_id
- * @property string $comment_id
+ * The followings are the available columns in table 'yiisns.location':
+ * @property string $id
+ * @property string $geo_tag
+ * @property string $name
+ *
+ * The followings are the available model relations:
+ * @property Post[] $posts
+ * @property User[] $users
  */
-class PostCommentMention extends CActiveRecord
+class Location extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return PostCommentMention the static model class
+	 * @return Location the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -23,7 +28,7 @@ class PostCommentMention extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.post_comment_mention';
+		return 'yiisns.location';
 	}
 
 	/**
@@ -34,11 +39,11 @@ class PostCommentMention extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, comment_id', 'required'),
-			array('user_id, comment_id', 'length', 'max'=>10),
+			array('geo_tag', 'required'),
+			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_id, comment_id', 'safe', 'on'=>'search'),
+			array('id, geo_tag, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,6 +55,8 @@ class PostCommentMention extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'posts' => array(self::HAS_MANY, 'Post', 'location_id'),
+			'users' => array(self::MANY_MANY, 'User', 'user_location_alias(location_id, user_id)'),
 		);
 	}
 
@@ -59,8 +66,9 @@ class PostCommentMention extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_id' => 'User',
-			'comment_id' => 'Comment',
+			'id' => 'ID',
+			'geo_tag' => 'Geo Tag',
+			'name' => 'Name',
 		);
 	}
 
@@ -75,9 +83,9 @@ class PostCommentMention extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('user_id',$this->user_id,true);
-
-		$criteria->compare('comment_id',$this->comment_id,true);
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('geo_tag',$this->geo_tag,true);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

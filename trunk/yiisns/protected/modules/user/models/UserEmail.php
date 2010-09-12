@@ -9,6 +9,11 @@
  * @property string $email_address
  * @property integer $confirmed
  * @property string $create_time
+ *
+ * The followings are the available model relations:
+ * @property User[] $users
+ * @property User $user
+ * @property UserEmailConfirmRequest[] $userEmailConfirmRequests
  */
 class UserEmail extends CActiveRecord
 {
@@ -87,13 +92,9 @@ class UserEmail extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-
 		$criteria->compare('user_id',$this->user_id,true);
-
 		$criteria->compare('email_address',$this->email_address,true);
-
 		$criteria->compare('confirmed',$this->confirmed);
-
 		$criteria->compare('create_time',$this->create_time,true);
 
 		return new CActiveDataProvider(get_class($this), array(

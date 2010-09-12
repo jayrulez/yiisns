@@ -10,6 +10,9 @@
  * @property string $last_name
  * @property integer $gender
  * @property string $birth_date
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
 class UserProfile extends CActiveRecord
 {
@@ -87,15 +90,10 @@ class UserProfile extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id,true);
-
 		$criteria->compare('first_name',$this->first_name,true);
-
 		$criteria->compare('middle_name',$this->middle_name,true);
-
 		$criteria->compare('last_name',$this->last_name,true);
-
 		$criteria->compare('gender',$this->gender);
-
 		$criteria->compare('birth_date',$this->birth_date,true);
 
 		return new CActiveDataProvider(get_class($this), array(

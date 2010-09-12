@@ -1,17 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.post_mention".
+ * This is the model class for table "yiisns.user_login_log".
  *
- * The followings are the available columns in table 'yiisns.post_mention':
+ * The followings are the available columns in table 'yiisns.user_login_log':
+ * @property string $id
  * @property string $user_id
- * @property string $post_id
+ * @property string $create_time
+ * @property string $ip
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
-class PostMention extends CActiveRecord
+class UserLoginLog extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return PostMention the static model class
+	 * @return UserLoginLog the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -23,7 +28,7 @@ class PostMention extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.post_mention';
+		return 'yiisns.user_login_log';
 	}
 
 	/**
@@ -34,11 +39,12 @@ class PostMention extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, post_id', 'required'),
-			array('user_id, post_id', 'length', 'max'=>10),
+			array('user_id, create_time, ip', 'required'),
+			array('user_id, create_time', 'length', 'max'=>10),
+			array('ip', 'length', 'max'=>39),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_id, post_id', 'safe', 'on'=>'search'),
+			array('id, user_id, create_time, ip', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,6 +56,7 @@ class PostMention extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -59,8 +66,10 @@ class PostMention extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'user_id' => 'User',
-			'post_id' => 'Post',
+			'create_time' => 'Create Time',
+			'ip' => 'Ip',
 		);
 	}
 
@@ -75,9 +84,10 @@ class PostMention extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id,true);
-
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('ip',$this->ip,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

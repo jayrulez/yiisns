@@ -14,6 +14,22 @@
  * @property string $create_time
  * @property string $update_time
  * @property string $active_time
+ *
+ * The followings are the available model relations:
+ * @property AuthItem[] $authItems
+ * @property Post[] $posts
+ * @property PostComment[] $postComments
+ * @property Location $location
+ * @property UserEmail $primaryEmail
+ * @property UserEmail[] $userEmails
+ * @property UserEmailConfirmRequest[] $userEmailConfirmRequests
+ * @property UserFollow[] $userFollows
+ * @property UserFollowInvite[] $userFollowInvites
+ * @property UserFollowRequest[] $userFollowRequests
+ * @property Location[] $locations
+ * @property UserLoginLog[] $userLoginLogs
+ * @property UserPasswordResetRequest[] $userPasswordResetRequests
+ * @property UserProfile $userProfile
  */
 class User extends CActiveRecord
 {
@@ -72,10 +88,9 @@ class User extends CActiveRecord
 			'userFollowInvites' => array(self::HAS_MANY, 'UserFollowInvite', 'user_id'),
 			'userFollowRequests' => array(self::HAS_MANY, 'UserFollowRequest', 'user_id'),
 			'locations' => array(self::MANY_MANY, 'Location', 'user_location_alias(user_id, location_id)'),
-			'userLogins' => array(self::HAS_MANY, 'UserLogin', 'user_id'),
+			'userLoginLogs' => array(self::HAS_MANY, 'UserLoginLog', 'user_id'),
 			'userPasswordResetRequests' => array(self::HAS_MANY, 'UserPasswordResetRequest', 'user_id'),
 			'userProfile' => array(self::HAS_ONE, 'UserProfile', 'user_id'),
-			'userViews' => array(self::HAS_MANY, 'UserView', 'viewer_id'),
 		);
 	}
 
@@ -110,23 +125,14 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-
 		$criteria->compare('primary_email_id',$this->primary_email_id,true);
-
 		$criteria->compare('username',$this->username,true);
-
 		$criteria->compare('password',$this->password,true);
-
 		$criteria->compare('status',$this->status);
-
 		$criteria->compare('location_id',$this->location_id,true);
-
 		$criteria->compare('create_ip',$this->create_ip,true);
-
 		$criteria->compare('create_time',$this->create_time,true);
-
 		$criteria->compare('update_time',$this->update_time,true);
-
 		$criteria->compare('active_time',$this->active_time,true);
 
 		return new CActiveDataProvider(get_class($this), array(

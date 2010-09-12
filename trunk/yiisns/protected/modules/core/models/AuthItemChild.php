@@ -1,19 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.user_view".
+ * This is the model class for table "yiisns.auth_item_child".
  *
- * The followings are the available columns in table 'yiisns.user_view':
- * @property string $id
- * @property string $user_id
- * @property string $viewer_id
- * @property string $create_time
+ * The followings are the available columns in table 'yiisns.auth_item_child':
+ * @property string $parent
+ * @property string $child
+ *
+ * The followings are the available model relations:
+ * @property AuthItem $child0
+ * @property AuthItem $parent0
  */
-class UserView extends CActiveRecord
+class AuthItemChild extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return UserView the static model class
+	 * @return AuthItemChild the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -25,7 +27,7 @@ class UserView extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.user_view';
+		return 'yiisns.auth_item_child';
 	}
 
 	/**
@@ -36,11 +38,11 @@ class UserView extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, viewer_id, create_time', 'required'),
-			array('user_id, viewer_id, create_time', 'length', 'max'=>10),
+			array('parent, child', 'required'),
+			array('parent, child', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, viewer_id, create_time', 'safe', 'on'=>'search'),
+			array('parent, child', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,8 +54,8 @@ class UserView extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'viewer' => array(self::BELONGS_TO, 'User', 'viewer_id'),
+			'child0' => array(self::BELONGS_TO, 'AuthItem', 'child'),
+			'parent0' => array(self::BELONGS_TO, 'AuthItem', 'parent'),
 		);
 	}
 
@@ -63,10 +65,8 @@ class UserView extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'user_id' => 'User',
-			'viewer_id' => 'Viewer',
-			'create_time' => 'Create Time',
+			'parent' => 'Parent',
+			'child' => 'Child',
 		);
 	}
 
@@ -81,13 +81,8 @@ class UserView extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-
-		$criteria->compare('user_id',$this->user_id,true);
-
-		$criteria->compare('viewer_id',$this->viewer_id,true);
-
-		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('parent',$this->parent,true);
+		$criteria->compare('child',$this->child,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -1,19 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.user_login".
+ * This is the model class for table "yiisns.post".
  *
- * The followings are the available columns in table 'yiisns.user_login':
+ * The followings are the available columns in table 'yiisns.post':
  * @property string $id
  * @property string $user_id
+ * @property string $content
+ * @property string $location_id
  * @property string $create_time
- * @property string $ip
+ * @property string $update_time
+ *
+ * The followings are the available model relations:
+ * @property Location $location
+ * @property User $user
+ * @property PostComment[] $postComments
+ * @property User[] $users
  */
-class UserLogin extends CActiveRecord
+class Post extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return UserLogin the static model class
+	 * @return Post the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -25,7 +33,7 @@ class UserLogin extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.user_login';
+		return 'yiisns.post';
 	}
 
 	/**
@@ -36,12 +44,11 @@ class UserLogin extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, create_time, ip', 'required'),
-			array('user_id, create_time', 'length', 'max'=>10),
-			array('ip', 'length', 'max'=>39),
+			array('user_id, content, create_time', 'required'),
+			array('user_id, location_id, create_time, update_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, create_time, ip', 'safe', 'on'=>'search'),
+			array('id, user_id, content, location_id, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,7 +60,10 @@ class UserLogin extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'location' => array(self::BELONGS_TO, 'Location', 'location_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'postComments' => array(self::HAS_MANY, 'PostComment', 'post_id'),
+			'users' => array(self::MANY_MANY, 'User', 'post_mention(post_id, user_id)'),
 		);
 	}
 
@@ -65,8 +75,10 @@ class UserLogin extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'User',
+			'content' => 'Content',
+			'location_id' => 'Location',
 			'create_time' => 'Create Time',
-			'ip' => 'Ip',
+			'update_time' => 'Update Time',
 		);
 	}
 
@@ -82,12 +94,11 @@ class UserLogin extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-
 		$criteria->compare('user_id',$this->user_id,true);
-
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('location_id',$this->location_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
-
-		$criteria->compare('ip',$this->ip,true);
+		$criteria->compare('update_time',$this->update_time,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

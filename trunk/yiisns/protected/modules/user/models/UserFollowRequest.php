@@ -8,6 +8,10 @@
  * @property string $follower_id
  * @property integer $status
  * @property string $create_time
+ *
+ * The followings are the available model relations:
+ * @property User $follower
+ * @property User $user
  */
 class UserFollowRequest extends CActiveRecord
 {
@@ -83,11 +87,8 @@ class UserFollowRequest extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id,true);
-
 		$criteria->compare('follower_id',$this->follower_id,true);
-
 		$criteria->compare('status',$this->status);
-
 		$criteria->compare('create_time',$this->create_time,true);
 
 		return new CActiveDataProvider(get_class($this), array(

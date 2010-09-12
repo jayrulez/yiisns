@@ -1,20 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.auth_item".
+ * This is the model class for table "yiisns.post_favourite".
  *
- * The followings are the available columns in table 'yiisns.auth_item':
- * @property string $name
- * @property string $type
- * @property string $description
- * @property string $bizrule
- * @property string $data
+ * The followings are the available columns in table 'yiisns.post_favourite':
+ * @property string $user_id
+ * @property string $post_id
+ *
+ * The followings are the available model relations:
  */
-class AuthItem extends CActiveRecord
+class PostFavourite extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return AuthItem the static model class
+	 * @return PostFavourite the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +25,7 @@ class AuthItem extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.auth_item';
+		return 'yiisns.post_favourite';
 	}
 
 	/**
@@ -37,13 +36,11 @@ class AuthItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, type', 'required'),
-			array('name', 'length', 'max'=>255),
-			array('type', 'length', 'max'=>10),
-			array('description, bizrule, data', 'safe'),
+			array('user_id, post_id', 'required'),
+			array('user_id, post_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('name, type, description, bizrule, data', 'safe', 'on'=>'search'),
+			array('user_id, post_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,8 +52,6 @@ class AuthItem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::MANY_MANY, 'User', 'auth_assignment(itemname, userid)'),
-			'authItemChildren' => array(self::HAS_MANY, 'AuthItemChild', 'parent'),
 		);
 	}
 
@@ -66,11 +61,8 @@ class AuthItem extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'name' => 'Name',
-			'type' => 'Type',
-			'description' => 'Description',
-			'bizrule' => 'Bizrule',
-			'data' => 'Data',
+			'user_id' => 'User',
+			'post_id' => 'Post',
 		);
 	}
 
@@ -85,15 +77,8 @@ class AuthItem extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('name',$this->name,true);
-
-		$criteria->compare('type',$this->type,true);
-
-		$criteria->compare('description',$this->description,true);
-
-		$criteria->compare('bizrule',$this->bizrule,true);
-
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('post_id',$this->post_id,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

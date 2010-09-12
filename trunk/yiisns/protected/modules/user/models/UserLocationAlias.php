@@ -7,6 +7,8 @@
  * @property string $user_id
  * @property string $location_id
  * @property string $alias
+ *
+ * The followings are the available model relations:
  */
 class UserLocationAlias extends CActiveRecord
 {
@@ -79,9 +81,7 @@ class UserLocationAlias extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id,true);
-
 		$criteria->compare('location_id',$this->location_id,true);
-
 		$criteria->compare('alias',$this->alias,true);
 
 		return new CActiveDataProvider(get_class($this), array(

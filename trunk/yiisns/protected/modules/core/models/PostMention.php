@@ -1,17 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.auth_item_child".
+ * This is the model class for table "yiisns.post_mention".
  *
- * The followings are the available columns in table 'yiisns.auth_item_child':
- * @property string $parent
- * @property string $child
+ * The followings are the available columns in table 'yiisns.post_mention':
+ * @property string $user_id
+ * @property string $post_id
+ *
+ * The followings are the available model relations:
  */
-class AuthItemChild extends CActiveRecord
+class PostMention extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return AuthItemChild the static model class
+	 * @return PostMention the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -23,7 +25,7 @@ class AuthItemChild extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.auth_item_child';
+		return 'yiisns.post_mention';
 	}
 
 	/**
@@ -34,11 +36,11 @@ class AuthItemChild extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('parent, child', 'required'),
-			array('parent, child', 'length', 'max'=>255),
+			array('user_id, post_id', 'required'),
+			array('user_id, post_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('parent, child', 'safe', 'on'=>'search'),
+			array('user_id, post_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,8 +52,6 @@ class AuthItemChild extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'child0' => array(self::BELONGS_TO, 'AuthItem', 'child'),
-			'parent0' => array(self::BELONGS_TO, 'AuthItem', 'parent'),
 		);
 	}
 
@@ -61,8 +61,8 @@ class AuthItemChild extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'parent' => 'Parent',
-			'child' => 'Child',
+			'user_id' => 'User',
+			'post_id' => 'Post',
 		);
 	}
 
@@ -77,9 +77,8 @@ class AuthItemChild extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('parent',$this->parent,true);
-
-		$criteria->compare('child',$this->child,true);
+		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('post_id',$this->post_id,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -1,17 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.post_like".
+ * This is the model class for table "yiisns.post_comment_mention".
  *
- * The followings are the available columns in table 'yiisns.post_like':
+ * The followings are the available columns in table 'yiisns.post_comment_mention':
  * @property string $user_id
- * @property string $post_id
+ * @property string $comment_id
+ *
+ * The followings are the available model relations:
  */
-class PostLike extends CActiveRecord
+class PostCommentMention extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return PostLike the static model class
+	 * @return PostCommentMention the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -23,7 +25,7 @@ class PostLike extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.post_like';
+		return 'yiisns.post_comment_mention';
 	}
 
 	/**
@@ -34,11 +36,11 @@ class PostLike extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, post_id', 'required'),
-			array('user_id, post_id', 'length', 'max'=>10),
+			array('user_id, comment_id', 'required'),
+			array('user_id, comment_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_id, post_id', 'safe', 'on'=>'search'),
+			array('user_id, comment_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +62,7 @@ class PostLike extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'post_id' => 'Post',
+			'comment_id' => 'Comment',
 		);
 	}
 
@@ -76,8 +78,7 @@ class PostLike extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id,true);
-
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('comment_id',$this->comment_id,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

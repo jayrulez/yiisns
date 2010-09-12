@@ -1,19 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "yiisns.auth_assignment".
+ * This is the model class for table "yiisns.post_like".
  *
- * The followings are the available columns in table 'yiisns.auth_assignment':
- * @property string $itemname
- * @property string $userid
- * @property string $bizrule
- * @property string $data
+ * The followings are the available columns in table 'yiisns.post_like':
+ * @property string $user_id
+ * @property string $post_id
+ *
+ * The followings are the available model relations:
  */
-class AuthAssignment extends CActiveRecord
+class PostLike extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return AuthAssignment the static model class
+	 * @return PostLike the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -25,7 +25,7 @@ class AuthAssignment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.auth_assignment';
+		return 'yiisns.post_like';
 	}
 
 	/**
@@ -36,13 +36,11 @@ class AuthAssignment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('itemname, userid', 'required'),
-			array('itemname', 'length', 'max'=>255),
-			array('userid', 'length', 'max'=>10),
-			array('bizrule, data', 'safe'),
+			array('user_id, post_id', 'required'),
+			array('user_id, post_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('itemname, userid, bizrule, data', 'safe', 'on'=>'search'),
+			array('user_id, post_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +61,8 @@ class AuthAssignment extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'itemname' => 'Itemname',
-			'userid' => 'Userid',
-			'bizrule' => 'Bizrule',
-			'data' => 'Data',
+			'user_id' => 'User',
+			'post_id' => 'Post',
 		);
 	}
 
@@ -81,13 +77,8 @@ class AuthAssignment extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('itemname',$this->itemname,true);
-
-		$criteria->compare('userid',$this->userid,true);
-
-		$criteria->compare('bizrule',$this->bizrule,true);
-
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('post_id',$this->post_id,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
