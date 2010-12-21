@@ -22,13 +22,7 @@
 			<div id="header-container">
 				<!-- header -->
 				<div id="header">
-					<div id="header-content" class="clearfix">
-						<div id="home-link">
-							<?php echo CHtml::link('', Yii::app()->homeUrl); ?>
-						</div>
-						<div id="main-nav">
-						</div>
-					</div>
+				<?php $this->widget('HeaderWidget'); ?>
 				</div>
 				<!-- /header -->
 			</div>

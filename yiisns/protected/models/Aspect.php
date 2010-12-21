@@ -60,11 +60,26 @@ class Aspect extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'contactAspects' => array(self::HAS_MANY, 'ContactAspect', 'aspect_id'),
 			'posts' => array(self::MANY_MANY, 'Post', 'post_aspect(aspect_id, post_id)'),
 		);
 	}
 
+	public function getContacts()
+	{
+		$userContacts = Contact::model()->findAllByAttributes(array(
+			'user_id'=>$this->user_id,
+		));
+		
+		$contacts = array();
+		
+		foreach($userContacts as $userContact)
+		{
+			
+		}
+		
+		return $contacts;
+	}
+	
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
