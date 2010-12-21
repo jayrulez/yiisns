@@ -1,0 +1,43 @@
+a {color:#D2E4F8;}
+a:active {color: #eee;}
+
+#page-container {}
+	#page {text-align: left;}
+		#header-container {background-color: #2969B3;}
+			#header {width: 960px; margin: 0 auto;}
+				#header-content {}
+					#home-link {float: left; width: 150px;}
+						#home-link a {display: inline-block;}
+					#main-nav {float: right; width: 800px;}
+		#canvas-container {}
+			#canvas {width: 960px; margin: 0 auto;}
+				#canvas-content {}
+					#content-container {}
+					
+						#content {}
+							.action {}
+								.action-header {}
+								.action-content {}
+								
+						.sidebar-left #sidebar-left {}
+						.sidebar-left #content {}
+							.sidebar-left .action {}
+								.sidebar-left .action-header {}
+								.sidebar-left .action-content {}
+						
+						.sidebar-right #content {}
+							.sidebar-right .action {}
+								.sidebar-right .action-header {}
+								.sidebar-right .action-content {}
+						.sidebar-right #sidebar-right {}
+						
+						.sidebars #sidebar-left {}
+						.sidebars #content {}
+							.sidebars .action {}
+								.sidebars .action-header {}
+								.sidebars .action-content {}
+						.sidebars #sidebar-right {}
+						
+		#footer-container {}
+			#footer {width: 960px; margin: 0 auto;}
+				#footer-content {}
