@@ -4,9 +4,9 @@ class WebUser extends CWebUser
 {
 	public $allowAutoLogin = true;
 	
-	public $loginUrl = array('/user/auth/login');
+	public $loginUrl = array('/site/login');
 	
-	public $registerUrl = array('/user/auth/register');
+	public $registerUrl = array('/site/register');
 	
 	public $identityClass = 'UserIdentity';
 	
