@@ -57,7 +57,6 @@ class Contact extends CActiveRecord
 		return array(
 			'contact' => array(self::BELONGS_TO, 'User', 'contact_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'contactAspects' => array(self::HAS_MANY, 'ContactAspect', 'contact_id'),
 		);
 	}
 

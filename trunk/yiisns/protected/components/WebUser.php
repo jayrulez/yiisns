@@ -26,4 +26,30 @@ class WebUser extends CWebUser
 		
 		return new $className($username, $password);
 	}
+	
+	/**
+	 * 
+	 */
+	public function getModel()
+	{
+		if($this->_model === null)
+		{			
+			$this->_model = User::model()->find("id=:id", array(
+				':id' => $this->id,
+			));
+			if($this->_model === null)
+			{
+				$this->logout();
+			}
+		}
+		return $this->_model;
+	}
+	
+	/**
+	 * 
+	 */
+	public function getIsGuest()
+	{
+		return $this->getModel() === null;
+	}
 }
