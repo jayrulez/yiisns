@@ -1,20 +1,5 @@
 <?php
 
-/**
- * This is the model class for table "yiisns.aspect".
- *
- * The followings are the available columns in table 'yiisns.aspect':
- * @property string $id
- * @property string $user_id
- * @property string $name
- * @property string $create_time
- * @property string $update_time
- *
- * The followings are the available model relations:
- * @property User $user
- * @property ContactAspect[] $contactAspects
- * @property Post[] $posts
- */
 class Aspect extends CActiveRecord
 {
 	/**
@@ -31,7 +16,7 @@ class Aspect extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.aspect';
+		return 'aspect';
 	}
 
 	/**
@@ -39,15 +24,9 @@ class Aspect extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
-			array('user_id, name, create_time, update_time', 'required'),
-			array('user_id, create_time, update_time', 'length', 'max'=>11),
-			array('name', 'length', 'max'=>32),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, user_id, name, create_time, update_time', 'safe', 'on'=>'search'),
+			array('name', 'required'),
+			array('name', 'length', 'min'=>3, 'max'=>32),
 		);
 	}
 
@@ -56,30 +35,13 @@ class Aspect extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'contacts' => array(self::MANY_MANY, 'Contact', 'contact_aspect(user_id, person_id, aspect_id)'),
 			'posts' => array(self::MANY_MANY, 'Post', 'post_aspect(aspect_id, post_id)'),
 		);
 	}
 
-	public function getContacts()
-	{
-		$userContacts = Contact::model()->findAllByAttributes(array(
-			'user_id'=>$this->user_id,
-		));
-		
-		$contacts = array();
-		
-		foreach($userContacts as $userContact)
-		{
-			
-		}
-		
-		return $contacts;
-	}
-	
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

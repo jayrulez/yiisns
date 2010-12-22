@@ -1,10 +1,10 @@
 <?php
 
-class Contact extends CActiveRecord
+class Profile extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Contact the static model class
+	 * @return Profile the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -16,7 +16,7 @@ class Contact extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'contact';
+		return 'profile';
 	}
 
 	/**
@@ -25,8 +25,9 @@ class Contact extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('user_id, person_id', 'required'),
-			array('user_id, person_id', 'length', 'max'=>11)
+			array('first_name, last_name, gender, birthday', 'required'),
+			array('gender', 'numerical', 'integerOnly'=>true),
+			array('first_name, last_name', 'length', 'max'=>32),
 		);
 	}
 
@@ -36,9 +37,7 @@ class Contact extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'person' => array(self::BELONGS_TO, 'User', 'person_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'aspects' => array(self::MANY_MANY, 'Aspect', 'contact_aspect(user_id, person_id, aspect_id)'),
 		);
 	}
 
@@ -49,7 +48,10 @@ class Contact extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'person_id' => 'Contact',
+			'first_name' => 'First Name',
+			'last_name' => 'Last Name',
+			'gender' => 'Gender',
+			'birthday' => 'Birthday',
 		);
 	}
 }

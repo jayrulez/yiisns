@@ -10,6 +10,8 @@ class WebUser extends CWebUser
 	
 	public $identityClass = 'UserIdentity';
 	
+	private $_model = null;
+	
 	public function init()
 	{
 		parent::init();
