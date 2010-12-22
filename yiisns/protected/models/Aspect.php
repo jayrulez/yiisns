@@ -27,9 +27,25 @@ class Aspect extends CActiveRecord
 		return array(
 			array('name', 'required'),
 			array('name', 'length', 'min'=>3, 'max'=>32),
+			array('name', 'uniqueOnUserId'),
 		);
 	}
 
+	public function uniqueOnUserId($attribute, $params = array())
+	{
+		$aspect = Aspect::model()->findByAttributes(array(
+			'user_id'=>$this->user_id,
+			'name'=>$this->name,
+		));
+		
+		if($aspect !== null)
+		{
+			$this->addError('name', Yii::t('application', 'You already have an aspect named "{name}".', array(
+				'{name}'=>$this->name,
+			)));
+		}
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
