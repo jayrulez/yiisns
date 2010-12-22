@@ -2,34 +2,29 @@
 
 class AspectController extends Controller
 {
+	public function filters()
+	{
+		return array(
+			'accessControl',
+		);
+	}
+	
+	public function accessRules()
+	{
+		return array(
+			array(
+				'deny',
+				'actions'=>array('*'),
+				'users'=>array('?'),
+			),
+		);
+	}
+	
 	public function actionIndex()
 	{
 		$user = Yii::app()->user->getModel();
 		
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'user_id=:user_id OR id IN(:range)';
-		
-		$aspects = Aspects::model()->findAllByAttributes(array(
-			'user_id'=>$user->id,
-		));
-		
-		$contacts = array();
-		
-		foreach($aspects as $aspect)
-		{
-		
-		}
-		
-		$criteria->params = array(
-			':user_id'=>$user->id,
-			':range'=>array(1,2,3),
-		);
-		
-		$posts = Post::model()->find($criteria);
-		
-	    $this->render('index', array(
-			'posts'=>$posts,
-		));
+	    $this->render('index');
 	}
 	
 	public function actionCreate()
@@ -43,7 +38,7 @@ class AspectController extends Controller
 			
 			if($aspect->save())
 			{
-			
+				$this->redirect(('/aspect/view', 'id'=>$aspect->id));
 			}
 		}
 		
@@ -54,7 +49,19 @@ class AspectController extends Controller
 	
 	public function actionDelete()
 	{
-	
+		$aspect = Aspect::model()->findByAttributes(array(
+			'id'=>Yii::app()->request->getPost('id'),
+			'user_id'=>Yii::app()->user->getId(),
+		));
+		
+		if($aspect === null)
+		{
+			throw new CHttpException(404, Yii::t('application', 'The requested page was not found.'));
+		}
+		
+		$aspect->delete();
+		
+		$this->redirect(array('/aspect'));
 	}
 	
 	public function actionView()

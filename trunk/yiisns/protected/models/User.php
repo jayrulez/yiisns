@@ -1,23 +1,5 @@
 <?php
 
-/**
- * This is the model class for table "yiisns.user".
- *
- * The followings are the available columns in table 'yiisns.user':
- * @property string $id
- * @property string $username
- * @property string $password
- * @property string $create_ip
- * @property string $create_time
- * @property string $update_time
- *
- * The followings are the available model relations:
- * @property Aspect[] $aspects
- * @property Comment[] $comments
- * @property Contact[] $contacts
- * @property Post[] $posts
- * @property Request[] $requests
- */
 class User extends CActiveRecord
 {
 	/**
@@ -34,7 +16,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yiisns.user';
+		return 'user';
 	}
 
 	/**
@@ -42,14 +24,9 @@ class User extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('username, password', 'required'),
 			array('username, password', 'length', 'max'=>32),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, username, password, create_ip, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,8 +42,8 @@ class User extends CActiveRecord
 			'comments' => array(self::HAS_MANY, 'Comment', 'user_id'),
 			'contacts' => array(self::HAS_MANY, 'Contact', 'user_id'),
 			'posts' => array(self::HAS_MANY, 'Post', 'user_id'),
-			'requestsI' => array(self::HAS_MANY, 'Request', 'contact_id'),
-			'requestsO' => array(self::HAS_MANY, 'Request', 'user_id'),
+			'requests' => array(self::HAS_MANY, 'Request', 'person_id'),
+			'invitations' => array(self::HAS_MANY, 'Request', 'user_id'),
 		);
 	}
 
@@ -107,10 +84,10 @@ class User extends CActiveRecord
 				$this->create_ip = Yii::app()->request->getUserHostAddress();
 				$this->create_time = time();
 			}else{
-				if($this->scenario === 'updatePassword')
+				/*if($this->scenario === 'updatePassword')
 				{
 					$this->password = self::encryptPassword($this->password);
-				}
+				}*/
 				$this->update_time = time();
 			}
 			return true;
