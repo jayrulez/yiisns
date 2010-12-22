@@ -30,8 +30,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 CREATE TABLE IF NOT EXISTS `contact` (
   `user_id` int(11) unsigned NOT NULL,
   `contact_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`contact_id`),
-  KEY `FK_contact_contact` (`contact_id`)
+  PRIMARY KEY (`user_id`,`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `contact` (`user_id`, `contact_id`) VALUES
@@ -42,8 +41,7 @@ CREATE TABLE IF NOT EXISTS `contact_aspect` (
   `user_id` int(11) unsigned NOT NULL,
   `contact_id` int(11) unsigned NOT NULL,
   `aspect_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`contact_id`,`aspect_id`),
-  KEY `FK_contact_aspect_aspect` (`aspect_id`)
+  PRIMARY KEY (`user_id`,`contact_id`,`aspect_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `contact_aspect` (`user_id`, `contact_id`, `aspect_id`) VALUES

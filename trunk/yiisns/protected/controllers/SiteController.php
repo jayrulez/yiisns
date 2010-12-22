@@ -28,7 +28,7 @@ class SiteController extends Controller
 	{
 		if(!Yii::app()->user->isGuest)
 		{
-			$this->redirect(array('/home'));
+			$this->redirect(array('/aspect'));
 		}
 		$this->render('index');
 	}

@@ -15,7 +15,7 @@
 						<?php echo CHtml::activeLabel($form,'username'); ?>
 						<?php echo CHtml::activeTextField($form,'username', array('class'=>'text')); ?>
 					</div>
-					<div class="row clearfix">
+					<div class="row bottom clearfix">
 						<?php echo CHtml::activeLabel($form,'password'); ?>
 						<?php echo CHtml::activePasswordField($form,'password', array('class'=>'text')); ?>
 					</div>

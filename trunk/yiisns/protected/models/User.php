@@ -94,4 +94,28 @@ class User extends CActiveRecord
 		}
 		return false;
 	}
+	
+	public function canSeeAspect($aspectId)
+	{
+		$aspect = Aspect::model()->findByPk($aspectId);
+		
+		if($aspect !== null)
+		{
+			if($aspect->user->id === $this->id)
+			{
+				return true;
+			}else{
+				$contactAspect = ContactAspect::model()->findByAttributes(array(
+					'contact_id'=>$this->id,
+					'aspect_id'=>$aspectId,
+				));
+				
+				if($contactAspect !== null)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
