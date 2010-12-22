@@ -37,7 +37,7 @@ class Aspect extends CActiveRecord
 	{
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'contacts' => array(self::MANY_MANY, 'Contact', 'contact_aspect(user_id, person_id, aspect_id)'),
+			'contacts' => array(self::MANY_MANY, 'Contact', 'contact_aspect(user_id, contact_id, aspect_id)'),
 			'posts' => array(self::MANY_MANY, 'Post', 'post_aspect(aspect_id, post_id)'),
 		);
 	}

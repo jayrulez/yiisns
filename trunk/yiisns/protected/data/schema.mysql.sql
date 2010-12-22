@@ -29,24 +29,24 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 CREATE TABLE IF NOT EXISTS `contact` (
   `user_id` int(11) unsigned NOT NULL,
-  `person_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`person_id`),
-  KEY `FK_contact_contact` (`person_id`)
+  `contact_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`contact_id`),
+  KEY `FK_contact_contact` (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `contact` (`user_id`, `person_id`) VALUES
+INSERT INTO `contact` (`user_id`, `contact_id`) VALUES
 (2, 1),
 (1, 2);
 
 CREATE TABLE IF NOT EXISTS `contact_aspect` (
   `user_id` int(11) unsigned NOT NULL,
-  `person_id` int(11) unsigned NOT NULL,
+  `contact_id` int(11) unsigned NOT NULL,
   `aspect_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`person_id`,`aspect_id`),
+  PRIMARY KEY (`user_id`,`contact_id`,`aspect_id`),
   KEY `FK_contact_aspect_aspect` (`aspect_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `contact_aspect` (`user_id`, `person_id`, `aspect_id`) VALUES
+INSERT INTO `contact_aspect` (`user_id`, `contact_id`, `aspect_id`) VALUES
 (1, 2, 1),
 (1, 2, 2);
 
@@ -86,12 +86,12 @@ CREATE TABLE IF NOT EXISTS `profile` (
 
 CREATE TABLE IF NOT EXISTS `request` (
   `user_id` int(11) unsigned NOT NULL,
-  `person_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`person_id`),
-  KEY `FK_request_contact` (`person_id`)
+  `contact_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`contact_id`),
+  KEY `FK_request_contact` (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `request` (`user_id`, `person_id`) VALUES
+INSERT INTO `request` (`user_id`, `contact_id`) VALUES
 (2, 1);
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -118,12 +118,12 @@ ALTER TABLE `comment`
   ADD CONSTRAINT `FK_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `contact`
-  ADD CONSTRAINT `FK_contact_person` FOREIGN KEY (`person_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_contact_contact` FOREIGN KEY (`contact_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_contact_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `contact_aspect`
   ADD CONSTRAINT `FK_contact_aspect_aspect` FOREIGN KEY (`aspect_id`) REFERENCES `aspect` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_contact_aspect_person` FOREIGN KEY (`user_id`, `person_id`) REFERENCES `contact` (`user_id`, `person_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_contact_aspect_contact` FOREIGN KEY (`user_id`, `contact_id`) REFERENCES `contact` (`user_id`, `contact_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `post`
   ADD CONSTRAINT `FK_post_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -136,5 +136,5 @@ ALTER TABLE `profile`
   ADD CONSTRAINT `FK_profile_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `request`
-  ADD CONSTRAINT `FK_request_person` FOREIGN KEY (`person_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_request_contact` FOREIGN KEY (`contact_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_request_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

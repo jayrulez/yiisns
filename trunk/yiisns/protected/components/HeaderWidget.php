@@ -8,7 +8,7 @@ class HeaderWidget extends CWidget
 	
 	public function run()
 	{
-		if(($user = Yii::app()->user->getModel()) !== null)
+		if(($user = Yii::app()->user->getModel()) === null)
 		{
 			$this->render('guestHeader');
 		}else{

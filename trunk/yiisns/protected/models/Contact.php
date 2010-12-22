@@ -25,8 +25,8 @@ class Contact extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('user_id, person_id', 'required'),
-			array('user_id, person_id', 'length', 'max'=>11)
+			array('user_id, contact_id', 'required'),
+			array('user_id, contact_id', 'length', 'max'=>11)
 		);
 	}
 
@@ -36,9 +36,9 @@ class Contact extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'person' => array(self::BELONGS_TO, 'User', 'person_id'),
+			'contact' => array(self::BELONGS_TO, 'User', 'contact_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'aspects' => array(self::MANY_MANY, 'Aspect', 'contact_aspect(user_id, person_id, aspect_id)'),
+			'aspects' => array(self::MANY_MANY, 'Aspect', 'contact_aspect(user_id, contact_id, aspect_id)'),
 		);
 	}
 
@@ -49,7 +49,7 @@ class Contact extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'person_id' => 'Contact',
+			'contact_id' => 'Contact',
 		);
 	}
 }
