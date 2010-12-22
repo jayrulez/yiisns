@@ -25,8 +25,8 @@ class Request extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('user_id, person_id', 'required'),
-			array('user_id, person_id', 'length', 'max'=>11),
+			array('user_id, contact_id', 'required'),
+			array('user_id, contact_id', 'length', 'max'=>11),
 		);
 	}
 
@@ -36,7 +36,7 @@ class Request extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'person' => array(self::BELONGS_TO, 'User', 'person_id'),
+			'contact' => array(self::BELONGS_TO, 'User', 'contact_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
@@ -48,7 +48,7 @@ class Request extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'person_id' => 'Contact',
+			'contact_id' => 'Contact',
 		);
 	}
 }

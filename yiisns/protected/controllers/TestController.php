@@ -6,7 +6,7 @@ class TestController extends Controller
 	{
 		$contact = Contact::model()->findByAttributes(array(
 			'user_id'=>1,
-			'person_id'=>2,
+			'contact_id'=>2,
 		));
 		
 		if($contact !== null)
@@ -26,7 +26,7 @@ class TestController extends Controller
 			foreach($aspect->contacts as $contact)
 			{
 				echo $aspect->user->username."<br/>";
-				echo $contact->person->username."<br/>";
+				echo $contact->contact->username."<br/>";
 			}
 			
 			foreach($aspect->posts as $post)
@@ -47,7 +47,7 @@ class TestController extends Controller
 			foreach($user->contacts as $contact)
 			{
 				echo $contact->user->username."<br/>";
-				echo $contact->person->username."!<br/>";
+				echo $contact->contact->username."!<br/>";
 			}
 			
 			foreach($user->requests as $request)

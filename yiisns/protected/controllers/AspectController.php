@@ -24,6 +24,20 @@ class AspectController extends Controller
 	{
 		$user = Yii::app()->user->getModel();
 		
+		$dataProvider = new CActiveDataProvider('Post', array(
+			'criteria'=>array(
+				'order'=>'t.create_time DESC',
+				'with'=>array(
+					'user',
+				),
+			),
+			/*'pagination'=>array(
+				'pageSize'=>20,
+			),*/
+		));
+		
+		// $posts = $dataProvider->getData();
+		
 	    $this->render('index');
 	}
 	
@@ -38,7 +52,7 @@ class AspectController extends Controller
 			
 			if($aspect->save())
 			{
-				$this->redirect(('/aspect/view', 'id'=>$aspect->id));
+				$this->redirect(array('/aspect/view', 'id'=>$aspect->id));
 			}
 		}
 		
@@ -67,7 +81,7 @@ class AspectController extends Controller
 	public function actionView()
 	{
 		$aspect = Aspect::model()->findByAttributes(array(
-			'id'=>Yii::app()->request->getParam('id');
+			'id'=>Yii::app()->request->getParam('id'),
 			'user_id'=>Yii::app()->user->getId(),
 		));
 		

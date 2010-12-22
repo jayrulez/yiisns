@@ -37,13 +37,10 @@ class WebUser extends CWebUser
 		if($this->_model === null)
 		{			
 			$this->_model = User::model()->find("id=:id", array(
-				':id' => $this->id,
+				':id' => $this->getId(),
 			));
-			if($this->_model === null)
-			{
-				$this->logout();
-			}
 		}
+		
 		return $this->_model;
 	}
 	

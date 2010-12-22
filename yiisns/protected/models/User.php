@@ -42,7 +42,7 @@ class User extends CActiveRecord
 			'comments' => array(self::HAS_MANY, 'Comment', 'user_id'),
 			'contacts' => array(self::HAS_MANY, 'Contact', 'user_id'),
 			'posts' => array(self::HAS_MANY, 'Post', 'user_id'),
-			'requests' => array(self::HAS_MANY, 'Request', 'person_id'),
+			'requests' => array(self::HAS_MANY, 'Request', 'contact_id'),
 			'invitations' => array(self::HAS_MANY, 'Request', 'user_id'),
 		);
 	}
