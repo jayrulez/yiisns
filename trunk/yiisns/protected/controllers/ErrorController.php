@@ -2,9 +2,6 @@
 
 class ErrorController extends Controller
 {
-	/**
-	 * This is the action to handle external exceptions.
-	 */
 	public function actionIndex()
 	{
 	    if($error=Yii::app()->errorHandler->error)

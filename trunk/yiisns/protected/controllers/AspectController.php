@@ -2,55 +2,13 @@
 
 class AspectController extends Controller
 {
-	public function filters()
-	{
-		return array(
-			'accessControl',
-		);
-	}
-	
 	public function accessRules()
 	{
-		return array(
-			array(
-				'deny',
-				'actions'=>array('*'),
-				'users'=>array('?'),
-			),
-		);
+		return array();
 	}
 	
 	public function actionIndex()
-	{
-		/*$dataProvider = new CActiveDataProvider('Post', array(
-			'criteria'=>array(
-				'order'=>'t.create_time DESC',
-				'with'=>array(
-					'user',
-				),
-			),
-			'pagination'=>array(
-				'pageSize'=>20,
-			),
-		));*/
-		
-		// $posts = $dataProvider->getData();
-		
-		$posts = Post::model()->findAllBySql("SELECT DISTINCT p . * 
-			FROM post AS p
-			INNER JOIN (
-				SELECT p_a . * FROM post_aspect AS p_a
-				INNER JOIN (
-					SELECT contact_aspect . * 
-					FROM aspect
-					INNER JOIN contact_aspect ON aspect.id = contact_aspect.aspect_id
-					WHERE contact_aspect.user_id =:user_id
-					OR contact_aspect.contact_id =:user_id
-				) AS c_a ON c_a.aspect_id = p_a.aspect_id
-			) AS p_a ON p.id = p_a.post_id", array(
-			':user_id'=>Yii::app()->user->getId(),
-		));
-		
+	{		
 	    $this->render('index');
 	}
 	
@@ -109,26 +67,8 @@ class AspectController extends Controller
 			throw new CHttpException(401, Yii::t('application', 'You are not authorized to view this aspect.'));
 		}
 		
-		$posts = Post::model()->findAllBySql("SELECT DISTINCT p . * 
-			FROM post AS p
-			INNER JOIN (
-				SELECT p_a . * FROM post_aspect AS p_a
-				INNER JOIN (
-					SELECT contact_aspect . * 
-					FROM aspect
-					INNER JOIN contact_aspect ON aspect.id = contact_aspect.aspect_id
-					WHERE contact_aspect.user_id =:user_id
-					OR contact_aspect.contact_id =:user_id
-				) AS c_a ON c_a.aspect_id = p_a.aspect_id
-				WHERE c_a.aspect_id=:aspect_id
-			) AS p_a ON p.id = p_a.post_id", array(
-			':user_id'=>$user->id,
-			':aspect_id'=>$aspect->id,
-		));
-		
 		$this->render('view', array(
 			'aspect'=>$aspect,
-			'posts'=>$posts,
 		));
 	}
 }
