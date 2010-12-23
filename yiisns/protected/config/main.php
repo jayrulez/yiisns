@@ -10,7 +10,7 @@ defined('ENV_DEV') or define('ENV_DEV', defined('YII_DEBUG') && YII_DEBUG);
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'YiiSNS',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -19,6 +19,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.helpers.*',
+		'application.widgets.*',
 	),
 
 	'modules'=>ENV_DEV ? require_once(dirname(__FILE__).'/modules.dev.php') : require_once(dirname(__FILE__).'/modules.php'),

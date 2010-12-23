@@ -2,28 +2,11 @@
 
 class SiteController extends Controller
 {
-	public function filters()
-	{
-		return array(
-			'accessControl',
-		);
-	}
-	
 	public function accessRules()
 	{
-		return array(
-			array(
-				'deny',
-				'actions'=>array('register, login'),
-				'users'=>array('@'),
-			),
-		);
+		return array();
 	}
 
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
 	public function actionIndex()
 	{
 		if(!Yii::app()->user->isGuest)
