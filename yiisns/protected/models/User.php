@@ -44,6 +44,7 @@ class User extends CActiveRecord
 			'posts' => array(self::HAS_MANY, 'Post', 'user_id'),
 			'requests' => array(self::HAS_MANY, 'Request', 'contact_id'),
 			'invitations' => array(self::HAS_MANY, 'Request', 'user_id'),
+			'profile' => array(self::HAS_ONE, 'Profile', 'user_id'),
 		);
 	}
 
@@ -117,5 +118,10 @@ class User extends CActiveRecord
 			}
 		}
 		return false;
+	}
+	
+	public function getLink($htmlOptions = array())
+	{
+		return CHtml::link($this->profile !== null ? $this->profile->getFullName() : $this->username, array('/profile/view','id'=>$this->id), $htmlOptions);
 	}
 }

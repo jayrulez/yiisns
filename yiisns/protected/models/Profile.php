@@ -54,4 +54,15 @@ class Profile extends CActiveRecord
 			'birthday' => 'Birthday',
 		);
 	}
+	
+	public function getFullName()
+	{
+		$fullName = $this->first_name;
+		if(!empty($this->last_name))
+		{
+			$fullName .= ' '.$this->last_name;
+		}
+		
+		return $fullName;
+	}
 }

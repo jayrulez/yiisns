@@ -66,8 +66,7 @@
 			<div id="footer-container">
 				<!-- footer -->
 				<div id="footer">
-					<div id="footer-content">
-					</div>
+					<?php $this->widget('FooterWidget'); ?>
 				</div>
 				<!-- /footer -->
 			</div>

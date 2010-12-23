@@ -8,7 +8,15 @@ a:active {color: #eee;}
 				#header-content {}
 					#home-link {float: left; width: 150px;}
 						#home-link a {display: inline-block;}
-					#main-nav {float: right; width: 800px;}
+					#main-nav {float: right; width: 800px;text-align: right;}
+						#guest-nav {float: right;}
+						#user-nav {float: right;}
+						#global-search {float: right;}
+						#global-search form {}
+						#global-search form fieldset.search-field{float: right;}
+						#global-search form fieldset.search-field input.search-text{}
+						#global-search form fieldset.search-button{float: right;}
+						#global-search form fieldset.search-button input.search-submit{}
 		#canvas-container {}
 			#canvas {width: 960px; margin: 0 auto;}
 				#canvas-content {}
