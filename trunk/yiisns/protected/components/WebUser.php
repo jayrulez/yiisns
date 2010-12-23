@@ -8,6 +8,8 @@ class WebUser extends CWebUser
 	
 	public $registerUrl = array('/site/register');
 	
+	public $logoutUrl = array('/site/logout');
+	
 	public $identityClass = 'UserIdentity';
 	
 	private $_model = null;
