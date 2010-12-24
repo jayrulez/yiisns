@@ -1,6 +1,6 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-CREATE TABLE IF NOT EXISTS `aspect` (
+CREATE TABLE `aspect` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -12,9 +12,12 @@ CREATE TABLE IF NOT EXISTS `aspect` (
 
 INSERT INTO `aspect` (`id`, `user_id`, `name`, `create_time`, `update_time`) VALUES
 (1, 1, 'test', 111, 0),
-(2, 1, 'test2', 1111, 0);
+(2, 1, 'test2', 1111, 0),
+(4, 1, 'test3', 0, 0),
+(5, 3, 'test', 0, 0),
+(6, 1, 'School', 0, 0);
 
-CREATE TABLE IF NOT EXISTS `comment` (
+CREATE TABLE `comment` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `post_id` int(11) unsigned NOT NULL,
@@ -27,28 +30,36 @@ CREATE TABLE IF NOT EXISTS `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS `contact` (
+CREATE TABLE `contact` (
   `user_id` int(11) unsigned NOT NULL,
   `contact_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`contact_id`)
+  PRIMARY KEY (`user_id`,`contact_id`),
+  KEY `FK_contact_contact` (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `contact` (`user_id`, `contact_id`) VALUES
 (2, 1),
-(1, 2);
+(3, 1),
+(1, 2),
+(3, 2),
+(1, 3),
+(2, 3);
 
-CREATE TABLE IF NOT EXISTS `contact_aspect` (
+CREATE TABLE `contact_aspect` (
   `user_id` int(11) unsigned NOT NULL,
   `contact_id` int(11) unsigned NOT NULL,
   `aspect_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`contact_id`,`aspect_id`)
+  PRIMARY KEY (`user_id`,`contact_id`,`aspect_id`),
+  KEY `FK_contact_aspect_aspect` (`aspect_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `contact_aspect` (`user_id`, `contact_id`, `aspect_id`) VALUES
 (1, 2, 1),
-(1, 2, 2);
+(1, 2, 2),
+(1, 3, 5),
+(3, 1, 5);
 
-CREATE TABLE IF NOT EXISTS `post` (
+CREATE TABLE `post` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `content` text CHARACTER SET utf8 NOT NULL,
@@ -59,9 +70,13 @@ CREATE TABLE IF NOT EXISTS `post` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=ucs2;
 
 INSERT INTO `post` (`id`, `user_id`, `content`, `create_time`, `update_time`) VALUES
-(1, 1, 'sdfcgbr', 111, NULL);
+(1, 1, 'sdfcgbr', 111, NULL),
+(2, 3, 'jygtyukbvhybghu', 2345, NULL),
+(3, 1, 'gdfffff', 1293209244, NULL),
+(4, 1, 'cxgfvdfgvdgdgd', 1293209250, NULL),
+(5, 1, 'fdhgvgdfyhbvvvvvvvvvvvvvgdf', 1293209258, NULL);
 
-CREATE TABLE IF NOT EXISTS `post_aspect` (
+CREATE TABLE `post_aspect` (
   `post_id` int(11) unsigned NOT NULL,
   `aspect_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`post_id`,`aspect_id`),
@@ -70,9 +85,12 @@ CREATE TABLE IF NOT EXISTS `post_aspect` (
 
 INSERT INTO `post_aspect` (`post_id`, `aspect_id`) VALUES
 (1, 1),
-(1, 2);
+(3, 1),
+(4, 1),
+(1, 2),
+(2, 5);
 
-CREATE TABLE IF NOT EXISTS `profile` (
+CREATE TABLE `profile` (
   `user_id` int(11) unsigned NOT NULL,
   `first_name` varchar(32) NOT NULL,
   `last_name` varchar(32) NOT NULL,
@@ -82,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS `request` (
+CREATE TABLE `request` (
   `user_id` int(11) unsigned NOT NULL,
   `contact_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`user_id`,`contact_id`),
@@ -92,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `request` (
 INSERT INTO `request` (`user_id`, `contact_id`) VALUES
 (2, 1);
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
@@ -105,7 +123,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `create_ip`, `create_time`, `update_time`) VALUES
 (1, 'jayrulez', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292958641, NULL),
-(2, 'michael', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292959509, NULL);
+(2, 'michael', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292959509, NULL),
+(3, 'richie', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292992653, NULL);
 
 
 ALTER TABLE `aspect`
