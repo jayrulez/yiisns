@@ -26,7 +26,7 @@ class ProfileController extends Controller
 	
 	public function actionView()
 	{
-		$userId = Yii::app()->request->getParam('user_id', Yii::app()->user->getId());
+		$userId = Yii::app()->request->getParam('id', Yii::app()->user->getId());
 		
 		$user = User::model()->findByPk($userId);
 		
@@ -35,8 +35,8 @@ class ProfileController extends Controller
 			throw new CHttpException(404, Yii::t('application', 'The requested page was not found.'));
 		}
 		
-		$this->render('', array(
-		
+		$this->render('view', array(
+			'user'=>$user,
 		));
 	}
 }
