@@ -2,18 +2,26 @@
 
 class AspectController extends Controller
 {
+	public $defaultAction = 'view';
+	
 	public function accessRules()
 	{
-		return array();
-	}
-	
-	public function actionIndex()
-	{		
-		$user = Yii::app()->user->getModel();
-		
-	    $this->render('index', array(
-			'user'=>$user,
-		));
+		return array(
+			array(
+				'allow',
+				'actions'=>array(
+					'index','create','delete','view','manage',
+				),
+				'users'=>array('@'),
+			),
+			array(
+				'deny',
+				'actions'=>array(
+					'index','create','delete','view','manage',
+				),
+				'users'=>array('*'),
+			),
+		);
 	}
 	
 	public function actionCreate()
@@ -50,7 +58,7 @@ class AspectController extends Controller
 		
 		$aspect->delete();
 		
-		$this->redirect(array('/aspect'));
+		$this->redirect(array('/home'));
 	}
 	
 	public function actionView()

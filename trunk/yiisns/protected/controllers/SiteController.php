@@ -11,13 +11,21 @@ class SiteController extends Controller
 	{
 		if(!Yii::app()->user->isGuest)
 		{
-			$this->redirect(array('/aspect'));
+			$this->redirect(array('/home'));
+			Yii::app()->end();
 		}
+		
 		$this->render('index');
 	}
 	
 	public function actionRegister()
 	{
+		if(!Yii::app()->user->isGuest)
+		{
+			$this->redirect(array('/home'));
+			Yii::app()->end();
+		}
+		
 		$registrationForm = new RegistrationForm;
 		
 		if(($post = Yii::app()->request->getPost('RegistrationForm')) !== null)
@@ -46,6 +54,12 @@ class SiteController extends Controller
 	
 	public function actionLogin()
 	{
+		if(!Yii::app()->user->isGuest)
+		{
+			$this->redirect(array('/home'));
+			Yii::app()->end();
+		}
+		
 		$loginForm = new LoginForm;
 		
 		if(($post = Yii::app()->request->getPost('LoginForm')) !== null)
