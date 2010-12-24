@@ -2,7 +2,7 @@
 
 class PostFormWidget extends CWidget
 {	
-	public $aspect;
+	public $aspectId = null;
 	
 	public function init()
 	{
@@ -10,6 +10,8 @@ class PostFormWidget extends CWidget
 	
 	public function run()
 	{
-		$this->render('postForm');
+		$this->render('postForm', array(
+			'model'=>new Post,
+		));
 	}
 }
