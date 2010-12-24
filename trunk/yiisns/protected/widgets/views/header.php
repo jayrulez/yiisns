@@ -1,6 +1,6 @@
 <div id="header-content" class="clearfix">
 	<div id="home-link">
-		<?php echo CHtml::link('', Yii::app()->homeUrl); ?>
+		<?php echo CHtml::link('Home', Yii::app()->homeUrl); ?>
 	</div>
 	<div id="main-nav" class="clearfix">
 		<div id="global-search">
@@ -21,7 +21,7 @@
 			</ul>
 		</div>
 		<?php else: ?>
-		<div id="guest-nav">
+		<div id="user-nav">
 			<ul>
 				<li><?php echo CHtml::link(Yii::t('application', 'login'), Yii::app()->user->loginUrl); ?></li>
 				<li><?php echo CHtml::link(Yii::t('application', 'register'), Yii::app()->user->registerUrl); ?></li>

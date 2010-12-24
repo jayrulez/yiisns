@@ -9,8 +9,10 @@ a:active {color: #eee;}
 					#home-link {float: left; width: 150px;}
 						#home-link a {display: inline-block;}
 					#main-nav {float: right; width: 800px;text-align: right;}
-						#guest-nav {float: right;}
 						#user-nav {float: right;}
+						#user-nav ul {}
+						#user-nav ul li {display: inline-block; float: left; margin: 0 5px 0 5px;}
+						#user-nav ul li a {}
 						#global-search {float: right;}
 						#global-search form {}
 						#global-search form fieldset.search-field{float: right;}
