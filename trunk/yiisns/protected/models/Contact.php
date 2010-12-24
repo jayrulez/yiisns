@@ -62,4 +62,36 @@ class Contact extends CActiveRecord
 		
 		return $inversed !== null;
 	}
+	
+	public function delete()
+	{
+		$status = parent::delete();
+		
+		$inversed = Contact::model()->findByAttributes(array(
+			'user_id'=>$this->contact_id,
+			'contact_id'=>$this->user_id,
+		));
+		
+		if($inversed !== null)
+		{
+			$inversed->delete();
+		}
+		
+		return $status;
+	}
+	
+	public function save($runValidation=true, $attributes=NULL)
+	{
+		$status = parent::save($runValidation, $attributes);
+		
+		if(!$this->getIsInversed()/* && this->getIsNewRecord()*/)
+		{
+			$inversed = new Contact;
+			$inversed->user_id = $this->contact_id;
+			$inversed->contact_id = $this->user_id;
+			$inversed->save(false);
+		}
+		
+		return $status;
+	}
 }
