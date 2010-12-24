@@ -18,6 +18,6 @@
 			<?php endforeach; ?>
 		</div>
 	<?php else: ?>
-		<div class="no-aspects"><?php echo Yii::t('application', 'No contacts'); ?></div>
+		<div class="no-aspects"><?php echo Yii::t('application', 'No aspects'); ?></div>
 	<?php endif; ?>
 </div>

@@ -2,7 +2,7 @@
 
 class PostStreamWidget extends CWidget
 {	
-	public $aspect;
+	public $aspectId;
 	
 	public function init()
 	{
@@ -10,6 +10,10 @@ class PostStreamWidget extends CWidget
 	
 	public function run()
 	{
-		$this->render('postStream');
+		$posts = array();
+		
+		$this->render('postStream', array(
+			'posts'=>$posts,
+		));
 	}
 }
