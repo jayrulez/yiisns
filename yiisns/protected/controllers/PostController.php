@@ -38,8 +38,19 @@ class PostController extends Controller
 			
 			if($post->save())
 			{
-				if(($aspects = Yii::app()->request->getPost('aspects')) !== null && is_array($aspects) && count($aspects))
+				if(($aspects = Yii::app()->request->getPost('aspects')) !== null && (is_array($aspects) || $aspects == Post::ALL_ASPECTS))
 				{
+					if($aspects === Post::ALL_ASPECTS)
+					{
+						$user = Yii::app()->user->getModel();
+						
+						$aspects = array();
+						
+						foreach($user->aspects as $aspect)
+						{
+							$aspects[] = $aspect->id;
+						}
+					}
 					foreach($aspects as $aspectId)
 					{
 						$aspect = Aspect::model()->findByPk($aspectId);
@@ -84,6 +95,15 @@ class PostController extends Controller
 	
 	public function actionDelete()
 	{
-	
+		$post = Post::model()->findByPk(Yii::app()->request->getQuery('id'));
+		
+		if($post->user_id !== Yii::app()->user->getId())
+		{
+			throw new CHttpException(403, Yii::t('application', 'You do not have permission to delete this post.'));
+		}
+		
+		$post->delete();
+		
+		$this->redirect(Yii::app()->user->returnUrl);
 	}
 }

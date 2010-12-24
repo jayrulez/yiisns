@@ -10,6 +10,7 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			array('username, password', 'required'),
+			array('autologin','boolean'),
 		);
 	}
 	
@@ -57,6 +58,8 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
+			'username'=>Yii::t('application', 'Username'),
+			'password'=>Yii::t('application', 'Password'),
 			'autologin'=>Yii::t('application', 'Keep me logged in'),
 		);
 	}

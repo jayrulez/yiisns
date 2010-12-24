@@ -28,9 +28,20 @@ class PostStreamWidget extends CWidget
 				':user_id'=>Yii::app()->user->getId(),
 				':aspect_id'=>$this->aspectId,
 			));
-			// $posts = Post::model()->findAllBySql("SELECT * FROM post");
 		}else{
-			$posts = Post::model()->findAllBySql("SELECT * FROM post");
+			$posts = Post::model()->findAllBySql("select * 
+				from post 
+				where post.user_id=:user_id 
+				OR post.id IN (SELECT pa.post_id 
+					FROM post_aspect as pa INNER JOIN contact_aspect as ca on ca.aspect_id=pa.aspect_id 
+					WHERE ca.contact_id=:user_id 
+					AND ca.user_id IN (SELECT contact_id 
+						FROM contact 
+						WHERE contact.user_id=:user_id
+					)
+				)", array(
+				':user_id'=>Yii::app()->user->getId(),
+			));
 		}
 		
 		$this->render('postStream', array(

@@ -7,6 +7,7 @@
 				<?php echo CHtml::hiddenField('aspects[]', $aspectId); ?>
 			<?php endforeach; ?>
 			<?php else: ?>
+				<?php echo CHtml::hiddenField('aspects', Post::ALL_ASPECTS); ?>
 			<!--select multiple aspects from here-->
 			<?php endif; ?>
 			</div>

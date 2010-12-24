@@ -2,6 +2,7 @@
 
 class Post extends CActiveRecord
 {
+	const ALL_ASPECTS = 'all';
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Post the static model class
