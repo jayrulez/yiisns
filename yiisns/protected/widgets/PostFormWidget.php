@@ -1,6 +1,6 @@
 <?php
 
-class PostStreamWidget extends CWidget
+class PostFormWidget extends CWidget
 {	
 	public $aspect;
 	
@@ -10,6 +10,6 @@ class PostStreamWidget extends CWidget
 	
 	public function run()
 	{
-		$this->render('postStream');
+		$this->render('postForm');
 	}
 }

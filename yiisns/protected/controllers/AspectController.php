@@ -9,7 +9,11 @@ class AspectController extends Controller
 	
 	public function actionIndex()
 	{		
-	    $this->render('index');
+		$user = Yii::app()->user->getModel();
+		
+	    $this->render('index', array(
+			'user'=>$user,
+		));
 	}
 	
 	public function actionCreate()
@@ -62,7 +66,7 @@ class AspectController extends Controller
 			throw new CHttpException(404, Yii::t('application', 'The requested page was not found.'));
 		}
 		
-		if(!$user->canSeeAspect($aspect->id))
+		if($user->id !== $aspect->user_id)
 		{
 			throw new CHttpException(401, Yii::t('application', 'You are not authorized to view this aspect.'));
 		}
@@ -70,5 +74,10 @@ class AspectController extends Controller
 		$this->render('view', array(
 			'aspect'=>$aspect,
 		));
+	}
+	
+	public function actionManage()
+	{
+	
 	}
 }

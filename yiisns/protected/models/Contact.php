@@ -52,4 +52,14 @@ class Contact extends CActiveRecord
 			'contact_id' => 'Contact',
 		);
 	}
+	
+	public function getIsInversed()
+	{
+		$inversed = Contact::model()->findByAttributes(array(
+			'user_id'=>$this->contact_id,
+			'contact_id'=>$this->user_id,
+		));
+		
+		return $inversed !== null;
+	}
 }

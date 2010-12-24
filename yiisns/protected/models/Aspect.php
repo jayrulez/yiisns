@@ -71,4 +71,9 @@ class Aspect extends CActiveRecord
 			'update_time' => 'Update Time',
 		);
 	}
+	
+	public function getLink($htmlOptions = array())
+	{
+		return CHtml::link($this->name, array('/aspect/view', 'id'=>$this->id), $htmlOptions);
+	}
 }
