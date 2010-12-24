@@ -10,8 +10,6 @@ class PostFormWidget extends CWidget
 	
 	public function run()
 	{
-		Yii::app()->user->setReturnUrl(Yii::app()->request->getUrl());
-		
 		$this->render('postForm', array(
 			'model'=>new Post,
 		));
