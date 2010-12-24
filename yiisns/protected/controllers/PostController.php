@@ -2,7 +2,7 @@
 
 class PostController extends Controller
 {	
-	public $defaultAction 'view';
+	public $defaultAction = 'view';
 	
 	public function accessRules()
 	{
