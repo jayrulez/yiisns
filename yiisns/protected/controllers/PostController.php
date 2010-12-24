@@ -24,7 +24,6 @@ class PostController extends Controller
 		);
 	}
 	
-	/*This action may need to be refactored*/
 	public function actionCreate()
 	{		
 		$errors = array('post'=>array(),'aspects'=>array(),'post_aspect'=>array());
@@ -64,38 +63,6 @@ class PostController extends Controller
 			}else{
 				$errors['post'] = $post->getErrors();
 			}
-			
-			/*$aspectId=Yii::app()->request->getPost('aspect_id');
-			
-			if($aspectId !== null)
-			{
-				$aspect = Aspect::model()->findByPk($aspectId);
-				
-				if($aspect === null || $aspect->user->id !== Yii::app()->user->getId())
-				{
-					throw new CHttpException(403, Yii::t('application', 'You are not authorized to post to this aspect.'));
-				}else{
-					if($post->save())
-					{
-						$postAspect = new PostAspect;
-						$postAspect->post_id = $post->id;
-						$postAspect->aspect_id = $aspectId;
-						$postAspect->save(false);
-						
-						$this->redirect(array('/aspect/view', 'id'=>$aspect->id));
-						Yii::app()->end();
-					}else{
-						// do something
-					}
-				}
-			}else{
-				if($post->save())
-				{
-					$this->redirect(array('/home'));
-				}else{
-					// do something
-				}
-			}*/
 		}
 		// do something with errors so users can see, maybe view flash?
 		$this->redirect(Yii::app()->user->returnUrl);
