@@ -76,4 +76,20 @@ class Aspect extends CActiveRecord
 	{
 		return CHtml::link($this->name, array('/aspect/view', 'id'=>$this->id), $htmlOptions);
 	}
+	
+	public function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->getIsNewRecord())
+			{
+				$this->create_time = time();
+			}else{
+				$this->update_time = time();
+			}
+			return true;
+		}
+		
+		return false;
+	}
 }
