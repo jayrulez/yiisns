@@ -24,29 +24,29 @@ a:active {color: #eee;}
 				#canvas-content {}
 					#content-container {}
 					
-						#content {}
+						#content {float: none;}
 							.action {}
 								.action-header {}
 								.action-content {}
 								
-						.sidebar-left #sidebar-left {}
-						.sidebar-left #content {}
+						.sidebar-left #sidebar-left {float: left;}
+						.sidebar-left #content {float: right;}
 							.sidebar-left .action {}
 								.sidebar-left .action-header {}
 								.sidebar-left .action-content {}
 						
-						.sidebar-right #content {}
+						.sidebar-right #content {float: left;}
 							.sidebar-right .action {}
 								.sidebar-right .action-header {}
 								.sidebar-right .action-content {}
-						.sidebar-right #sidebar-right {}
+						.sidebar-right #sidebar-right {float: right;}
 						
-						.sidebars #sidebar-left {}
-						.sidebars #content {}
+						.sidebars #sidebar-left {float: left;}
+						.sidebars #content {float: left;}
 							.sidebars .action {}
 								.sidebars .action-header {}
 								.sidebars .action-content {}
-						.sidebars #sidebar-right {}
+						.sidebars #sidebar-right {float: right}
 						
 		#footer-container {}
 			#footer {width: 960px; margin: 0 auto;}

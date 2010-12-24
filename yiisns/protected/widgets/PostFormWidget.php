@@ -2,7 +2,7 @@
 
 class PostFormWidget extends CWidget
 {	
-	public $aspectId = null;
+	public $aspectIds = array();
 	
 	public function init()
 	{
@@ -10,6 +10,8 @@ class PostFormWidget extends CWidget
 	
 	public function run()
 	{
+		Yii::app()->user->setReturnUrl(Yii::app()->request->getUrl());
+		
 		$this->render('postForm', array(
 			'model'=>new Post,
 		));

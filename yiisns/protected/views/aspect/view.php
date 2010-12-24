@@ -2,7 +2,7 @@
 	<div class="action-content">
 		<div id="post-form">
 			<?php $this->widget('PostFormWidget', array(
-				'aspectId'=>$aspect->id,
+				'aspectIds'=>array($aspect->id),
 			)); ?>
 		</div>
 		<div class="stream" id="post-stream">
