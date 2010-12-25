@@ -96,8 +96,34 @@ class User extends CActiveRecord
 		return false;
 	}
 	
+	
+	public function getImageSrc($size=null)
+	{
+		return Yii::app()->baseUrl.'/images/user_icon.png';
+	}
+	
+	public function getImage($size=null, $htmlOptions = array())
+	{
+		return CHtml::image($this->getImageSrc($size), $this->getDisplayName(), $htmlOptions);
+	}
+	
+	public function getImageLink($size=null, $linkHtmlOptions=array(), $imageHtmlOptions = array())
+	{
+		return CHtml::link($this->getImage($size, $imageHtmlOptions), $this->getUrl(), $linkHtmlOptions);
+	}
+	
+	public function getUrl()
+	{
+		return Yii::app()->createUrl('/profile/view', array('id'=>$this->id));
+	}
+	
+	public function getDisplayName()
+	{
+		return $this->profile !== null ? $this->profile->getFullName() : $this->username;
+	}
+	
 	public function getLink($htmlOptions = array())
 	{
-		return CHtml::link($this->profile !== null ? $this->profile->getFullName() : $this->username, array('/profile/view','id'=>$this->id), $htmlOptions);
+		return CHtml::link($this->getDisplayName(), $this->getUrl(), $htmlOptions);
 	}
 }
