@@ -29,25 +29,41 @@ a:active {color: #eee;}
 								.action-header {}
 								.action-content {}
 								
-						.sidebar-left #sidebar-left {float: left;}
-						.sidebar-left #content {float: right;}
+						.sidebar-left #sidebar-left {float: left; width: 200px;}
+						.sidebar-left #content {float: right; width: 750px;}
 							.sidebar-left .action {}
 								.sidebar-left .action-header {}
 								.sidebar-left .action-content {}
 						
-						.sidebar-right #content {float: left;}
+						.sidebar-right #content {float: left; width: 600px;}
 							.sidebar-right .action {}
 								.sidebar-right .action-header {}
 								.sidebar-right .action-content {}
-						.sidebar-right #sidebar-right {float: right;}
+						.sidebar-right #sidebar-right {float: right; width: 350px;}
 						
-						.sidebars #sidebar-left {float: left;}
-						.sidebars #content {float: left;}
+						.sidebars #sidebar-left {float: left;width: 190px;margin-right: 10px;}
+						.sidebars #content {float: left; width: 550px;}
 							.sidebars .action {}
 								.sidebars .action-header {}
 								.sidebars .action-content {}
-						.sidebars #sidebar-right {float: right}
+						.sidebars #sidebar-right {float: right; width: 200px;}
 						
 		#footer-container {}
 			#footer {width: 960px; margin: 0 auto;}
 				#footer-content {}
+				
+#post-stream {}
+#post-stream #post-stream-content {}
+#post-stream #post-stream-content #posts {}
+#post-stream #post-stream-content #posts .post{border-bottom: 1px solid #eeeeee;}
+#post-stream #post-stream-content #posts .post .post-content {padding: 10px;}
+#post-stream #post-stream-content #posts .post .post-content .post-user-icon {float: left; margin: 0 10px 10px 0;min-width: 50px; min-height: 50px;}
+#post-stream #post-stream-content #posts .post .post-content .post-user-icon a {}
+#post-stream #post-stream-content #posts .post .post-content .post-user-icon a img {margin: 1px;}
+#post-stream #post-stream-content #posts .post .post-content .post-entry {float: left; width: 520px;}
+#post-stream #post-stream-content #posts .post .post-content .post-entry .post-entry-data {}
+#post-stream #post-stream-content #posts .post .post-content .post-entry .post-entry-data .post-user-link {}
+#post-stream #post-stream-content #posts .post .post-content .post-entry .post-entry-data .post-content-text{}
+#post-stream #post-stream-content #posts .post .post-content .post-entry .post-entry-extra {}
+#post-stream #post-stream-content #posts .post .post-content .post-entry .post-entry-extra .post-options {}
+#post-stream #post-stream-content #posts .post .post-content .post-entry .post-entry-extra .post-comments {}
