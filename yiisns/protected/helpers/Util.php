@@ -58,29 +58,6 @@ class Util
 						));
 					}else{
 						return Util::formatDateTime($time);
-						/*$elapsed = $elapsed / 7;
-						if($elapsed < 4)
-						{
-							return Yii::t('application', '1#{elapsed} week ago|n>1#{elapsed} weeks ago', array(
-								$elapsed,
-								'{elapsed}'=>round(abs($elapsed)),
-							));						
-						}else{
-							$elapsed = $elapsed / 4;
-							if($elapsed < 12)
-							{
-								return Yii::t('application', '1#{elapsed} month ago|n>1#{elapsed} months ago', array(
-									$elapsed,
-									'{elapsed}'=>round(abs($elapsed)),
-								));
-							}else{
-								$elapsed = $elapsed / 12;
-								return Yii::t('application', '1#{elapsed}year ago|n>1#{elapsed} years ago', array(
-									$elapsed,
-									'{elapsed}'=>round(abs($elapsed)),
-								));
-							}
-						}*/
 					}
 				}
 			}
