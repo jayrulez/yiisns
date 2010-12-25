@@ -9,8 +9,8 @@
 	</div>
 </div>
 <?php Layout::addBlock('sidebar.right', array(
-	'id'=>'aspects_block',
-	'content'=>$this->renderPartial('aspects_block', array(
+	'id'=>'right_sidebar',
+	'content'=>$this->renderPartial('right_sidebar', array(
 		'user'=>$user,
 	), true),
 )); ?>

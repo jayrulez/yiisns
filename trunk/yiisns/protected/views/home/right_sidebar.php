@@ -1,3 +1,7 @@
+<div id="userIdentity-block">
+<?php $this->widget('UserIdentityWidget'); ?>
+</div>
+<div class="break"></div>
 <div id="aspects-block">
 	<div id="aspects-block-title"><?php echo Yii::t('application', 'Aspects'); ?></div>
 	<?php if(count($user->aspects)): ?>

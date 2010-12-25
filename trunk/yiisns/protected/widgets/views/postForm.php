@@ -16,8 +16,12 @@
 				'cols'=>1,
 			)); ?>
 		</fieldset>
-		<fieldset class="submit-field">
-			<?php echo CHtml::submitButton(Yii::t('application', 'Post')); ?>
+		<fieldset class="submit-field-and-options clearfix">
+			<div class="options">
+			</div>
+			<div class="submit-field">
+				<?php echo CHtml::submitButton(Yii::t('application', 'Share')); ?>
+			</div>
 		</fieldset>
 	<?php echo CHtml::endForm(); ?>
 </div>
