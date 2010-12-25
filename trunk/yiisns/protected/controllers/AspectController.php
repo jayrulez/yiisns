@@ -53,12 +53,12 @@ class AspectController extends Controller
 		
 		if($aspect === null)
 		{
-			throw new CHttpException(404, Yii::t('application', 'The requested page was not found.'));
+			throw new CHttpException(403, Yii::t('application', 'You do not have permission to delete this aspect.'));
 		}
 		
 		$aspect->delete();
 		
-		$this->redirect(array('/home'));
+		$this->redirect(Yii::app()->user->returnUrl);
 	}
 	
 	public function actionView()

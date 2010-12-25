@@ -168,4 +168,37 @@ class User extends CActiveRecord
 	{
 		return CHtml::link($this->getDisplayName(), $this->getUrl(), $htmlOptions);
 	}
+	
+	public function getRequest($userId)
+	{
+		$request = Request::model()->findByAttributes(array(
+			'user_id'=>$this->id,
+			'contact_id'=>$userId,
+		));
+		
+		return $request;
+	}
+	
+	public function getRelationshipLink($viewerId)
+	{
+		$viewer = User::model()->findByPk($viewerId);
+		
+		if($viewer === null)
+		{
+			return null;
+		}
+		
+		if(Util::areContacts($this->id, $viewer->id))
+		{
+			return CHtml::link(Yii::t('application', 'Remove contact'), array('/contact/delete', 'id'=>$this->id));
+		}else if(($request=$this->getRequest($viewer->id))!==null)
+		{
+			return CHtml::link(Yii::t('application', 'Respond to contact request'), array('/contact/requests'));
+		}else if($viewer->getRequest($this->id) !== null)
+		{
+			return CHtml::link(Yii::t('application', 'Contact request pending'), array('/contact/sentRequests'));
+		}else{
+			return CHtml::link(Yii::t('application', 'Add contact'), array('/contact/sendRequest', 'id'=>$this->id));
+		}
+	}
 }
