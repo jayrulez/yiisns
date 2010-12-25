@@ -2,7 +2,7 @@
 
 class AspectController extends Controller
 {
-	public $defaultAction = 'view';
+	public $defaultAction = 'manage';
 	
 	public function accessRules()
 	{
@@ -86,6 +86,10 @@ class AspectController extends Controller
 	
 	public function actionManage()
 	{
-	
+		$user = Yii::app()->user->getModel();
+		
+		$this->render('manage', array(
+			'user'=>$user,
+		));
 	}
 }
