@@ -2,6 +2,23 @@
 
 class User extends CActiveRecord
 {
+	const PHOTO_SIZE_MINI    = 1;
+	const PHOTO_SIZE_SMALL   = 2;
+	const PHOTO_SIZE_MEDIUM  = 3;
+	const PHOTO_SIZE_LARGE   = 4;
+	const PHOTO_SIZE_DEFAULT = 5;
+	
+	public function getPhotoSizes()
+	{
+		return array(
+			User::PHOTO_SIZE_MINI => array('width'=>30, 'height'=>30),
+			User::PHOTO_SIZE_SMALL => array('width'=>48, 'height'=>48),
+			User::PHOTO_SIZE_MEDIUM => array('width'=>48, 'height'=>48),
+			User::PHOTO_SIZE_LARGE => array('width'=>48, 'height'=>48),
+			User::PHOTO_SIZE_DEFAULT => array('width'=>48, 'height'=>48),
+		);
+	}
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return User the static model class
@@ -97,18 +114,43 @@ class User extends CActiveRecord
 	}
 	
 	
-	public function getImageSrc($size=null)
+	public function getImageSrc($size=User::PHOTO_SIZE_SMALL)
 	{
-		return Yii::app()->baseUrl.'/images/user_icon.png';
+		$photo = '';
+		switch($size)
+		{
+			case User::PHOTO_SIZE_MINI:
+				$photo = 'user_icon_mini.png';
+			break;
+			
+			case User::PHOTO_SIZE_SMALL:
+				$photo = 'user_icon_small.png';
+			break;
+			
+			case User::PHOTO_SIZE_MEDIUM:
+				$photo = 'user_icon_medium.png';
+			break;
+			
+			case User::PHOTO_SIZE_LARGE:
+				$photo = 'user_icon_large.png';
+			break;
+			
+			case User::PHOTO_SIZE_DEFAULT:
+			default:
+				$photo = 'user_icon_default.png';
+			break;
+		}
+		return Yii::app()->baseUrl.'/images/'.$photo;
 	}
 	
-	public function getImage($size=null, $htmlOptions = array())
+	public function getImage($size=User::PHOTO_SIZE_SMALL, $htmlOptions = array())
 	{
 		return CHtml::image($this->getImageSrc($size), $this->getDisplayName(), $htmlOptions);
 	}
 	
-	public function getImageLink($size=null, $linkHtmlOptions=array(), $imageHtmlOptions = array())
+	public function getImageLink($size=User::PHOTO_SIZE_SMALL, $linkHtmlOptions=array(), $imageHtmlOptions = array())
 	{
+		$linkHtmlOptions['title'] = $this->getDisplayName();
 		return CHtml::link($this->getImage($size, $imageHtmlOptions), $this->getUrl(), $linkHtmlOptions);
 	}
 	

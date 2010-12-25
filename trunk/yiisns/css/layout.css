@@ -55,7 +55,8 @@ a:hover{color:#e57200;text-decoration:none;}
 						.sidebars #sidebar-right {float: right; width: 200px;}
 							.sidebars #sidebar-right .sidebar-content {}
 							
-							.sidebar-content .break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 5px 0;display:block;line-height:0}
+							.sidebar-content .sidebar-content-inner {}
+							.sidebar-content .sidebar-content-inner .break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 5px 0;display:block;line-height:0}
 						
 		#footer-container {}
 			#footer {width: 960px; margin: 0 auto;}
