@@ -6,6 +6,7 @@ class PostStreamWidget extends CWidget
 	
 	public function init()
 	{
+		Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/postStream.css');
 	}
 	
 	public function run()
@@ -24,7 +25,8 @@ class PostStreamWidget extends CWidget
 						FROM contact_aspect inner join aspect ON aspect.id=contact_aspect.aspect_id 
 						WHERE aspect.id=:aspect_id AND contact_aspect.user_id=:user_id
 					)
-				)", array(
+				)
+				ORDER BY post.create_time DESC", array(
 				':user_id'=>Yii::app()->user->getId(),
 				':aspect_id'=>$this->aspectId,
 			));
@@ -39,7 +41,8 @@ class PostStreamWidget extends CWidget
 						FROM contact 
 						WHERE contact.user_id=:user_id
 					)
-				)", array(
+				)
+				ORDER BY post.create_time DESC", array(
 				':user_id'=>Yii::app()->user->getId(),
 			));
 		}

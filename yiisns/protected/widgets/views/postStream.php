@@ -18,7 +18,7 @@
 					</div>
 					<div class="post-entry-extra">
 						<div class="post-options">
-							<?php echo CHtml::link(Yii::t('application', $post->create_time), array('/post/view', 'id'=>$post->id)); ?>
+							<?php echo CHtml::link(Yii::t('application', Util::getFuzzyTime($post->create_time)), array('/post/view', 'id'=>$post->id)); ?>
 						</div>
 						<div class="post-comments">
 						</div>
