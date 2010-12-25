@@ -13,10 +13,21 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(); ?>/css/ie.css" />
 <![endif]-->
 </head>
-<body<?php echo Layout::hasRegions('sidebar.left','sidebar.right') 
-? ' class="sidebars"' : Layout::hasRegions('sidebar.left') 
-? ' class="sidebar-left"' : Layout::hasRegions('sidebar.right') 
-? ' class="sidebar-right"' : ''; ?>>
+<?php
+if(Layout::hasRegions('sidebar.left','sidebar.right'))
+{
+	$bodyClass = ' class="sidebars"';
+}else if(Layout::hasRegions('sidebar.left'))
+{
+	$bodyClass = ' class="sidebar-left"';
+}else if(Layout::hasRegions('sidebar.right'))
+{
+	$bodyClass = ' class="sidebar-right"';
+}else{
+	$bodyClass = '';
+}
+?>
+<body<?php echo $bodyClass; ?>>
 	<div id="page-container">
 		<div id="page">
 			<div id="header-container">
