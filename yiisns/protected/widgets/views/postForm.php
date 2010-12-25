@@ -12,8 +12,8 @@
 			<?php endif; ?>
 			</div>
 			<?php echo CHtml::activeTextArea($model, 'content', array(
-				'rows'=>3,
-				'cols'=>60,
+				'rows'=>1,
+				'cols'=>1,
 			)); ?>
 		</fieldset>
 		<fieldset class="submit-field">
