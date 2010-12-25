@@ -22,3 +22,7 @@
 		</div>
 	</div>
 </div>
+<?php Layout::addBlock('sidebar.left', array(
+	'id'=>'filter_block',
+	'content'=>$this->renderPartial('filter_block', array('q'=>$q), true),
+)); ?>

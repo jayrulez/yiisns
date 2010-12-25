@@ -11,12 +11,22 @@ class SearchController extends Controller
 	{
 		$results = array();
 		
-		$criteria = new CDbCriteria;
-		$criteria->addSearchCondition('username', Yii::app()->request->getParam('q'));
-		$users = User::model()->findAll($criteria);
-		if(count($users))
+		$searchType = Yii::app()->request->getParam('search_type')!== null ? array(Yii::app()->request->getParam('search_type')) : array('users', 'posts');
+		
+		if(in_array('users', $searchType))
 		{
-			$results['users'] = $users;
+			$criteria = new CDbCriteria;
+			$criteria->addSearchCondition('username', Yii::app()->request->getParam('q'));
+			$users = User::model()->findAll($criteria);
+			
+			if(count($users))
+			{
+				$results['users'] = $users;
+			}
+		}
+		
+		if(in_array('posts', $searchType))
+		{
 		}
 		
 		$this->render('index', array(
