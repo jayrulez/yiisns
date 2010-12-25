@@ -5,7 +5,7 @@
 		<div class="post" id="post-<?php echo $post->id; ?>">
 			<div class="post-content clearfix">
 				<div class="post-user-icon">
-					<?php echo $post->user->getImage(); ?>
+					<?php echo $post->user->getImageLink(User::PHOTO_SIZE_SMALL); ?>
 				</div>
 				<div class="post-entry">
 					<div class="post-entry-data">

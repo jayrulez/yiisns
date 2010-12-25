@@ -10,7 +10,7 @@
 </div>
 <?php Layout::addBlock('sidebar.right', array(
 	'id'=>'right_sidebar',
-	'content'=>$this->renderPartial('right_sidebar', array(
+	'content'=>$this->renderPartial('index_right_sidebar', array(
 		'user'=>$user,
 	), true),
 )); ?>
