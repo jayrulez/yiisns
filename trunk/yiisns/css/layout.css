@@ -19,7 +19,7 @@ a:active {color: #eee;}
 						#global-search form fieldset.search-field input.search-text{}
 						#global-search form fieldset.search-button{float: right;}
 						#global-search form fieldset.search-button input.search-submit{}
-		#canvas-container {}
+		#canvas-container {margin: 10px 0;}
 			#canvas {width: 960px; margin: 0 auto;}
 				#canvas-content {}
 					#content-container {}
@@ -51,6 +51,15 @@ a:active {color: #eee;}
 		#footer-container {}
 			#footer {width: 960px; margin: 0 auto;}
 				#footer-content {}
+				
+#post-form {background: #e9f2f9;}
+#post-form #post-form-content {padding: 10px;}
+#post-form #post-form-content form {}
+#post-form #post-form-content form fieldset.content-field{}
+#post-form #post-form-content form fieldset.content-field #post-target-aspects{}
+#post-form #post-form-content form fieldset.content-field textarea{width: 566px;height: 60px; border:2px solid #52A2E8; padding: 5px; margin: 0;}
+#post-form #post-form-content form fieldset.submit-field{}
+#post-form #post-form-content form fieldset.submit-field input{}
 				
 #post-stream {}
 #post-stream #post-stream-content {}

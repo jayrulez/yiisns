@@ -2,7 +2,7 @@
 	<div id="posts">
 		<?php if(count($posts)): ?>
 		<?php foreach($posts as $post): ?>
-		<div class="post">
+		<div class="post" id="post-<?php echo $post->id; ?>">
 			<div class="post-content clearfix">
 				<div class="post-user-icon">
 					<?php echo $post->user->getImage(); ?>

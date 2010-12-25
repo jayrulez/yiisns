@@ -11,11 +11,10 @@ CREATE TABLE `aspect` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `aspect` (`id`, `user_id`, `name`, `create_time`, `update_time`) VALUES
-(1, 1, 'test', 111, 0),
-(2, 1, 'test2', 1111, 0),
-(4, 1, 'test3', 0, 0),
-(5, 3, 'test', 0, 0),
-(6, 1, 'School', 0, 0);
+(1, 1, 'School', 1293221503, 0),
+(2, 2, 'Pals', 1293221503, 0),
+(3, 2, 'Home', 1293221503, 0),
+(4, 1, 'Family', 1293222282, 0);
 
 CREATE TABLE `comment` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -39,11 +38,7 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`user_id`, `contact_id`) VALUES
 (2, 1),
-(3, 1),
-(1, 2),
-(3, 2),
-(1, 3),
-(2, 3);
+(1, 2);
 
 CREATE TABLE `contact_aspect` (
   `user_id` int(11) unsigned NOT NULL,
@@ -55,9 +50,7 @@ CREATE TABLE `contact_aspect` (
 
 INSERT INTO `contact_aspect` (`user_id`, `contact_id`, `aspect_id`) VALUES
 (1, 2, 1),
-(1, 2, 2),
-(1, 3, 5),
-(3, 1, 5);
+(2, 1, 2);
 
 CREATE TABLE `post` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -70,11 +63,14 @@ CREATE TABLE `post` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=ucs2;
 
 INSERT INTO `post` (`id`, `user_id`, `content`, `create_time`, `update_time`) VALUES
-(1, 1, 'sdfcgbr', 111, NULL),
-(2, 3, 'jygtyukbvhybghu', 2345, NULL),
-(3, 1, 'gdfffff', 1293209244, NULL),
-(4, 1, 'cxgfvdfgvdgdgd', 1293209250, NULL),
-(5, 1, 'fdhgvgdfyhbvvvvvvvvvvvvvgdf', 1293209258, NULL);
+(1, 2, 'Post to pals. michael should be able to see this.', 1293221684, NULL),
+(2, 2, 'fghbgdfhvvvvvghghbgdfvhgf', 1293223836, NULL),
+(3, 2, 'hjcnhgf', 1293223841, NULL),
+(4, 1, 'This is a post to all aspects', 1293224729, NULL),
+(5, 2, 'This is a post to all aspects', 1293224777, NULL),
+(6, 1, 'fvrhtbrvjyeghdfytjtrvfhervtge', 1293225370, NULL),
+(7, 1, 'Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. ', 1293239561, NULL),
+(8, 1, 'Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all. Everyone should be able to see this. Post to all.', 1293239585, NULL);
 
 CREATE TABLE `post_aspect` (
   `post_id` int(11) unsigned NOT NULL,
@@ -84,11 +80,13 @@ CREATE TABLE `post_aspect` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `post_aspect` (`post_id`, `aspect_id`) VALUES
-(1, 1),
-(3, 1),
-(4, 1),
+(6, 1),
+(7, 1),
+(8, 1),
 (1, 2),
-(2, 5);
+(6, 4),
+(7, 4),
+(8, 4);
 
 CREATE TABLE `profile` (
   `user_id` int(11) unsigned NOT NULL,
@@ -107,8 +105,6 @@ CREATE TABLE `request` (
   KEY `FK_request_contact` (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `request` (`user_id`, `contact_id`) VALUES
-(2, 1);
 
 CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -122,9 +118,9 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `username`, `password`, `create_ip`, `create_time`, `update_time`) VALUES
-(1, 'jayrulez', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292958641, NULL),
-(2, 'michael', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292959509, NULL),
-(3, 'richie', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1292992653, NULL);
+(1, 'michael', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1293221176, NULL),
+(2, 'robert', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1293221194, NULL),
+(3, 'richie', '25d55ad283aa400af464c76d713c07ad', '127.0.0.1', 1293229612, NULL);
 
 
 ALTER TABLE `aspect`
