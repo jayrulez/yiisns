@@ -20,7 +20,21 @@
 						<div class="post-options">
 							<?php echo CHtml::link(Yii::t('application', Util::getFuzzyTime($post->create_time)), array('/post/view', 'id'=>$post->id)); ?>
 						</div>
+						<?php if(count($post->comments)): ?>
 						<div class="post-comments">
+							<div class="post-comments-content">
+							<?php foreach($post->comments as $comment): ?>
+								<div class="post-comment">
+									<?php echo $comment->content; ?>
+								</div>
+							<?php endforeach; ?>
+							</div>
+						</div>
+						<?php endif; ?>
+						<div class="post-comment-form">
+							<?php $this->widget('PostCommentFormWidget', array(
+								'postId'=>$post->id,
+							)); ?>
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 <div id="post-form-content">
 	<?php echo CHtml::beginForm(array('/post/create')); ?>
-		<fieldset class="content-field">
+		<fieldset class="aspects-field">
 			<div class="post-target-aspects">
 			<?php if(count($this->aspectIds)): ?>
 			<?php foreach($this->aspectIds as $aspectId): ?>
@@ -11,6 +11,8 @@
 			<!--select multiple aspects from here-->
 			<?php endif; ?>
 			</div>
+		</fieldset>
+		<fieldset class="content-field">
 			<?php echo CHtml::activeTextArea($model, 'content', array(
 				'rows'=>1,
 				'cols'=>1,
