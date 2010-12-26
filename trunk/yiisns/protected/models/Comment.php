@@ -26,6 +26,7 @@ class Comment extends CActiveRecord
 	{
 		return array(
 			array('content', 'required'),
+			array('post_id', 'safe'),
 		);
 	}
 

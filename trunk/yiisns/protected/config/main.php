@@ -40,7 +40,7 @@ return array(
 		'db'=>ENV_DEV ? require_once(dirname(__FILE__).'/dbconfig.dev.php') : require_once(dirname(__FILE__).'/dbconfig.php'),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
-            'errorAction'=>'error/index',
+            'errorAction'=>'site/error',
         ),
 		'log'=>array(
 			'class'=>'CLogRouter',

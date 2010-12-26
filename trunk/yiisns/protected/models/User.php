@@ -202,4 +202,25 @@ class User extends CActiveRecord
 			return CHtml::link(Yii::t('application', 'Add contact'), array('/contact/sendRequest', 'id'=>$this->id));
 		}
 	}
+	
+	public function canCommentOnPost($postId)
+	{
+		$post = Post::model()->findBySql("select * 
+			from post 
+			WHERE post.id=:post_id AND (post.user_id=:viewer_id 
+			OR post.id IN (SELECT pa.post_id 
+				FROM post_aspect as pa INNER JOIN contact_aspect as ca on ca.aspect_id=pa.aspect_id 
+				WHERE ca.contact_id=:viewer_id 
+				AND ca.user_id IN (SELECT contact_id 
+					FROM contact 
+					WHERE contact.user_id=:viewer_id
+				)
+			)
+		)", array(
+			':post_id'=>$postId,
+			':viewer_id'=>$this->id,
+		));
+		
+		return $post !== null;
+	}
 }
