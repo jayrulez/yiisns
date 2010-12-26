@@ -17,6 +17,7 @@
 		<div id="user-nav">
 			<ul>
 				<li><?php echo $user->getLink(); ?></li>
+				<li><?php echo CHtml::link(Yii::t('application', 'settings'), array('/setting/account')); ?></li>
 				<li><?php echo CHtml::link(Yii::t('application', 'logout'), Yii::app()->user->logoutUrl); ?></li>
 			</ul>
 		</div>
