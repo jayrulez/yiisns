@@ -1,4 +1,4 @@
-<div class="action" id="error-index">
+<div class="action" id="site-error">
 	<div class="action-header">
 		<h2 class="header-text"><?php echo Yii::t('application', 'Error: {code}', array('{code}'=>$code)); ?></h2>
 	</div>

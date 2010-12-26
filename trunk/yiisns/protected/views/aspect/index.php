@@ -1,4 +1,4 @@
-<div class="action" id="home-index">
+<div class="action" id="aspect-index">
 	<div class="action-content">
 		<div id="post-form">
 			<?php $this->widget('PostFormWidget'); ?>

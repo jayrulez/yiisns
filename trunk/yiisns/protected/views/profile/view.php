@@ -1,8 +1,11 @@
 <div class="action" id="profile-view">
 	<div class="action-content">
-		<!--<?php if(($viewer = Yii::app()->user->getModel()) !== null && $user->id !== $viewer->id): ?>
-		<?php echo $user->getRelationshipLink($viewer->id); ?>
-		<?php endif; ?>-->
+		<div class="user-identity-container">
+			<?php $this->widget('UserIdentityWidget', array(
+				'user'=>$user,
+				'viewerId'=>Yii::app()->user->getId(),
+			)); ?>	
+		</div>
 		<div class="stream" id="post-stream">
 			<?php $this->widget('PostStreamWidget', array(
 				'userId'=>$user->id,

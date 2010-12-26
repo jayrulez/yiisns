@@ -1,9 +1,7 @@
 <?php
 
 class AspectController extends Controller
-{
-	public $defaultAction = 'manage';
-	
+{	
 	public function accessRules()
 	{
 		return array(
@@ -22,6 +20,17 @@ class AspectController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	public function actionIndex()
+	{
+		$user = Yii::app()->user->getModel();
+		
+		Yii::app()->user->setReturnUrl(Yii::app()->request->getUrl());
+		
+	    $this->render('index', array(
+			'user'=>$user,
+		));
 	}
 	
 	public function actionCreate()
