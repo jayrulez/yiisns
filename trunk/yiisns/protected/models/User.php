@@ -58,10 +58,11 @@ class User extends CActiveRecord
 			'aspects' => array(self::HAS_MANY, 'Aspect', 'user_id'),
 			'comments' => array(self::HAS_MANY, 'Comment', 'user_id'),
 			'contacts' => array(self::HAS_MANY, 'Contact', 'user_id'),
+			'notifications' => array(self::HAS_MANY, 'Notification', 'user_id'),
 			'posts' => array(self::HAS_MANY, 'Post', 'user_id'),
-			'requests' => array(self::HAS_MANY, 'Request', 'contact_id'),
-			'invitations' => array(self::HAS_MANY, 'Request', 'user_id'),
 			'profile' => array(self::HAS_ONE, 'Profile', 'user_id'),
+			'requests' => array(self::HAS_MANY, 'Request', 'contact_id'),
+			'sentRequests' => array(self::HAS_MANY, 'Request', 'user_id'),
 		);
 	}
 

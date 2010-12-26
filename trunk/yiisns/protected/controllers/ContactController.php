@@ -81,9 +81,7 @@ class ContactController extends Controller
 	
 	public function actionSentRequests()
 	{
-		$sentRequests = Request::model()->findAllByAttributes(array(
-			'user_id'=>Yii::app()->user->getId(),
-		));
+		$sentRequests = (($user=Yii::app()->user->getModel()) !== null) ? $user->sentRequests : array();
 		
 		$this->render('sentRequests', array(
 			'sentRequests'=>$sentRequests,
@@ -135,9 +133,7 @@ class ContactController extends Controller
 	
 	public function actionRequests()
 	{
-		$requests = Request::model()->findAllByAttributes(array(
-			'contact_id'=>Yii::app()->user->getId(),
-		));
+		$requests = (($user=Yii::app()->user->getModel()) !== null) ? $user->requests : array();;
 		
 		$this->render('requests', array(
 			'requests'=>$requests,

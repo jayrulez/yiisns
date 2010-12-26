@@ -13,8 +13,8 @@
 	</div>
 </div>
 <?php Layout::addBlock('sidebar.right', array(
-	'id'=>'aspect_block',
-	'content'=>$this->renderPartial('aspect_block', array(
+	'id'=>'right_sidebar',
+	'content'=>$this->renderPartial('view_right_sidebar', array(
 		'aspect'=>$aspect,
 	), true),
 )); ?>

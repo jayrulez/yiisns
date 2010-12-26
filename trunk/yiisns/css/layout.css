@@ -56,6 +56,19 @@ a:hover{color:#e57200;text-decoration:none;}
 							.sidebars #sidebar-right .sidebar-content {}
 							
 							.sidebar-content .sidebar-content-inner {}
+							.sidebar-content .sidebar-content-inner .sidebar-item{}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header{border-bottom: 1px solid #ccc; margin-bottom: 5px;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header .title{font-weight: bold; padding: 2px 0;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .title{float: left;display: inline-block;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .link{float: right;display: inline-block;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content{}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block {}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-link{}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts{}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row {}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon {float: left; width: 30px; height: 30px; border: 2px solid #fff; margin-right: 3px; margin-bottom: 3px;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.second-to-last {margin-right: 0px;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.last {margin-left: 3px;}
 							.sidebar-content .sidebar-content-inner .break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 5px 0;display:block;line-height:0}
 						
 		#footer-container {}
