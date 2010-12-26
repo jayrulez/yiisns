@@ -2,6 +2,7 @@ body {font:13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sa
 a{color:#0f7cc5;text-decoration:none;}
 a:hover{color:#e57200;text-decoration:none;}
 form fieldset input.submit, form fieldset button.submit {display: inline-block; font-weight: bold; color: #fff; background-color: #6fa11a; border: 1px solid #5a830f; border-radius: 2px; padding: 5px 10px; cursor: pointer;}
+.sequence-break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
 
 #page-container {}
 	#page {text-align: left;}
@@ -84,7 +85,7 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon {float: left; width: 30px; height: 30px; border: 2px solid #fff; margin-right: 3px; margin-bottom: 3px;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.second-to-last {margin-right: 0px;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.last {margin-left: 3px;}
-							.sidebar-content .sidebar-content-inner .break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
+							.sidebar-content .sidebar-content-inner .sequence-break {margin: 10px 0;}
 						
 		#footer-container {}
 			#footer {width: 960px; margin: 0 auto;}

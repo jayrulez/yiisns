@@ -55,4 +55,20 @@ class Comment extends CActiveRecord
 			'update_time' => 'Update Time',
 		);
 	}
+	
+	public function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->getIsNewRecord())
+			{
+				$this->create_time = time();
+			}else{
+				$this->update_time = time();
+			}
+			return true;
+		}
+		
+		return false;
+	}
 }
