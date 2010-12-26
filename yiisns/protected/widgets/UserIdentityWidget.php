@@ -2,7 +2,7 @@
 
 class UserIdentityWidget extends CWidget
 {	
-	public $userId = null;
+	public $user = null;
 	
 	public $viewerId = null;
 	
@@ -12,13 +12,12 @@ class UserIdentityWidget extends CWidget
 	
 	public function run()
 	{
-		$user = User::model()->findByPk($this->userId);
-		if($user === null)
+		if($this->user === null)
 		{
 			return;
 		}
 		$this->render('userIdentity', array(
-			'user'=>$user,
+			'user'=>$this->user,
 			'viewerId'=>$this->viewerId,
 		));
 	}

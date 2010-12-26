@@ -1,7 +1,7 @@
 body {font:13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;/*font-family:Verdana,sans-serif;font-size:12px;color:#333;*/}
 a{color:#0f7cc5;text-decoration:none;}
 a:hover{color:#e57200;text-decoration:none;}
-form fieldset input[type=submit], form fieldset button {display: inline-block; font-weight: bold; color: #fff; background-color: #6fa11a; border: 1px solid #5a830f; border-radius: 2px; padding: 5px 10px; cursor: pointer;}
+form fieldset input.submit, form fieldset button.submit {display: inline-block; font-weight: bold; color: #fff; background-color: #6fa11a; border: 1px solid #5a830f; border-radius: 2px; padding: 5px 10px; cursor: pointer;}
 
 #page-container {}
 	#page {text-align: left;}
@@ -44,6 +44,10 @@ form fieldset input[type=submit], form fieldset button {display: inline-block; f
 							.sidebar-right .action {}
 								.sidebar-right .action-header {}
 								.sidebar-right .action-content {}
+									.sidebar-right .action-content .user-identity-container {background: #e9f2f9; padding: 10px;}
+									.sidebar-right .action-content .user-identity-container .user-identity {}
+									.sidebar-right .action-content .user-identity-container .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
+									.sidebar-right .action-content .user-identity-container .user-identity .user-info{float: right; width: 396px;}
 						.sidebar-right #sidebar-right {float: right; width: 350px; background-color:#f0f0f0;}
 							.sidebar-right #sidebar-right .sidebar-content {padding: 10px;}
 						

@@ -1,8 +1,8 @@
-<div id="home-sidebar-right" class="sidebar-content-inner">
+<div id="aspect-sidebar-right" class="sidebar-content-inner">
 	<div class="sidebar-item" id="user-identity-block">
 		<div class="sidebar-item-content">
 			<?php $this->widget('UserIdentityWidget', array(
-				'userId'=>$user->id,
+				'user'=>$user,
 				'viewerId'=>Yii::app()->user->getId(),
 			)); ?>
 		</div>

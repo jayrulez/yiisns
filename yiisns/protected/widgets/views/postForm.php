@@ -20,7 +20,7 @@
 			<div class="options">
 			</div>
 			<div class="submit-field">
-				<?php echo CHtml::submitButton(Yii::t('application', 'Share')); ?>
+				<?php echo CHtml::submitButton(Yii::t('application', 'Share'), array('class'=>'submit')); ?>
 			</div>
 		</fieldset>
 	<?php echo CHtml::endForm(); ?>
