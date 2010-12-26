@@ -83,7 +83,7 @@ form.wf fieldset .row div.errorMessage {color: #CB3300;padding: 0 0 0 160px;}
 form.wf fieldset .row div.tip {color: #8A8A8A; margin:5px 20px 0 160px; padding: 0;}
 form.wf fieldset .row.indent {padding: 0 0 0 160px;}
 form.wf fieldset.buttons {padding-left: 160px; border: 0; text-align: left;}
-form.wf fieldset.buttons input.submit {}
+form.wf fieldset.buttons input.submit, form.wf fieldset.buttons button {}
 form.wf .form-footer {padding-left: 160px;}
 form.wf .form-footer .links {}
  
