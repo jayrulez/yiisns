@@ -79,6 +79,8 @@ class AspectController extends Controller
 			throw new CHttpException(401, Yii::t('application', 'You are not authorized to view this aspect.'));
 		}
 		
+		Yii::app()->user->setReturnUrl(Yii::app()->request->getUrl());
+		
 		$this->render('view', array(
 			'aspect'=>$aspect,
 		));

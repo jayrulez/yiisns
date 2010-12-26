@@ -62,6 +62,9 @@ a:hover{color:#e57200;text-decoration:none;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .title{float: left;display: inline-block;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .link{float: right;display: inline-block;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content{}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity{}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
+							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity .user-info{width: 146px; float: right;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block {}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-link{}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts{}
@@ -69,7 +72,7 @@ a:hover{color:#e57200;text-decoration:none;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon {float: left; width: 30px; height: 30px; border: 2px solid #fff; margin-right: 3px; margin-bottom: 3px;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.second-to-last {margin-right: 0px;}
 							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.last {margin-left: 3px;}
-							.sidebar-content .sidebar-content-inner .break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 5px 0;display:block;line-height:0}
+							.sidebar-content .sidebar-content-inner .break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
 						
 		#footer-container {}
 			#footer {width: 960px; margin: 0 auto;}

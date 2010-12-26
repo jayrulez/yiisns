@@ -13,7 +13,7 @@ class User extends CActiveRecord
 		return array(
 			User::PHOTO_SIZE_MINI => array('width'=>30, 'height'=>30),
 			User::PHOTO_SIZE_SMALL => array('width'=>48, 'height'=>48),
-			User::PHOTO_SIZE_MEDIUM => array('width'=>48, 'height'=>48),
+			User::PHOTO_SIZE_MEDIUM => array('width'=>170, 'height'=>170),
 			User::PHOTO_SIZE_LARGE => array('width'=>48, 'height'=>48),
 			User::PHOTO_SIZE_DEFAULT => array('width'=>48, 'height'=>48),
 		);
@@ -184,7 +184,7 @@ class User extends CActiveRecord
 	{
 		$viewer = User::model()->findByPk($viewerId);
 		
-		if($viewer === null)
+		if($viewer === null || $this->id === $viewer->id)
 		{
 			return null;
 		}
