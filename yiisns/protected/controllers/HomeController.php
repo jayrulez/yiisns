@@ -26,6 +26,8 @@ class HomeController extends Controller
 	{
 		$user = Yii::app()->user->getModel();
 		
+		Yii::app()->user->setReturnUrl(Yii::app()->request->getUrl());
+		
 	    $this->render('index', array(
 			'user'=>$user,
 		));
