@@ -18,15 +18,34 @@
 					</div>
 					<div class="post-entry-extra">
 						<div class="post-options">
-							<?php echo CHtml::link(Yii::t('application', Util::getFuzzyTime($post->create_time)), array('/post/view', 'id'=>$post->id)); ?>
+							<?php echo CHtml::link(Util::getFuzzyTime($post->create_time), array('/post/view', 'id'=>$post->id)); ?>
 						</div>
 						<?php if(count($post->comments)): ?>
 						<div class="post-comments">
 							<div class="post-comments-content">
-							<?php foreach($post->comments as $comment): ?>
+							<?php foreach($post->comments as $counter => $comment): ?>
 								<div class="post-comment">
-									<?php echo $comment->content; ?>
+									<div class="post-comment-content clearfix">
+										<div class="post-comment-user-icon">
+											<?php echo $comment->user->getImageLink(User::PHOTO_SIZE_MINI); ?>
+										</div>
+										<div class="post-comment-entry">
+											<div class="post-comment-entry-data">
+												<div class="post-comment-content-text">
+													<?php echo $comment->user->getLink(); ?> <?php echo $comment->content; ?>
+												</div>
+											</div>
+											<div class="post-comment-entry-extra">
+												<div class="post-comment-options">
+													<?php echo Util::getFuzzyTime($comment->create_time); ?>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
+								<?php if(($counter+1) !== count($post->comments)): ?>
+								<div class="sequence-break"></div>
+								<?php endif; ?>
 							<?php endforeach; ?>
 							</div>
 						</div>
