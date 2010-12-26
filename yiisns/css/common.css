@@ -36,8 +36,8 @@ h6{font-size:105%;}
  
 /*forms*/
 form {}
-form .form-header {}
-form .form-header .title {border-bottom: 1px solid #D9D9D9;font-size: 16px;font-weight: normal;line-height: 14px;margin: 5px 0;padding: 0px 0px 8px 0px;}
+form .form-header {/*border-bottom: 1px solid #D9D9D9;*/border-bottom: 1px solid #53A3E8; margin-bottom: 10px;}
+form .form-header .title {font-size: 16px;font-weight: normal;line-height: 14px;margin: 5px 0;padding: 0px 0px 8px 0px;}
 form .form-header .sub-title {margin-bottom: 10px;}
 form .errorSummary{border: 2px solid #CB3300;padding: 7px 7px 9px 7px;margin: 10px 0 10px 0;background: #FEE;}
 form .errorSummary p {margin: 0;padding: 5px;}
@@ -72,7 +72,7 @@ form.wf .form-header .title {}
 form.wf .form-header .sub-title {}
 form.wf {}
 form.wf .errorSummary {margin: 10px;}
-form.wf fieldset {border-bottom: 1px solid #E5E5E5;}
+form.wf fieldset {/*border-bottom: 1px solid #E5E5E5;*/}
 form.wf fieldset span.indent {display: block;margin: 5px 20px 0 160px;padding: 0;}
 form.wf fieldset .row {}
 form.wf fieldset .row label {width: 140px;display: block;float: left;text-align: right;margin: 0 10px;cursor: pointer;vertical-align: top;font-weight: bold;padding: 5px 0 4px 0;}

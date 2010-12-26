@@ -9,7 +9,7 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 			#header {width: 960px; margin: 0 auto;}
 				#header a {color:#D2E4F8;}
 				#header a:active {color: #eee;}
-				#header-content {}
+				#header-content {line-height: 28px;}
 					#home-link {float: left; width: 150px;}
 						#home-link a {display: inline-block;}
 					#main-nav {float: right; width: 800px;text-align: right;}
@@ -20,9 +20,10 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 						#global-search {float: right;}
 						#global-search form {}
 						#global-search form fieldset.search-field{float: right;}
-						#global-search form fieldset.search-field input.search-text{}
+						#global-search form fieldset.search-field input.search-text{display: block;height: 16px; padding: 4px;border-top-left-radius: 4px;border-bottom-left-radius: 4px; border: 2px solid #2464ac; border-right: 0;}
 						#global-search form fieldset.search-button{float: right;}
-						#global-search form fieldset.search-button input.search-submit{}
+						#global-search form fieldset.search-button .search-submit{margin:0;cursor: pointer; display: block; width: 16px; height: 16px; background: #fff url('../images/search_icon.png') 7px 4px no-repeat; padding: 12px 15px; border-top-right-radius: 4px;border-bottom-right-radius: 4px; border: 2px solid #2464ac; border-left: 0;}
+						#global-search form fieldset.search-button .search-submit:focus{outline: 0 none;}
 		#canvas-container {margin: 10px 0;}
 			#canvas {width: 960px; margin: 0 auto;}
 				#canvas-content {}
@@ -32,6 +33,12 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 							.action {}
 								.action-header {}
 								.action-content {}
+									.action-content .user-login-form , .action-content .user-registration-form{width:430px; margin: 0 auto;}
+									.action-content .user-login-form form .form-header, .action-content .user-registration-form form .form-header {padding-left: 34px;}
+									.action-content .user-login-form form .form-header {background: url('../images/login_icon.png') top left no-repeat;} 
+									.action-content .user-registration-form form .form-header {background: url('../images/registration_icon.png') top left no-repeat;}
+									.action-content .user-login-form form .form-header .title, .action-content .user-registration-form form .form-header .title{line-height: 24px; font-weight: bold;}
+									.action-content .user-login-form form fieldset input.submit, .action-content .user-registration-form form fieldset input.submit {background-color: #e17616; border: 1px solid #a75718;}
 								
 						.sidebar-left #sidebar-left {float: left; width: 200px;}
 							.sidebar-left #sidebar-left  .sidebar-content {}
