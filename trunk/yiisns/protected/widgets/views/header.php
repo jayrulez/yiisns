@@ -6,7 +6,8 @@
 		<div id="global-search">
 			<?php echo CHtml::beginForm(array('/search/index'), 'get'); ?>
 				<fieldset class="search-button">
-					<?php echo CHtml::submitButton(Yii::t('application', 'Search'), array('class'=>'search-submit')); ?>
+					<button type="submit" class="search-submit">&nbsp;</button>
+					<!--<input type="submit" class="search-submit" value="&nbsp;">-->
 				</fieldset>
 				<fieldset class="search-field">
 					<?php echo CHtml::textField('q', '', array('class'=>'search-text')); ?>
