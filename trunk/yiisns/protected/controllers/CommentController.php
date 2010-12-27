@@ -1,27 +1,30 @@
 <?php
 
 class CommentController extends Controller
-{	
-	public $defaultAction = 'view';
-	
+{		
 	public function accessRules()
 	{
 		return array(
 			array(
 				'allow',
 				'actions'=>array(
-					'create','view','delete',
+					'create','delete',
 				),
 				'users'=>array('@'),
 			),
 			array(
 				'deny',
 				'actions'=>array(
-					'create','view','delete',
+					'create','delete',
 				),
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	public function actionIndex()
+	{
+		$this->redirect(Yii::app()->user->returnUrl);
 	}
 	
 	public function actionCreate()
@@ -49,11 +52,6 @@ class CommentController extends Controller
 		}else{
 			$this->redirect(Yii::app()->user->returnUrl);
 		}
-	}
-	
-	public function actionView()
-	{
-	
 	}
 	
 	public function actionDelete()

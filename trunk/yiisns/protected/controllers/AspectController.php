@@ -72,20 +72,13 @@ class AspectController extends Controller
 	
 	public function actionView()
 	{
-		$user = Yii::app()->user->getModel();
-		
 		$aspect = Aspect::model()->findByAttributes(array(
 			'id'=>Yii::app()->request->getParam('id'),
 		));
 		
-		if($aspect === null)
+		if($aspect === null || Yii::app()->user->getId() !== $aspect->user_id)
 		{
-			throw new CHttpException(404, Yii::t('application', 'The requested page was not found.'));
-		}
-		
-		if($user->id !== $aspect->user_id)
-		{
-			throw new CHttpException(401, Yii::t('application', 'You are not authorized to view this aspect.'));
+			throw new CHttpException(404, Yii::t('application', 'This aspect is not available.'));
 		}
 		
 		Yii::app()->user->setReturnUrl(Yii::app()->request->getUrl());

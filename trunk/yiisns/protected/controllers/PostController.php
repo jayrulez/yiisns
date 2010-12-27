@@ -83,10 +83,10 @@ class PostController extends Controller
 	{
 		$post = Post::model()->findByPk(Yii::app()->request->getQuery('id'));
 		
-		/*if($post === null || !Util::canSeePost(Yii::app()->user->getId(), $post->id))
+		if($post === null || ($user = Yii::app()->user->getModel()) === null || !$user->canCommentOnPost($post->id))
 		{
 			throw new CHttpException(Yii::t('application', 'The requested page does not exist.'));
-		}*/
+		}
 		
 		$this->render('view', array(
 			'post'=>$post,
