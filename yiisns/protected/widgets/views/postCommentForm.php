@@ -1,6 +1,6 @@
-<div class="post-comment-form-content">
+<div class="stream-comment-form-content">
 	<?php echo CHtml::beginForm(array('/comment/create')); ?>
-		<fieldset class="post-field">
+		<fieldset class="stream-field">
 			<?php echo CHtml::activeHiddenField($model, 'post_id', array(
 				'value'=>$postId,
 			)); ?>
