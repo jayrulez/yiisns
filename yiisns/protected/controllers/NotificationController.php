@@ -6,4 +6,9 @@ class NotificationController extends Controller
 	{
 		return array();
 	}
+	
+	public function actionIndex()
+	{
+	
+	}
 }
