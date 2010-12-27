@@ -33,12 +33,14 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action {}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-header {}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content {}
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form , .action-content .user-registration-form{width:430px; margin: 0 auto;}
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form .form-header, .action-content .user-registration-form form .form-header {padding-left: 34px;}
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form .form-header {background: url('../images/login_icon.png') top left no-repeat;} 
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-registration-form form .form-header {background: url('../images/registration_icon.png') top left no-repeat;}
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form .form-header .title, .action-content .user-registration-form form .form-header .title{line-height: 24px; font-weight: bold;}
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form fieldset input.submit, .action-content .user-registration-form form fieldset input.submit {background-color: #e17616; border: 1px solid #a75718;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-login-form ,
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-registration-form{width:430px; margin: 0 auto;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-login-form form .form-header,
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-registration-form form .form-header {padding-left: 34px;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-login-form form .form-header {background: url('../images/login_icon.png') top left no-repeat;} 
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-registration-form form .form-header {background: url('../images/registration_icon.png') top left no-repeat;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-login-form form .form-header .title,#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-registration-form form .form-header .title{line-height: 24px; font-weight: bold;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-login-form form fieldset input.submit,#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-registration-form form fieldset input.submit {background-color: #e17616; border: 1px solid #a75718;}
 								
 .sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container #sidebar-left {float: left; width: 200px;}
 .sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container #sidebar-left  #sidebar-left  .sidebar-content {}
