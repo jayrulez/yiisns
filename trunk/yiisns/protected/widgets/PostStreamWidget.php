@@ -8,7 +8,6 @@ class PostStreamWidget extends CWidget
 	
 	public function init()
 	{
-		Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/postStream.css');
 	}
 	
 	public function run()

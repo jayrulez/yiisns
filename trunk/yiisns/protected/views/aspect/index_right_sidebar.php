@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	
-	<div class="sequence-break"></div>
+	<div class="separator"></div>
 	
 	<div class="sidebar-item" id="aspects-block">
 	

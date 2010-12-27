@@ -2,91 +2,124 @@ body {font:13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sa
 a{color:#0f7cc5;text-decoration:none;}
 a:hover{color:#e57200;text-decoration:none;}
 form fieldset input.submit, form fieldset button.submit {display: inline-block; font-weight: bold; color: #fff; background-color: #6fa11a; border: 1px solid #5a830f; border-radius: 2px; padding: 5px 10px; cursor: pointer;}
-.sequence-break {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
+.separator {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
 
 #page-container {}
-	#page {text-align: left;}
-		#header-container {background-color: #2969B3;}
-			#header {width: 960px; margin: 0 auto;}
-				#header a {color:#D2E4F8;}
-				#header a:active {color: #eee;}
-				#header-content {line-height: 28px;}
-					#home-link {float: left; width: 150px;}
-						#home-link a {display: inline-block;}
-					#main-nav {float: right; width: 800px;text-align: right;}
-						#user-nav {float: right;}
-						#user-nav ul {}
-						#user-nav ul li {display: inline-block; float: left; margin: 0 5px 0 5px;}
-						#user-nav ul li a {}
-						#global-search {float: right;}
-						#global-search form {}
-						#global-search form fieldset.search-field{float: right;}
-						#global-search form fieldset.search-field input.search-text{display: block;height: 16px; padding: 4px;border-top-left-radius: 4px;border-bottom-left-radius: 4px; border: 2px solid #2464ac; border-right: 0;}
-						#global-search form fieldset.search-button{float: right;}
-						#global-search form fieldset.search-button .search-submit{margin:0;cursor: pointer; display: block; width: 16px; height: 16px; background: #fff url('../images/search_icon.png') 7px 4px no-repeat; padding: 12px 15px; border-top-right-radius: 4px;border-bottom-right-radius: 4px; border: 2px solid #2464ac; border-left: 0;}
-						#global-search form fieldset.search-button .search-submit:focus{outline: 0 none;}
-		#canvas-container {margin: 10px 0;}
-			#canvas {width: 960px; margin: 0 auto;}
-				#canvas-content {}
-					#content-container {}
-					
-						#content {float: none;}
-							.action {}
-								.action-header {}
-								.action-content {}
-									.action-content .user-login-form , .action-content .user-registration-form{width:430px; margin: 0 auto;}
-									.action-content .user-login-form form .form-header, .action-content .user-registration-form form .form-header {padding-left: 34px;}
-									.action-content .user-login-form form .form-header {background: url('../images/login_icon.png') top left no-repeat;} 
-									.action-content .user-registration-form form .form-header {background: url('../images/registration_icon.png') top left no-repeat;}
-									.action-content .user-login-form form .form-header .title, .action-content .user-registration-form form .form-header .title{line-height: 24px; font-weight: bold;}
-									.action-content .user-login-form form fieldset input.submit, .action-content .user-registration-form form fieldset input.submit {background-color: #e17616; border: 1px solid #a75718;}
+#page-container #page {text-align: left;}
+#page-container #page #header-container {background-color: #2969B3;}
+#page-container #page #header-container #header {width: 960px; margin: 0 auto;}
+#page-container #page #header-container #header a {color:#D2E4F8;}
+#page-container #page #header-container #header a:active {color: #eee;}
+#page-container #page #header-container #header #header-content {line-height: 28px;}
+#page-container #page #header-container #header #header-content #home-link {float: left; width: 150px;}
+#page-container #page #header-container #header #header-content #home-link #home-link a {display: inline-block;}
+#page-container #page #header-container #header #header-content #main-nav {float: right; width: 800px;text-align: right;}
+#page-container #page #header-container #header #header-content #main-nav #user-nav {float: right;}
+#page-container #page #header-container #header #header-content #main-nav #user-nav ul {}
+#page-container #page #header-container #header #header-content #main-nav #user-nav ul li {display: inline-block; float: left; margin: 0 5px 0 5px;}
+#page-container #page #header-container #header #header-content #main-nav #user-nav ul li a {}
+#page-container #page #header-container #header #header-content #main-nav #global-search {float: right;}
+#page-container #page #header-container #header #header-content #main-nav #global-search form {}
+#page-container #page #header-container #header #header-content #main-nav #global-search form fieldset.search-field{float: right;}
+#page-container #page #header-container #header #header-content #main-nav #global-search form fieldset.search-field input.search-text{display: block;height: 16px; padding: 4px;border-top-left-radius: 4px;border-bottom-left-radius: 4px; border: 2px solid #2464ac; border-right: 0;}
+#page-container #page #header-container #header #header-content #main-nav #global-search form fieldset.search-button{float: right;}
+#page-container #page #header-container #header #header-content #main-nav #global-search form fieldset.search-button .search-submit{margin:0;cursor: pointer; display: block; width: 16px; height: 16px; background: #fff url('../images/search_icon.png') 7px 4px no-repeat; padding: 12px 15px; border-top-right-radius: 4px;border-bottom-right-radius: 4px; border: 2px solid #2464ac; border-left: 0;}
+#page-container #page #header-container #header #header-content #main-nav #global-search form fieldset.search-button .search-submit:focus{outline: 0 none;}
+#page-container #page #canvas-container {margin: 10px 0;}
+#page-container #page #canvas-container #canvas {width: 960px; margin: 0 auto;}
+#page-container #page #canvas-container #canvas #canvas-content {}
+#page-container #page #canvas-container #canvas #canvas-content #content-container {}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content {float: none;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action {}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-header {}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content {}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form , .action-content .user-registration-form{width:430px; margin: 0 auto;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form .form-header, .action-content .user-registration-form form .form-header {padding-left: 34px;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form .form-header {background: url('../images/login_icon.png') top left no-repeat;} 
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-registration-form form .form-header {background: url('../images/registration_icon.png') top left no-repeat;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form .form-header .title, .action-content .user-registration-form form .form-header .title{line-height: 24px; font-weight: bold;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .action-content .user-login-form form fieldset input.submit, .action-content .user-registration-form form fieldset input.submit {background-color: #e17616; border: 1px solid #a75718;}
 								
-						.sidebar-left #sidebar-left {float: left; width: 200px;}
-							.sidebar-left #sidebar-left  .sidebar-content {}
-						.sidebar-left #content {float: right; width: 750px;}
-							.sidebar-left .action {}
-								.sidebar-left .action-header {}
-								.sidebar-left .action-content {}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container #sidebar-left {float: left; width: 200px;}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container #sidebar-left  #sidebar-left  .sidebar-content {}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content {float: right; width: 750px;}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action {}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
 						
-						.sidebar-right #content {float: left; width: 600px;}
-							.sidebar-right .action {}
-								.sidebar-right .action-header {}
-								.sidebar-right .action-content {}
-									.sidebar-right .action-content .user-identity-container {background: #e9f2f9; padding: 10px;}
-									.sidebar-right .action-content .user-identity-container .user-identity {}
-									.sidebar-right .action-content .user-identity-container .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
-									.sidebar-right .action-content .user-identity-container .user-identity .user-info{float: right; width: 396px;}
-						.sidebar-right #sidebar-right {float: right; width: 350px; background-color:#f0f0f0;}
-							.sidebar-right #sidebar-right .sidebar-content {padding: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content {float: left; width: 600px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container {background: #e9f2f9; padding: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container .user-identity {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container .user-identity .user-info{float: right; width: 396px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content {color: #444;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item {border-bottom: 1px solid #eeeeee;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content {padding: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-user-icon {float: left; margin: 0 10px 0 0;min-width: 50px; min-height: 50px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-user-icon a {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-user-icon a img {margin: 1px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry {float: left; width: 520px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-data {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-data .stream-user-link {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-data .stream-content-text{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-entry-options {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-entry-options a {color:#999;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-entry-options a:hover {text-decoration: underline;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments {width: 520px; background: #f2f2f2; margin-top: 5px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content {padding: 5px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content .stream-comment-user-icon {float: left; width: 30px; height: 30px; border: 2px solid #fff; margin: 0 5px 0 0;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content .stream-comment-entry {float: right; width: 471px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content .stream-comment-entry .stream-comment-entry-data {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content .stream-comment-entry .stream-comment-entry-data .stream-comment-content-text {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content .stream-comment-entry .stream-comment-entry-extra {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .stream-comment .stream-comment-content .stream-comment-entry .stream-comment-entry-extra .stream-comment-options{color:#999;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form {width: 520px; background: #f2f2f2; margin-top: 5px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form .stream-comment-form-content {padding: 5px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form .stream-comment-form-content form {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form .stream-comment-form-content form fieldset.content-field{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form .stream-comment-form-content form fieldset.content-field textarea{border: 1px solid #e9e9e9; padding: 3px; width: 502px; height: 32px; border-radius: 2px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form .stream-comment-form-content form fieldset.submit-field {margin-top: 5px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comment-form .stream-comment-form-content form fieldset.submit-field  input.submit{float: right; padding:2px 4px;background: #2969B3; border-color:#2268ae;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .stream .stream-content .stream-items .stream-item .stream-item-content .stream-entry .stream-entry-extra .stream-comments .stream-comments-content .separator {margin: 5px 0;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right {float: right; width: 350px; background-color:#f0f0f0;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content {padding: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header{border-bottom: 1px solid #ccc; margin-bottom: 5px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header .title{font-weight: bold; padding: 2px 0;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .title{float: left;display: inline-block;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .link{float: right;display: inline-block;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity .user-info{width: 146px; float: right;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-link{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon {float: left; width: 30px; height: 30px; border: 2px solid #fff; margin-right: 3px; margin-bottom: 3px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.second-to-last {margin-right: 0px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.last {margin-left: 3px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content .sidebar-content-inner .separator {margin: 10px 0;}
 						
-						.sidebars #sidebar-left {float: left;width: 190px;margin-right: 10px;}
-							.sidebars #sidebar-left .sidebar-content {}
-						.sidebars #content {float: left; width: 550px;}
-							.sidebars .action {}
-								.sidebars .action-header {}
-								.sidebars .action-content {}
-						.sidebars #sidebar-right {float: right; width: 200px;}
-							.sidebars #sidebar-right .sidebar-content {}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content  #sidebar-left {float: left;width: 190px;margin-right: 10px;}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content  #sidebar-left .sidebar-content {}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content {float: left; width: 550px;}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action {}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right {float: right; width: 200px;}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content {}
 							
-							.sidebar-content .sidebar-content-inner {}
-							.sidebar-content .sidebar-content-inner .sidebar-item{}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header{border-bottom: 1px solid #ccc; margin-bottom: 5px;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header .title{font-weight: bold; padding: 2px 0;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .title{float: left;display: inline-block;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-header.clearfix .link{float: right;display: inline-block;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content{}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity{}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .user-identity .user-info{width: 146px; float: right;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block {}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-link{}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts{}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row {}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon {float: left; width: 30px; height: 30px; border: 2px solid #fff; margin-right: 3px; margin-bottom: 3px;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.second-to-last {margin-right: 0px;}
-							.sidebar-content .sidebar-content-inner .sidebar-item .sidebar-item-content .aspect-block .aspect-contacts .aspect-contacts-row .aspect-contact-icon.last {margin-left: 3px;}
-							.sidebar-content .sidebar-content-inner .sequence-break {margin: 10px 0;}
 						
-		#footer-container {}
-			#footer {width: 960px; margin: 0 auto;}
-				#footer-content {}
+#page-container #page #footer-container {}
+#page-container #page #footer-container #footer {width: 960px; margin: 0 auto;}
+#page-container #page #footer-container #footer #footer-content {}
