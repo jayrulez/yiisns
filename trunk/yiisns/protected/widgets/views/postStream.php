@@ -32,7 +32,7 @@
 										<div class="stream-comment-entry">
 											<div class="stream-comment-entry-data">
 												<div class="stream-comment-content-text">
-													<?php echo $comment->user->getLink(); ?> <?php echo $comment->content; ?>
+													<span class="user-link"><?php echo $comment->user->getLink(); ?></span> <?php echo $comment->content; ?>
 												</div>
 											</div>
 											<div class="stream-comment-entry-extra">
