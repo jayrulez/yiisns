@@ -1,6 +1,6 @@
 <div id="header-content" class="clearfix">
 	<div id="home-link">
-		<?php echo CHtml::link('Home', Yii::app()->homeUrl); ?>
+		<?php echo CHtml::link('&nbsp;', Yii::app()->homeUrl); ?>
 	</div>
 	<div id="main-nav" class="clearfix">
 		<div id="global-search">

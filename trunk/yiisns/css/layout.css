@@ -1,7 +1,7 @@
 body {font:11px Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;/*font-family:Verdana,sans-serif;font-size:12px;color:#333;*/}
 a{color:#0f7cc5;text-decoration:none;}
 a:hover{color:#e57200;text-decoration:none;}
-form fieldset input.submit, form fieldset button.submit {display: inline-block; font-weight: bold; color: #fff; background-color: #6fa11a; border: 1px solid #5a830f; border-radius: 2px; padding: 5px 10px; cursor: pointer;}
+form fieldset input.submit, form fieldset button.submit {display: inline-block; font-weight: bold; color: #fff; background-color: #6fa11a; border: 1px solid #5a830f; border-radius: 2px; padding: 4px 8px; cursor: pointer;}
 .separator {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
 
 #page-container {}
@@ -10,9 +10,9 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 #page-container #page #header-container #header {width: 960px; margin: 0 auto;}
 #page-container #page #header-container #header a {color:#D2E4F8;}
 #page-container #page #header-container #header a:active {color: #eee;}
-#page-container #page #header-container #header #header-content {line-height: 28px;}
+#page-container #page #header-container #header #header-content {padding: 5px 0;line-height: 28px;}
 #page-container #page #header-container #header #header-content #home-link {float: left; width: 150px;}
-#page-container #page #header-container #header #header-content #home-link #home-link a {display: inline-block;}
+#page-container #page #header-container #header #header-content #home-link #home-link a {display: inline-block;width: 100px; height: 28px;background: url('../images/logo.png') top left no-repeat;}
 #page-container #page #header-container #header #header-content #main-nav {float: right; width: 800px;text-align: right;}
 #page-container #page #header-container #header #header-content #main-nav #user-nav {float: right;}
 #page-container #page #header-container #header #header-content #main-nav #user-nav ul {}
