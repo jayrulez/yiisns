@@ -12,7 +12,7 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 #page-container #page #header-container #header a:active {color: #eee;}
 #page-container #page #header-container #header #header-content {padding: 5px 0;line-height: 28px;}
 #page-container #page #header-container #header #header-content #home-link {float: left; width: 150px;}
-#page-container #page #header-container #header #header-content #home-link #home-link a {display: inline-block;width: 100px; height: 28px;background: url('../images/logo.png') top left no-repeat;}
+#page-container #page #header-container #header #header-content #home-link a {display: inline-block;width: 100px; height: 28px;background: url('../images/logo.png') top left no-repeat;}
 #page-container #page #header-container #header #header-content #main-nav {float: right; width: 800px;text-align: right;}
 #page-container #page #header-container #header #header-content #main-nav #user-nav {float: right;}
 #page-container #page #header-container #header #header-content #main-nav #user-nav ul {}
