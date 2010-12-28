@@ -1,9 +1,12 @@
 			<div class="aspect-block">
 				<?php if($showLink): ?>
-				<div class="aspect-link"><?php echo $aspect->getLink(); ?></div>
+				<div class="aspect-link clearfix">
+					<?php echo $aspect->getLink(); ?>
+					<?php echo CHtml::link('&nbsp', '#', array('class'=>'toggle-aspect-contacts')); ?>
+				</div>
 				<?php endif; ?>
-				<?php if(count($aspect->contacts)): ?>
 				<div class="aspect-contacts">
+				<?php if(count($aspect->contacts)): ?>
 					<div class="aspect-contacts-row clearfix">
 						<?php $counter = 1; ?>
 						<?php foreach($aspect->contacts as $contact): ?>
@@ -23,9 +26,8 @@
 						<?php $counter++; ?>
 						<?php endforeach; ?>
 					</div>
-						
-				</div>
 				<?php else: ?>
-				<?php echo Yii::t('application', 'No contacts'); ?>
+					<div class="empty"><?php echo Yii::t('application', 'No contacts'); ?></div>
 				<?php endif; ?>
+				</div>
 			</div>
