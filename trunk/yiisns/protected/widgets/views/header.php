@@ -3,6 +3,7 @@
 		<?php echo CHtml::link('&nbsp;', Yii::app()->homeUrl); ?>
 	</div>
 	<div id="main-nav" class="clearfix">
+		<?php //if(!Yii::app()->user->isGuest): ?>
 		<div id="global-search">
 			<?php echo CHtml::beginForm(array('/search/index'), 'get'); ?>
 				<fieldset class="search-button">
@@ -14,6 +15,7 @@
 				</fieldset>
 			<?php echo CHtml::endForm(); ?>
 		</div>
+		<?php //endif; ?>
 		<?php if(($user = Yii::app()->user->getModel()) !== null): ?>
 		<div id="user-nav">
 			<ul>
