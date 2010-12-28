@@ -94,4 +94,14 @@ class Contact extends CActiveRecord
 		
 		return $status;
 	}
+	
+	public function addToAspect($aspectId)
+	{
+	
+	}
+	
+	public function removeFromAspect($aspectId)
+	{
+	
+	}
 }
