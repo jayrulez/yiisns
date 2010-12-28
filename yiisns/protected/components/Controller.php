@@ -15,4 +15,14 @@ class Controller extends CController
 	{
 		return array();
 	}
+	
+	public function init()
+	{
+		parent::init();
+	}
+	
+	public function getCurrentUser()
+	{
+		return Yii::app()->user->getModel();
+	}
 }

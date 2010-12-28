@@ -13,8 +13,8 @@
 	<div class="sidebar-item" id="aspects-block">
 	
 		<div class="sidebar-item-header clearfix">
-			<div class="title"><?php echo Yii::t('application', 'Aspects'); ?></div>
-			<div class="link"><?php echo CHtml::link(Yii::t('application', 'manage aspects'), array('/aspect/manage')); ?></div>
+			<div class="title"><?php echo Yii::t('application', 'My Contacts'); ?></div>
+			<div class="link"><?php echo CHtml::link(Yii::t('application', 'manage contacts'), array('/contact/manage')); ?></div>
 		</div>
 		
 		<div class="sidebar-item-content">
