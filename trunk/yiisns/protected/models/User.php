@@ -191,15 +191,15 @@ class User extends CActiveRecord
 		
 		if(Util::areContacts($this->id, $viewer->id))
 		{
-			return CHtml::link(Yii::t('application', 'Remove contact'), array('/contact/delete', 'id'=>$this->id));
+			return CHtml::link(Yii::t('application', 'Remove contact'), array('/contacts/delete', 'id'=>$this->id));
 		}else if(($request=$this->getRequest($viewer->id))!==null)
 		{
-			return CHtml::link(Yii::t('application', 'Respond to contact request'), array('/contact/requests'));
+			return CHtml::link(Yii::t('application', 'Respond to contact request'), array('/contacts/requests'));
 		}else if($viewer->getRequest($this->id) !== null)
 		{
-			return CHtml::link(Yii::t('application', 'Contact request pending'), array('/contact/sentRequests'));
+			return CHtml::link(Yii::t('application', 'Contact request pending'), array('/contacts/sentRequests'));
 		}else{
-			return CHtml::link(Yii::t('application', 'Add contact'), array('/contact/sendRequest', 'id'=>$this->id));
+			return CHtml::link(Yii::t('application', 'Add contact'), array('/contacts/sendRequest', 'id'=>$this->id));
 		}
 	}
 	

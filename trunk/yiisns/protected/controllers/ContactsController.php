@@ -1,6 +1,6 @@
 <?php
 
-class ContactController extends Controller
+class ContactsController extends Controller
 {	
 	public $defaultAction = 'view';
 	
