@@ -1,6 +1,6 @@
 <?php
 
-class AspectController extends Controller
+class AspectsController extends Controller
 {	
 	public function accessRules()
 	{
@@ -44,7 +44,7 @@ class AspectController extends Controller
 			
 			if($aspect->save())
 			{
-				$this->redirect(array('/aspect/view', 'id'=>$aspect->id));
+				$this->redirect(array('/aspects/view', 'id'=>$aspect->id));
 			}
 		}
 		
