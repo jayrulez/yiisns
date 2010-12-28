@@ -11,6 +11,6 @@ class SettingController extends Controller
 	
 	public function actionAccount()
 	{
-	
+		$this->render('account');
 	}
 }

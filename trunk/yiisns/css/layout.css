@@ -31,7 +31,8 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 #page-container #page #canvas-container #canvas #canvas-content #content-container {}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content {float: none;}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action {}
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-header {}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-header {border-bottom: 1px solid #d8dfea; margin-bottom: 10px;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-header .title {font-weight: bold; margin: 0 0 5px 0;}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content {}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-login-form ,
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content .user-registration-form{width:430px; margin: 0 auto;}
@@ -47,11 +48,13 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 .sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content {float: right; width: 750px;}
 .sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action {}
 .sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
+.sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header .title{}
 .sidebar-left #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
 						
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content {float: left; width: 600px;}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action {}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header .title{}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container {background: #e9f2f9; padding: 10px;}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container .user-identity {}
@@ -118,6 +121,7 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 .sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content {float: left; width: 550px;}
 .sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action {}
 .sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
+.sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header .title{}
 .sidebars #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
 .sidebars #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right {float: right; width: 200px;}
 .sidebars #page-container #page #canvas-container #canvas #canvas-content  #sidebar-right .sidebar-content {}

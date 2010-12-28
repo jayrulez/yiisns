@@ -139,4 +139,9 @@ class ContactController extends Controller
 			'requests'=>$requests,
 		));
 	}
+	
+	public function actionManage()
+	{
+		$this->render('manage');
+	}
 }
