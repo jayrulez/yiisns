@@ -14,7 +14,9 @@
 					</div>
 					<div class="stream-entry-extra">
 						<div class="stream-entry-options">
-							<?php echo CHtml::link(Util::getFuzzyTime($post->create_time), array('/post/view', 'id'=>$post->id)); ?>
+							<ul>
+								<li><?php echo CHtml::link(Util::getFuzzyTime($post->create_time), array('/post/view', 'id'=>$post->id)); ?></li>
+							</ul>
 						</div>
 						<?php if(count($post->comments)): ?>
 						<div class="stream-comments">
@@ -33,7 +35,9 @@
 											</div>
 											<div class="stream-comment-entry-extra">
 												<div class="stream-comment-options">
-													<?php echo Util::getFuzzyTime($comment->create_time); ?>
+													<ul>
+														<li><?php echo Util::getFuzzyTime($comment->create_time); ?><li>
+													</ul>
 												</div>
 											</div>
 										</div>

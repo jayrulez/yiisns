@@ -22,7 +22,7 @@ class SiteController extends Controller
 	{
 		if(!Yii::app()->user->isGuest)
 		{
-			$this->redirect(array('/aspect'));
+			$this->redirect(array('/aspects'));
 			Yii::app()->end();
 		}
 		
@@ -33,7 +33,7 @@ class SiteController extends Controller
 	{
 		if(!Yii::app()->user->isGuest)
 		{
-			$this->redirect(array('/aspect'));
+			$this->redirect(array('/aspects'));
 			Yii::app()->end();
 		}
 		
@@ -67,7 +67,7 @@ class SiteController extends Controller
 	{
 		if(!Yii::app()->user->isGuest)
 		{
-			$this->redirect(array('/aspect'));
+			$this->redirect(array('/aspects'));
 			Yii::app()->end();
 		}
 		
