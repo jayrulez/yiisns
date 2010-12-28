@@ -6,7 +6,6 @@ class PostFormWidget extends CWidget
 	
 	public function init()
 	{
-		Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/postForm.css');
 	}
 	
 	public function run()

@@ -56,6 +56,16 @@ form fieldset input.submit, form fieldset button.submit {display: inline-block; 
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header {}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-header .title{}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form {background: #e9f2f9;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content {padding: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form {}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.content-field{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.content-field #post-target-aspects{}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.content-field textarea{width: 566px;height: 60px; border:2px solid #52A2E8; padding: 5px; margin: 0;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.submit-field-and-options{margin-top: 10px;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.submit-field-and-options .options{float: left;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.submit-field-and-options .submit-field{float: right;}
+.sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content #post-form #post-form-content form fieldset.submit-field-and-options .submit-field input.submit{}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container {background: #e9f2f9; padding: 10px;}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container .user-identity {}
 .sidebar-right #page-container #page #canvas-container #canvas #canvas-content #content-container  #content .action .action-content .user-identity-container .user-identity .user-image{border: 2px solid #fff;width:170px; height: 170px; float: left; margin-right: 10px;}
