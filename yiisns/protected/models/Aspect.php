@@ -74,7 +74,7 @@ class Aspect extends CActiveRecord
 	
 	public function getLink($htmlOptions = array())
 	{
-		return CHtml::link($this->name, array('/aspect/view', 'id'=>$this->id), $htmlOptions);
+		return CHtml::link($this->name, array('/aspects/view', 'id'=>$this->id), $htmlOptions);
 	}
 	
 	public function beforeSave()
