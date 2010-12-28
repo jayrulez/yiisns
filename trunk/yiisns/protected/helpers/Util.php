@@ -28,7 +28,7 @@ class Util
 		
 		if($elapsed < 60)
 		{
-			return Yii::t('application', '0#moments ago|1#{elapsed} second ago|n>1#{elapsed} seconds ago', array(
+			return Yii::t('application', 'n<1#moments ago|1#{elapsed} second ago|n>1#{elapsed} seconds ago', array(
 				$elapsed,
 				'{elapsed}'=>round(abs($elapsed)),
 			));
@@ -36,7 +36,7 @@ class Util
 			$elapsed = round($elapsed / 60);
 			if($elapsed < 60)
 			{
-				return Yii::t('application', '1#about a minute ago|n>1#{elapsed} minutes ago', array(
+				return Yii::t('application', 'n<1#less than a minute ago|1#about a minute ago|n>1#{elapsed} minutes ago', array(
 					$elapsed,
 					'{elapsed}'=>round(abs($elapsed)),
 				));

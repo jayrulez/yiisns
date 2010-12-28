@@ -8,14 +8,14 @@ class AspectController extends Controller
 			array(
 				'allow',
 				'actions'=>array(
-					'index','create','delete','view','manage',
+					'index','create','delete','view',
 				),
 				'users'=>array('@'),
 			),
 			array(
 				'deny',
 				'actions'=>array(
-					'index','create','delete','view','manage',
+					'index','create','delete','view',
 				),
 				'users'=>array('*'),
 			),
@@ -88,12 +88,8 @@ class AspectController extends Controller
 		));
 	}
 	
-	public function actionManage()
+	public function actionUpdate()
 	{
-		$user = Yii::app()->user->getModel();
-		
-		$this->render('manage', array(
-			'user'=>$user,
-		));
+		$this->render('update');
 	}
 }
