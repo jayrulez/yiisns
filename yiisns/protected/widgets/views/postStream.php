@@ -6,8 +6,6 @@
 			'post'=>$post,
 		)); ?>
 		<?php endforeach; ?>
-		<?php else: ?>
-			<?php echo Yii::t('application', 'No posts.'); ?>
 		<?php endif; ?>
 	</div>
 </div>

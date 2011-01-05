@@ -1,7 +1,7 @@
 		<div class="stream-item" id="post-<?php echo $post->id; ?>">
 			<div class="stream-item-content clearfix">
 				<div class="stream-user-icon">
-					<?php echo $post->user->getImageLink(User::PHOTO_SIZE_SMALL); ?>
+					<?php echo $post->user->getImageLink(); ?>
 				</div>
 				<div class="stream-entry">
 					<div class="stream-entry-data">
@@ -25,7 +25,7 @@
 								<div class="stream-comment">
 									<div class="stream-comment-content clearfix">
 										<div class="stream-comment-user-icon">
-											<?php echo $comment->user->getImageLink(User::PHOTO_SIZE_MINI); ?>
+											<?php echo $comment->user->getImageLink(); ?>
 										</div>
 										<div class="stream-comment-entry">
 											<div class="stream-comment-entry-data">
@@ -36,7 +36,7 @@
 											<div class="stream-comment-entry-extra">
 												<div class="stream-comment-options">
 													<ul>
-														<li><?php echo Util::getFuzzyTime($comment->create_time); ?><li>
+														<li><?php echo Util::getFuzzyTime($comment->create_time); ?></li>
 													</ul>
 												</div>
 											</div>

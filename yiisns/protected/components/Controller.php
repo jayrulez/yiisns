@@ -21,8 +21,21 @@ class Controller extends CController
 		parent::init();
 	}
 	
-	public function getCurrentUser()
+	public function setPageTitle($pageName)
 	{
-		return Yii::app()->user->getModel();
+		parent::setPageTitle(Yii::t('application', '{appName} {separator} {pageName}', array(
+			'{appName}'=>Yii::app()->name,
+			'{separator}'=>'|',
+			'{pageName}'=>$pageName,
+		)));
+	}
+	
+	public function getPageTitle()
+	{
+		if(parent::getPageTitle()!==null)
+		{
+			return parent::getPageTitle();
+		}
+		return $this->pageTitle = Yii::app()->name;
 	}
 }

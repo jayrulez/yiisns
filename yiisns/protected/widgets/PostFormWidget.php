@@ -1,7 +1,7 @@
 <?php
 
 class PostFormWidget extends CWidget
-{	
+{
 	public $aspectIds = array();
 	
 	public function init()
@@ -11,7 +11,8 @@ class PostFormWidget extends CWidget
 	public function run()
 	{
 		$this->render('postForm', array(
-			'model'=>new Post,
+			'post'=>new Post,
+			'aspectIds'=>$this->aspectIds,
 		));
 	}
 }

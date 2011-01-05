@@ -3,12 +3,14 @@
 		<fieldset class="stream-field">
 			<?php echo CHtml::activeHiddenField($model, 'post_id', array(
 				'value'=>$postId,
+				'id'=>'comment-for-post-'.$postId,
 			)); ?>
 		</fieldset>
 		<fieldset class="content-field">
 			<?php echo CHtml::activeTextArea($model, 'content', array(
 				'rows'=>1,
 				'cols'=>1,
+				'id'=>'comment-on-post-'.$postId,
 			)); ?>
 		</fieldset>
 		<fieldset class="submit-field clearfix">

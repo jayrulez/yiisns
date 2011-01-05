@@ -3,9 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo Yii::app()->charset; ?>" />
 <meta name="language" content="<?php echo Yii::app()->getLocale()->getId(); ?>" />
-<script type="text/javascript">
-        var baseUrl = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-</script>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(); ?>/css/common.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(); ?>/css/layout.css" />
 <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -13,21 +10,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(); ?>/css/ie.css" />
 <![endif]-->
 </head>
-<?php
-if(Layout::hasRegions('sidebar.left','sidebar.right'))
-{
-	$bodyClass = ' class="sidebars"';
-}else if(Layout::hasRegions('sidebar.left'))
-{
-	$bodyClass = ' class="sidebar-left"';
-}else if(Layout::hasRegions('sidebar.right'))
-{
-	$bodyClass = ' class="sidebar-right"';
-}else{
-	$bodyClass = '';
-}
-?>
-<body<?php echo $bodyClass; ?>>
+<body>
 	<div id="page-container">
 		<div id="page">
 			<div id="header-container">
@@ -41,15 +24,30 @@ if(Layout::hasRegions('sidebar.left','sidebar.right'))
 			<div id="canvas-container">
 				<!-- canvas -->
 				<div id="canvas">
-					<div id="canvas-content" class="clearfix">
+					<?php
+					if(Layout::hasRegions('sidebar.left','sidebar.right'))
+					{
+						$tagClass = ' class="sidebars clearfix"';
+					}else if(Layout::hasRegions('sidebar.left'))
+					{
+						$tagClass = ' class="sidebar-left clearfix"';
+					}else if(Layout::hasRegions('sidebar.right'))
+					{
+						$tagClass = ' class="sidebar-right clearfix"';
+					}else{
+						$tagClass = '';
+					}
+					?>
+					<div id="canvas-content"<?php echo $tagClass; ?>>
+					
 						<?php if(Layout::hasRegion('sidebar.left')): ?>
-							<!-- sidebar-left -->
-							<div id="sidebar-left" class="sidebar">
-								<div class="sidebar-content">
-									<?php Layout::renderRegion('sidebar.left'); ?>
-								</div>
+						<!-- sidebar-left -->
+						<div id="sidebar-left" class="sidebar">
+							<div class="sidebar-content">
+								<?php Layout::renderRegion('sidebar.left'); ?>
 							</div>
-							<!-- /sidebar-left -->
+						</div>
+						<!-- /sidebar-left -->
 						<?php endif; ?>
 								
 						<div id="content-container">
@@ -61,14 +59,15 @@ if(Layout::hasRegions('sidebar.left','sidebar.right'))
 						</div>
 							
 						<?php if(Layout::hasRegion('sidebar.right')): ?>
-							<!-- sidebar-right -->
-							<div id="sidebar-right" class="sidebar">
-								<div class="sidebar-content">
-									<?php Layout::renderRegion('sidebar.right'); ?>
-								</div>
+						<!-- sidebar-right -->
+						<div id="sidebar-right" class="sidebar">
+							<div class="sidebar-content">
+								<?php Layout::renderRegion('sidebar.right'); ?>
 							</div>
-							<!-- /sidebar-right -->
+						</div>
+						<!-- /sidebar-right -->
 						<?php endif; ?>
+						
 					</div>
 				</div>
 				<!-- /canvas -->

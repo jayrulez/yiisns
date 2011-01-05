@@ -1,6 +1,9 @@
+<?php
+$this->pageTitle=Yii::t('application', 'Registration');
+?>
 <div class="action" id="site-register">
 	<div class="action-content">
-		<div class="user-registration-form">
+		<div class="form-container">
 			<?php echo CHtml::beginForm(Yii::app()->getUser()->registerUrl,'post',array('class'=>'wf')); ?>
 				<div class="form-header">
 					<div class="title">
