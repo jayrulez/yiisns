@@ -10,7 +10,7 @@ class PostCommentFormWidget extends CWidget
 	
 	public function run()
 	{
-		if(($user=Yii::app()->user->getModel()) === null || !$user->canCommentOnPost($this->postId))
+		if(($user=Yii::app()->user->getModel()) === null || !$user->canSeePost($this->postId))
 		{
 			return;
 		}

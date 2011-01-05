@@ -37,8 +37,8 @@ h6{font-size:105%;}
 /*forms*/
 form {}
 form .form-header {/*border-bottom: 1px solid #D9D9D9;*/border-bottom: 1px solid #53A3E8; margin-bottom: 10px;}
-form .form-header .title {font-size: 16px;font-weight: normal;line-height: 14px;margin: 5px 0;padding: 0px 0px 8px 0px;}
-form .form-header .sub-title {margin-bottom: 10px;}
+form .form-header .title {font-size: 15px;font-weight: normal;margin: 5px 0;}
+form .form-header .sub-title {margin-bottom: 5px;}
 form .errorSummary{border: 2px solid #CB3300;padding: 7px 7px 9px 7px;margin: 10px 0 10px 0;background: #FEE;}
 form .errorSummary p {margin: 0;padding: 5px;}
 form .errorSummary ul {margin: 0;padding: 0 0 0 20px;}

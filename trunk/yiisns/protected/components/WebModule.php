@@ -32,7 +32,7 @@ class WebModule extends CWebModule
 		
 		if(is_dir($assetsPath))
 		{
-			$this->_assetsUrl = assetManager()->publish($assetsPath);
+			$this->_assetsUrl = Yii::app()->getAssetManager()->publish($assetsPath);
 		}
 	}
 	

@@ -2,24 +2,9 @@
 
 class Util
 {
-	public static function areContacts($userId, $contactId)
+	public static function shortenString($string, $length, $suspension = '...')
 	{
-		$contact = Contact::model()->findByAttributes(array(
-			'user_id'=>$userId,
-			'contact_id'=>$contactId,
-		));
-		
-		return ($contact !== null) && $contact->getIsInversed();
-	}
-	
-	public static function inAspect($userId, $aspectId)
-	{
-		$contactAspect = ContactAspect::model()->findByAttributes(array(
-			'contact_id'=>$user_id,
-			'aspect_id'=>$aspectId,
-		));
-		
-		return $contactAspect !== null;
+		return strlen($string) > $length ? substr($string, 0, $length).$suspension : $string;
 	}
 	
 	public static function getFuzzyTime($time)
@@ -62,16 +47,5 @@ class Util
 				}
 			}
 		}
-	}
-	
-	public static function formatDateTime($timestamp)
-	{		
-		$date = date('Y', time()) > date('Y', $timestamp) ? date('F j, Y', $timestamp) : date('F j', $timestamp);
-		$time = date('g:i a', $timestamp);
-		
-		return Yii::t('application', '{date} at {time}', array(
-			'{date}'=>$date,
-			'{time}'=>$time,
-		));
 	}
 }

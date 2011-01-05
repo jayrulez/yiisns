@@ -2,97 +2,92 @@
 
 class SiteController extends Controller
 {
-	public function accessRules()
+	public function actionIndex()
 	{
-		return array();
+		if(!Yii::app()->getUser()->getIsGuest())
+		{
+			$this->redirect(array('/aspect/index'));
+		}else{
+			$this->render('index');
+		}
 	}
 
 	public function actionError()
 	{
-	    if($error=Yii::app()->errorHandler->error)
+	    if($error=Yii::app()->getErrorHandler()->getError())
 	    {
-	    	if(Yii::app()->request->isAjaxRequest)
+	    	if(Yii::app()->getRequest()->isAjaxRequest)
+			{
 	    		echo $error['message'];
-	    	else
+	    	}else{
 	        	$this->render('error', $error);
+			}
 	    }
-	}
-	
-	public function actionIndex()
-	{
-		if(!Yii::app()->user->isGuest)
-		{
-			$this->redirect(array('/aspects'));
-			Yii::app()->end();
-		}
-		
-		$this->render('index');
 	}
 	
 	public function actionRegister()
 	{
-		if(!Yii::app()->user->isGuest)
+		if(!Yii::app()->getUser()->getIsGuest())
 		{
-			$this->redirect(array('/aspects'));
-			Yii::app()->end();
-		}
-		
-		$registrationForm = new RegistrationForm;
-		
-		if(($post = Yii::app()->request->getPost('RegistrationForm')) !== null)
-		{
-			$registrationForm->attributes = $post;
+			$this->redirect(array('/aspect/index'));
+		}else{
+			$registrationForm = new RegistrationForm;
 			
-			if($registrationForm->process())
+			if(($post = Yii::app()->getRequest()->getPost('RegistrationForm')) !== null)
 			{
-				$loginForm = new LoginForm;
-				$loginForm->username = $registrationForm->username;
-				$loginForm->password = $registrationForm->password;
+				$registrationForm->attributes = $post;
 				
-				if($loginForm->process())
+				if($registrationForm->process())
 				{
-					$this->redirect(Yii::app()->homeUrl);
-				}else{
-					$this->redirect(Yii::app()->user->loginUrl);
+					$loginForm = new LoginForm;
+					
+					$loginForm->username = $registrationForm->username;
+					$loginForm->password = $registrationForm->password;
+					
+					if($loginForm->process())
+					{
+						$this->redirect(Yii::app()->homeUrl);
+					}else{
+						$this->redirect(Yii::app()->getUser()->loginUrl);
+					}
 				}
 			}
+			
+			$this->render('register', array(
+				'form'=>$registrationForm,
+			));
 		}
-		
-		$this->render('register', array(
-			'form'=>$registrationForm,
-		));
 	}
 	
 	public function actionLogin()
 	{
-		if(!Yii::app()->user->isGuest)
+		if(!Yii::app()->getUser()->getIsGuest())
 		{
-			$this->redirect(array('/aspects'));
-			Yii::app()->end();
-		}
-		
-		$loginForm = new LoginForm;
-		
-		if(($post = Yii::app()->request->getPost('LoginForm')) !== null)
-		{
-			$loginForm->attributes = $post;
+			$this->redirect(array('/aspect/index'));
+		}else{
+			$loginForm = new LoginForm;
 			
-			if($loginForm->process())
+			if(($post = Yii::app()->getRequest()->getPost('LoginForm')) !== null)
 			{
-				$this->redirect(Yii::app()->homeUrl);
+				$loginForm->attributes = $post;
+				
+				if($loginForm->process())
+				{
+					$this->redirect(Yii::app()->homeUrl);
+				}
 			}
+			
+			$this->render('login', array(
+				'form'=>$loginForm,
+			));
 		}
-		
-		$this->render('login', array(
-			'form'=>$loginForm,
-		));
 	}
 	
 	public function actionLogout()
 	{
-		if(!Yii::app()->user->isGuest)
+		if(!Yii::app()->getUser()->getIsGuest())
 		{
-			Yii::app()->user->logout();
+			Yii::app()->getUser()->logout();
 		}
 		
 		$this->redirect(Yii::app()->homeUrl);

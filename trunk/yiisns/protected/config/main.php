@@ -10,7 +10,7 @@ defined('ENV_DEV') or define('ENV_DEV', defined('YII_DEBUG') && YII_DEBUG);
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'YiiSNS',
+	'name'=>'My Web Application',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

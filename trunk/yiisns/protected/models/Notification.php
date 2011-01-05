@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * This is the model class for table "notification".
+ *
+ * The followings are the available columns in table 'notification':
+ * @property string $id
+ * @property string $user_id
+ * @property integer $type
+ * @property string $content
+ * @property integer $status
+ * @property string $create_time
+ * @property string $update_time
+ *
+ * The followings are the available model relations:
+ * @property User $user
+ */
 class Notification extends CActiveRecord
 {
 	/**
@@ -62,5 +77,45 @@ class Notification extends CActiveRecord
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 		);
+	}
+
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 */
+	public function search()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('type',$this->type);
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('update_time',$this->update_time,true);
+
+		return new CActiveDataProvider(get_class($this), array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	public function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->getIsNewRecord())
+			{
+				$this->create_time = time();
+			}else{
+				$this->update_time = time();
+			}
+			return true;
+		}
+		
+		return false;
 	}
 }

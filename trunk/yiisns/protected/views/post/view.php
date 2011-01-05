@@ -1,4 +1,7 @@
-<div class="action" id="post_view">
+<?php
+$this->pageTitle=$post->getShortenedContent();
+?>
+<div class="action" id="post-view">
 	<div class="action-content">
 		<div class="stream" id="post-stream">
 			<div class="stream-content">
@@ -11,6 +14,7 @@
 		</div>
 	</div>
 </div>
+
 <?php Layout::addBlock('sidebar.right', array(
 	'id'=>'right_sidebar',
 	'content'=>'&nbsp;',

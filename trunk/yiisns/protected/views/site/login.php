@@ -1,6 +1,9 @@
+<?php
+$this->pageTitle=Yii::t('application', 'Login');
+?>
 <div class="action" id="site-login">
 	<div class="action-content">
-		<div class="user-login-form">
+		<div class="form-container">
 			<?php echo CHtml::beginForm(Yii::app()->getUser()->loginUrl,'post',array('class'=>'wf')); ?>
 				<div class="form-header">
 					<div class="title">

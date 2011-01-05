@@ -1,24 +1,28 @@
 <?php
 
+/**
+ * This is the model class for table "user".
+ *
+ * The followings are the available columns in table 'user':
+ * @property string $id
+ * @property string $username
+ * @property string $password
+ * @property string $create_ip
+ * @property string $create_time
+ * @property string $update_time
+ *
+ * The followings are the available model relations:
+ * @property Aspect[] $aspects
+ * @property Comment[] $comments
+ * @property Contact[] $contacts
+ * @property Notification[] $notifications
+ * @property Post[] $posts
+ * @property Profile $profile
+ * @property Request[] $requestsReceived
+ * @property Request[] $requestsSent
+ */
 class User extends CActiveRecord
 {
-	const PHOTO_SIZE_MINI    = 1;
-	const PHOTO_SIZE_SMALL   = 2;
-	const PHOTO_SIZE_MEDIUM  = 3;
-	const PHOTO_SIZE_LARGE   = 4;
-	const PHOTO_SIZE_DEFAULT = 5;
-	
-	public function getPhotoSizes()
-	{
-		return array(
-			User::PHOTO_SIZE_MINI => array('width'=>30, 'height'=>30),
-			User::PHOTO_SIZE_SMALL => array('width'=>48, 'height'=>48),
-			User::PHOTO_SIZE_MEDIUM => array('width'=>170, 'height'=>170),
-			User::PHOTO_SIZE_LARGE => array('width'=>48, 'height'=>48),
-			User::PHOTO_SIZE_DEFAULT => array('width'=>48, 'height'=>48),
-		);
-	}
-	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return User the static model class
@@ -41,9 +45,14 @@ class User extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('username, password', 'required'),
-			array('username, password', 'length', 'max'=>32),
+			array('username, password', 'length', 'min'=>3, 'max'=>32),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
+			array('id, username, password, create_ip, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,8 +70,8 @@ class User extends CActiveRecord
 			'notifications' => array(self::HAS_MANY, 'Notification', 'user_id'),
 			'posts' => array(self::HAS_MANY, 'Post', 'user_id'),
 			'profile' => array(self::HAS_ONE, 'Profile', 'user_id'),
-			'requests' => array(self::HAS_MANY, 'Request', 'contact_id'),
-			'sentRequests' => array(self::HAS_MANY, 'Request', 'user_id'),
+			'requestsReceived' => array(self::HAS_MANY, 'Request', 'contact_id'),
+			'requestsSent' => array(self::HAS_MANY, 'Request', 'user_id'),
 		);
 	}
 
@@ -81,15 +90,32 @@ class User extends CActiveRecord
 		);
 	}
 
-	public static function encryptPassword($password, $length = 32)
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 */
+	public function search()
 	{
-		$password = md5($password);
-		
-		if(strlen($password) > $length)
-		{
-			$password = substr($password, 0, 32);
-		}
-		return $password;
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('create_ip',$this->create_ip,true);
+		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('update_time',$this->update_time,true);
+
+		return new CActiveDataProvider(get_class($this), array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	public static function encryptPassword($password)
+	{
+		return md5($password);
 	}
 	
 	public function beforeSave()
@@ -103,10 +129,6 @@ class User extends CActiveRecord
 				$this->create_ip = Yii::app()->request->getUserHostAddress();
 				$this->create_time = time();
 			}else{
-				/*if($this->scenario === 'updatePassword')
-				{
-					$this->password = self::encryptPassword($this->password);
-				}*/
 				$this->update_time = time();
 			}
 			return true;
@@ -114,96 +136,67 @@ class User extends CActiveRecord
 		return false;
 	}
 	
-	
-	public function getImageSrc($size=User::PHOTO_SIZE_SMALL)
+	public function beforeFind()
 	{
-		$photo = '';
-		switch($size)
+		if(parent::beforeFind())
 		{
-			case User::PHOTO_SIZE_MINI:
-				$photo = 'user_icon_mini.png';
-			break;
+			$this->username = strtolower($this->username);
 			
-			case User::PHOTO_SIZE_SMALL:
-				$photo = 'user_icon_small.png';
-			break;
-			
-			case User::PHOTO_SIZE_MEDIUM:
-				$photo = 'user_icon_medium.png';
-			break;
-			
-			case User::PHOTO_SIZE_LARGE:
-				$photo = 'user_icon_large.png';
-			break;
-			
-			case User::PHOTO_SIZE_DEFAULT:
-			default:
-				$photo = 'user_icon_default.png';
-			break;
+			return true;
 		}
-		return Yii::app()->baseUrl.'/images/'.$photo;
-	}
-	
-	public function getImage($size=User::PHOTO_SIZE_SMALL, $htmlOptions = array())
-	{
-		return CHtml::image($this->getImageSrc($size), $this->getDisplayName(), $htmlOptions);
-	}
-	
-	public function getImageLink($size=User::PHOTO_SIZE_SMALL, $linkHtmlOptions=array(), $imageHtmlOptions = array())
-	{
-		$linkHtmlOptions['title'] = $this->getDisplayName();
-		return CHtml::link($this->getImage($size, $imageHtmlOptions), $this->getUrl(), $linkHtmlOptions);
-	}
-	
-	public function getUrl()
-	{
-		return Yii::app()->createUrl('/profile/view', array('id'=>$this->id));
+		return false;
 	}
 	
 	public function getDisplayName()
 	{
-		return $this->profile !== null ? $this->profile->getFullName() : $this->username;
+		return $this->username;
 	}
 	
-	public function getLink($htmlOptions = array())
+	public function getUrl()
 	{
-		return CHtml::link($this->getDisplayName(), $this->getUrl(), $htmlOptions);
-	}
-	
-	public function getRequest($userId)
-	{
-		$request = Request::model()->findByAttributes(array(
-			'user_id'=>$this->id,
-			'contact_id'=>$userId,
+		return Yii::app()->createUrl('/user/view', array(
+			'id'=>$this->id,
 		));
-		
-		return $request;
 	}
 	
-	public function getRelationshipLink($viewerId)
+	public function getLink($displayName = null, $htmlOptions = array())
 	{
-		$viewer = User::model()->findByPk($viewerId);
+		return CHtml::link(($displayName !== null) ? $displayName : $this->getDisplayName(), $this->getUrl(), $htmlOptions);
+	}
+	
+	public function getAspectIds()
+	{
+		$aspectIds = array();
 		
-		if($viewer === null || $this->id === $viewer->id)
+		foreach($this->aspects as $aspect)
 		{
-			return null;
+			$aspectIds[] = $aspect->id;
 		}
 		
-		if(Util::areContacts($this->id, $viewer->id))
-		{
-			return CHtml::link(Yii::t('application', 'Remove contact'), array('/contacts/delete', 'id'=>$this->id));
-		}else if(($request=$this->getRequest($viewer->id))!==null)
-		{
-			return CHtml::link(Yii::t('application', 'Respond to contact request'), array('/contacts/requests'));
-		}else if($viewer->getRequest($this->id) !== null)
-		{
-			return CHtml::link(Yii::t('application', 'Contact request pending'), array('/contacts/sentRequests'));
-		}else{
-			return CHtml::link(Yii::t('application', 'Add contact'), array('/contacts/sendRequest', 'id'=>$this->id));
-		}
+		return $aspectIds;
+	}
+	
+	public function getImageSrc($imageSize=1)
+	{
+		return Yii::app()->getBaseUrl().'/images/user_icon_mini.png';
+	}
+	
+	public function getImage($imageSize=1, $htmlOptions = array())
+	{
+		return CHtml::image($this->getImageSrc($imageSize), $this->getDisplayName(), $htmlOptions);
+	}
+	
+	public function getImageLink($imageSize=1, $linkHtmlOptions=array(), $imageHtmlOptions=array())
+	{
+		return $this->getLink($this->getImage($imageSize, $imageHtmlOptions), $linkHtmlOptions);
 	}
 	
 	public function canCommentOnPost($postId)
+	{
+		return true;
+	}
+	
+	public function canSeePost($postId)
 	{
 		$post = Post::model()->findBySql("select * 
 			from post 
@@ -222,5 +215,64 @@ class User extends CActiveRecord
 		));
 		
 		return $post !== null;
+	}
+	
+	public function findRequest($contactId)
+	{
+		$request = Request::model()->findByAttributes(array(
+			'user_id'=>$this->id,
+			'contact_id'=>$contactId,
+		));
+		
+		return $request;
+	}
+	
+	public static function areContacts($userId, $contactId)
+	{
+		$contact = Contact::model()->findBySql("SELECT l.* 
+			FROM contact AS l INNER JOIN contact as r ON (l.user_id=r.contact_id AND l.contact_id=r.user_id) 
+			WHERE l.user_id=:user_id AND l.contact_id=:contact_id
+		", array(
+			':user_id'=>$userId,
+			':contact_id'=>$contactId,
+		));
+		return $contact !== null;
+	}
+	
+	public function getRelationshipLink($viewerId)
+	{
+		$viewer = User::model()->findByPk($viewerId);
+		
+		if($viewer === null || $this->id === $viewer->id)
+		{
+			return null;
+		}else{
+			if(self::areContacts($this->id, $viewerId))
+			{
+				return CHtml::link(Yii::t('application', 'Remove contact'), array(
+					'/contact/delete',
+					'id'=>$this->id,
+				));
+			}else{
+				if($this->findRequest($viewer->id)!==null)
+				{
+					return CHtml::link(Yii::t('application', 'Respond to contact request'), array(
+						'/contact/requests',
+						'type'=>Request::TYPE_RECEIVED,
+					));
+				}else if($viewer->findRequest($this->id) !== null)
+				{
+					return CHtml::link(Yii::t('application', 'Contact request pending'), array(
+						'/contact/requests',
+						'type'=>Request::TYPE_SENT,
+					));
+				}else{
+					return CHtml::link(Yii::t('application', 'Add as contact'), array(
+						'/contact/add',
+						'id'=>$this->id,
+					));
+				}
+			}
+		}
 	}
 }

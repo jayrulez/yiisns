@@ -1,7 +1,7 @@
 <?php
 
 class PostController extends Controller
-{	
+{
 	public $defaultAction = 'view';
 	
 	public function accessRules()
@@ -25,68 +25,41 @@ class PostController extends Controller
 	}
 	
 	public function actionCreate()
-	{		
-		$errors = array('post'=>array(),'aspects'=>array(),'post_aspect'=>array());
+	{
+		$post = new Post;
 		
-		if(($_post=Yii::app()->request->getPost('Post')) !== null)
+		if(($_post=Yii::app()->getRequest()->getPost('Post')) !== null)
 		{
-			$post = new Post;
-			
 			$post->attributes = $_post;
+			$post->user_id = Yii::app()->getUser()->getModel()->id;
 			
-			$post->user_id = Yii::app()->user->getId();
-			
-			if($post->save())
+			$connection  = $post->dbConnection;
+			$transaction = $connection->beginTransaction();
+			try
 			{
-				if(($aspects = Yii::app()->request->getPost('aspects')) !== null && (is_array($aspects) || $aspects == Post::ALL_ASPECTS))
+				$post->save();
+				
+				if(($aspectIds = Yii::app()->getRequest()->getPost('aspectsIds')) !== null)
 				{
-					if($aspects === Post::ALL_ASPECTS)
-					{
-						$user = Yii::app()->user->getModel();
-						
-						$aspects = array();
-						
-						foreach($user->aspects as $aspect)
-						{
-							$aspects[] = $aspect->id;
-						}
-					}
-					foreach($aspects as $aspectId)
-					{
-						$aspect = Aspect::model()->findByPk($aspectId);
-						
-						if($aspect === null || $aspect->user->id !== Yii::app()->user->getId())
-						{
-							$errors['aspects'][] = Yii::t('application', 'You do not have an aspect named {aspectName}.', array(
-								'{aspectName}'=>$aspect->name
-							));
-						}else{
-							$postAspect = new PostAspect;
-							$postAspect->post_id = $post->id;
-							$postAspect->aspect_id = $aspect->id;
-							if(!$postAspect->save())
-							{
-								$errors['post_aspect'][] = $postAspect->getErrors();
-							}
-						}
-					}
+					$post->addToAspects($aspectIds, $connection);
 				}
-			}else{
-				$errors['post'] = $post->getErrors();
+				
+				$transaction->commit();
+			}catch(Exception $e)
+			{
+				$transaction->rollBack();
+				throw new CException($e->getMessage());
 			}
+			
+			$this->redirect($post->getUrl());
 		}
-		// do something with errors so users can see, maybe view flash?
-		$this->redirect(Yii::app()->user->returnUrl);
+		
+		$this->redirect(Yii::app()->getUser()->getReturnUrl());
 	}
 	
 	public function actionView()
 	{
-		$post = Post::model()->findByPk(Yii::app()->request->getQuery('id'));
-		
-		if($post === null || ($user = Yii::app()->user->getModel()) === null || !$user->canCommentOnPost($post->id))
-		{
-			throw new CHttpException(Yii::t('application', 'The requested page does not exist.'));
-		}
+		$post = $this->loadPost(Yii::app()->getRequest()->getParam('id'));
 		
 		$this->render('view', array(
 			'post'=>$post,
@@ -95,15 +68,27 @@ class PostController extends Controller
 	
 	public function actionDelete()
 	{
-		$post = Post::model()->findByPk(Yii::app()->request->getQuery('id'));
+		$post = $this->loadPost(Yii::app()->getRequest()->getParam('id'));
 		
-		if($post->user_id !== Yii::app()->user->getId())
+		if($post->user_id !== Yii::app()->getUser()->getModel()->id)
 		{
-			throw new CHttpException(403, Yii::t('application', 'You do not have permission to delete this post.'));
+			throw new CHttpException(401, Yii::t('application','You do not have permission to delete this post.'));
+		}else{
+			$post->delete();
+			
+			$this->redirect(array('/aspect/index'));
 		}
-		
-		$post->delete();
-		
-		$this->redirect(Yii::app()->user->returnUrl);
+	}
+	
+	public function loadPost($postId)
+	{
+		$post = Post::model()->findByPk($postId);
+			
+		if($post === null)
+		{
+			throw new CHttpException(404,Yii::t('application','The requested page does not exist.'));
+		}else{
+			return $post;
+		}
 	}
 }
