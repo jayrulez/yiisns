@@ -1,73 +1,34 @@
 <?php
 
-/**
- * This is the model class for table "user".
- *
- * The followings are the available columns in table 'user':
- * @property string $id
- * @property string $username
- * @property string $password
- * @property string $create_ip
- * @property string $create_time
- * @property string $update_time
- *
- * The followings are the available model relations:
- * @property Aspect[] $aspects
- * @property Comment[] $comments
- * @property Contact[] $contacts
- * @property Notification[] $notifications
- * @property Post[] $posts
- * @property Profile $profile
- * @property Request[] $requestsReceived
- * @property Request[] $requestsSent
- */
 class User extends CActiveRecord
 {
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @return User the static model class
-	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 
-	/**
-	 * @return string the associated database table name
-	 */
 	public function tableName()
 	{
 		return 'user';
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('username, password', 'required'),
 			array('username, password', 'length', 'min'=>3, 'max'=>32),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, username, password, create_ip, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
-	/**
-	 * @return array relational rules.
-	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 			'aspects' => array(self::HAS_MANY, 'Aspect', 'user_id'),
 			'comments' => array(self::HAS_MANY, 'Comment', 'user_id'),
 			'contacts' => array(self::HAS_MANY, 'Contact', 'user_id'),
 			'notifications' => array(self::HAS_MANY, 'Notification', 'user_id'),
+			'photos' => array(self::HAS_MANY, 'Photo', 'user_id'),
+			'photoAlbums' => array(self::HAS_MANY, 'PhotoAlbum', 'user_id'),
 			'posts' => array(self::HAS_MANY, 'Post', 'user_id'),
 			'profile' => array(self::HAS_ONE, 'Profile', 'user_id'),
 			'requestsReceived' => array(self::HAS_MANY, 'Request', 'contact_id'),
@@ -75,9 +36,6 @@ class User extends CActiveRecord
 		);
 	}
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
 	public function attributeLabels()
 	{
 		return array(
@@ -88,29 +46,6 @@ class User extends CActiveRecord
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 		);
-	}
-
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('create_ip',$this->create_ip,true);
-		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('update_time',$this->update_time,true);
-
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria'=>$criteria,
-		));
 	}
 	
 	public static function encryptPassword($password)
@@ -136,6 +71,42 @@ class User extends CActiveRecord
 		return false;
 	}
 	
+	public function afterSave()
+	{
+		if($this->getIsNewRecord())
+		{
+			$profile = new Profile;
+			$profile->user_id = $this->id;
+			$profile->save(false);
+			$this->addProfilePhotoAlbum();
+		}
+	}
+	
+	public function addPhotoAlbum($type=PhotoAlbum::TYPE_USER, $name, $caption=null, $validate = false)
+	{
+		$photoAlbum = new PhotoAlbum;
+		$photoAlbum->user_id = $this->id;
+		$photoAlbum->type = $type;
+		$photoAlbum->name = $name;
+		$photoAlbum->caption = $caption;
+		return $photoAlbum->save($validate);
+	}
+	
+	public function addProfilePhotoAlbum($validate = false)
+	{
+		return $this->addPhotoAlbum(PhotoAlbum::TYPE_PROFILE, Yii::t('application','Profile Pictures'));
+	}
+	
+	public function getProfilePhotoAlbum()
+	{
+		$profilePhotoAlbum = PhotoAlbum::model()->findByAttributes(array(
+			'user_id'=>$this->id,
+			'type'=>PhotoAlbum::TYPE_PROFILE,
+		));
+		
+		return $profilePhotoAlbum;
+	}
+	
 	public function beforeFind()
 	{
 		if(parent::beforeFind())
@@ -154,7 +125,7 @@ class User extends CActiveRecord
 	
 	public function getUrl()
 	{
-		return Yii::app()->createUrl('/user/view', array(
+		return Yii::app()->createUrl('/profile/view', array(
 			'id'=>$this->id,
 		));
 	}
@@ -176,17 +147,49 @@ class User extends CActiveRecord
 		return $aspectIds;
 	}
 	
-	public function getImageSrc($imageSize=1)
+	public function getDefaultImgSrc($imageSize)
 	{
-		return Yii::app()->getBaseUrl().'/images/user_icon_mini.png';
+		switch($imageSize)
+		{
+			case Photo::SIZE_MICRO:
+				$photoName = 'user_icon_micro';
+			break;
+			case Photo::SIZE_MINI:
+				$photoName = 'user_icon_mini';
+			break;
+			case Photo::SIZE_SMALL:
+				$photoName = 'user_icon_small';
+			break;
+			case Photo::SIZE_MEDIUM:
+				$photoName = 'user_icon_medium';
+			break;
+			case Photo::SIZE_LARGE:
+			case Photo::SIZE_ORIGINAL:
+			default:
+				$photoName = 'user_icon_large';
+			break;
+		}
+		return Yii::app()->getBaseUrl().'/images/'.$photoName.'.png';
 	}
 	
-	public function getImage($imageSize=1, $htmlOptions = array())
+	public function getImageSrc($imageSize=Photo::SIZE_MEDIUM)
+	{
+		if(($profile = $this->profile) !== null)
+		{
+			if(($photo = Photo::model()->findByPk($profile->photo_id))!== null)
+			{
+				return ($src = $photo->getSrcAsSize($imageSize)) !== null ? $src : self::getDefaultImgSrc($imageSize);
+			}
+		}
+		return self::getDefaultImgSrc($imageSize);
+	}
+	
+	public function getImage($imageSize=Photo::SIZE_MEDIUM, $htmlOptions = array())
 	{
 		return CHtml::image($this->getImageSrc($imageSize), $this->getDisplayName(), $htmlOptions);
 	}
 	
-	public function getImageLink($imageSize=1, $linkHtmlOptions=array(), $imageHtmlOptions=array())
+	public function getImageLink($imageSize=Photo::SIZE_MEDIUM, $linkHtmlOptions=array(), $imageHtmlOptions=array())
 	{
 		return $this->getLink($this->getImage($imageSize, $imageHtmlOptions), $linkHtmlOptions);
 	}
@@ -274,5 +277,15 @@ class User extends CActiveRecord
 				}
 			}
 		}
+	}
+	
+	public function getPath()
+	{
+		$path = UPLOAD_PATH.'/user/'.$this->id;
+		if(!is_dir($path))
+		{
+			@mkdir($path, 777, true);
+		}
+		return $path;
 	}
 }

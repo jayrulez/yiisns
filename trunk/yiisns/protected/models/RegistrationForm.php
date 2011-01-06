@@ -30,7 +30,10 @@ class RegistrationForm extends CFormModel
 				{
 					foreach($errors as $field => $message)
 					{
-						$this->addError($field, $message);
+						if(in_array($field, $this->attributes))
+						{
+							$this->addError($field, $message);
+						}
 					}
 				}
 				return false;

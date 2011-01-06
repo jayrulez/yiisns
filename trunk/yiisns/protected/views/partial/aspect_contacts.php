@@ -9,6 +9,6 @@
 	endif;
 	?>
 	<div class="aspect-contact-icon<?php echo $appendClass; ?>">
-		<?php echo $contact->contact->getImageLink(); ?>
+		<?php echo $contact->contact->getImageLink(Photo::SIZE_MINI); ?>
 	</div>
 	<?php endforeach; ?>

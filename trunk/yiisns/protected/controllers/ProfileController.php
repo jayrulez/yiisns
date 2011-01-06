@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
 	public $defaultAction = 'view';
 	

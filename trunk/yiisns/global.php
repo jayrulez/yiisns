@@ -1,5 +1,12 @@
 <?php
 
+define('UPLOAD_PATH', 'upload');
+
+if(!is_dir(UPLOAD_PATH))
+{
+	@mkdir(UPLOAD_PATH,777);
+}
+
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../lib/yii/framework/yii.php';
 
@@ -9,3 +16,5 @@ defined('YII_DEBUG') or define('YII_DEBUG',true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 require_once($yii);
+
+Yii::setPathOfAlias('lib', dirname(__FILE__).'/../lib');

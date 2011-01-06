@@ -1,7 +1,7 @@
 		<div class="stream-item" id="post-<?php echo $post->id; ?>">
 			<div class="stream-item-content clearfix">
 				<div class="stream-user-icon">
-					<?php echo $post->user->getImageLink(); ?>
+					<?php echo $post->user->getImageLink(Photo::SIZE_SMALL); ?>
 				</div>
 				<div class="stream-entry">
 					<div class="stream-entry-data">
@@ -25,7 +25,7 @@
 								<div class="stream-comment">
 									<div class="stream-comment-content clearfix">
 										<div class="stream-comment-user-icon">
-											<?php echo $comment->user->getImageLink(); ?>
+											<?php echo $comment->user->getImageLink(Photo::SIZE_MINI); ?>
 										</div>
 										<div class="stream-comment-entry">
 											<div class="stream-comment-entry-data">

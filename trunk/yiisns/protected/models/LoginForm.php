@@ -49,7 +49,7 @@ class LoginForm extends CFormModel
 			$period = 3600*24*7; // 7 days
 			$duration = $this->autologin ? $period : 0;
 			
-			Yii::app()->user->login($userIdentity, $duration);
+			Yii::app()->getUser()->login($userIdentity, $duration);
 			return true;
 		}
 		return false;
