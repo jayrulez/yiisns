@@ -1,9 +1,10 @@
 body {background:#fff;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;color:#333;text-align: left; direction: ltr;}
 a{color:#0f7cc5;text-decoration:none;}
 a:hover{color:#e57200;text-decoration:none;}
+.separator {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
 #page-container {}
 #page-container #page {text-align: left;}
-#page-container #page #header-container {background-color: #2969B3;}
+#page-container #page #header-container {background-color: #2969B3; border-bottom: 1px solid #0045de;}
 #page-container #page #header-container #header {width: 960px; margin: 0 auto;}
 #page-container #page #header-container #header a {color:#D2E4F8;}
 #page-container #page #header-container #header a:active {color: #eee;}
@@ -37,7 +38,11 @@ a:hover{color:#e57200;text-decoration:none;}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-header.clearfix .misc {float: right;}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action .action-content {}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-login .action-content .form-container,
-#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-register .action-content .form-container  {width:430px; margin: 0 auto;}					
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-register .action-content .form-container  {width:430px; margin: 20px auto; background: #f8f8f8; padding: 10px;}	
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-login .action-content .form-container form .form-header,
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-register .action-content .form-container form .form-header {padding-left: 34px; line-height: 24px;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-login .action-content .form-container form .form-header {background: url('../images/login_icon.png') top left no-repeat;} 
+#page-container #page #canvas-container #canvas #canvas-content #content-container #content .action#site-register .action-content .form-container  form .form-header {background: url('../images/registration_icon.png') top left no-repeat;}				
 #page-container #page #canvas-container #canvas #canvas-content.sidebar-left #content-container #sidebar-left {float: left;}
 #page-container #page #canvas-container #canvas #canvas-content.sidebar-left #content-container #sidebar-left  #sidebar-left  .sidebar-content {}
 #page-container #page #canvas-container #canvas #canvas-content.sidebar-left #content-container #sidebar-left  #sidebar-left  .sidebar-content .sidebar-item {}
@@ -149,7 +154,6 @@ a:hover{color:#e57200;text-decoration:none;}
 #page-container #page #canvas-container #canvas #canvas-content.sidebars #sidebar-right .sidebar-content .sidebar-item .sidebar-item-header.clearfix .misc{float: right; display: inline-block;}
 #page-container #page #canvas-container #canvas #canvas-content.sidebars #sidebar-right .sidebar-content .sidebar-item .sidebar-item-content{}
 #page-container #page #canvas-container #canvas #canvas-content.sidebars #sidebar-right .sidebar-content .separator {}
-#page-container #page #canvas-container #canvas #canvas-content .sidebar-content .separator {height:0;border-top:1px solid #dadada;border-bottom:1px solid #fafafa;padding:0;margin: 10px 0;display:block;line-height:0}
 #page-container #page #footer-container {}
 #page-container #page #footer-container #footer {width: 960px; margin: 0 auto;}
 #page-container #page #footer-container #footer #footer-content {}
