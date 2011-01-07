@@ -120,7 +120,7 @@ class User extends CActiveRecord
 	
 	public function getDisplayName()
 	{
-		return $this->username;
+		return $this->profile !== null ? $this->profile->getFullName() : $this->username;
 	}
 	
 	public function getUrl()

@@ -51,6 +51,7 @@
 						<?php endif; ?>
 								
 						<div id="content-container">
+							<?php $this->widget('FlashMessengerWidget', array('categories'=>array('success','error','warning'))); ?>
 							<!-- content -->
 							<div id="content">
 								<?php echo $content; ?>

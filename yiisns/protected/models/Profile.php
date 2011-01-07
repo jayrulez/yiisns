@@ -18,10 +18,18 @@ class Profile extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('first_name, last_name, gender, birthday', 'required'),
-			array('gender', 'numerical', 'integerOnly'=>true),
+			array('first_name, birthday', 'required'),
+			array('gender', 'checkGender'),
 			array('first_name, last_name', 'length', 'max'=>32),
 		);
+	}
+	
+	public function checkGender()
+	{
+		if(!array_key_exists($this->gender, self::getGenders()))
+		{
+			$this->addError('gender',Yii::t('application','You must select a gender.'));
+		}
 	}
 
 	public function relations()
@@ -51,5 +59,19 @@ class Profile extends CActiveRecord
 		}
 		
 		return $fullName;
+	}
+	
+	public static function getGenders()
+	{
+		return array(
+			self::GENDER_MALE=>Yii::t('application','Male'),
+			self::GENDER_FEMALE=>Yii::t('application','Female'),
+		);
+	}
+	
+	public function getGenderText()
+	{
+		$genders = self::getGenders();
+		return isset($genders[$this->gender]) ? $genders[$this->gender] : '';
 	}
 }

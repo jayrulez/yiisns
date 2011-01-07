@@ -11,6 +11,9 @@ $this->pageTitle=Yii::t('application', 'Profile Picture');
 					</div>
 				</div>
 				<?php echo CHtml::errorSummary($form); ?>
+				<div class="current-photo">
+					<?php echo $user->getImage(Photo::SIZE_LARGE); ?>
+				</div>
 				<fieldset class="top">
 					<div class="row top bottom clearfix">
 						<?php echo CHtml::activeLabel($form,'file'); ?>

@@ -29,6 +29,7 @@ a:hover{color:#e57200;text-decoration:none;}
 #page-container #page #canvas-container {}
 #page-container #page #canvas-container #canvas {width: 960px; margin: 0 auto;}
 #page-container #page #canvas-container #canvas #canvas-content {padding: 10px 0;}
+#page-container #page #canvas-container #canvas #canvas-content #content-container .flash-messenger {margin-bottom: 10px;}
 #page-container #page #canvas-container #canvas #canvas-content #content-container {}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content {float: none;}
 #page-container #page #canvas-container #canvas #canvas-content #content-container #content .action {}
