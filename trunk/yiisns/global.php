@@ -1,12 +1,5 @@
 <?php
 
-define('UPLOAD_PATH', 'upload');
-
-if(!is_dir(UPLOAD_PATH))
-{
-	@mkdir(UPLOAD_PATH,777);
-}
-
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../lib/yii/framework/yii.php';
 

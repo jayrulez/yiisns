@@ -166,6 +166,12 @@ class Photo extends CActiveRecord
 	
 	public function getUrl()
 	{
-		return Yii::app()->getBaseUrl().'/'.$this->file_path;
+		return $this->file_path;
+	}
+	
+	public static function generateName($name, $extension, $userId = null)
+	{
+		$userId = $userId === null ? time() : $userId;
+		return uniqid().$userId.md5($name).'.'.$extension;
 	}
 }

@@ -86,10 +86,11 @@ class EditprofileController extends Controller
 
 				$photoAlbum = $user->getProfilePhotoAlbum();
 				
-				$filePath = $photoAlbum->getPath().'/'.uniqid().$user->id.md5($file->getName()).'.'.$file->getExtensionName();
+				$filePath = $photoAlbum->getDir().'/'.Photo::generateName($file->getName(), $file->getExtensionName(), $user->id);
+				
 				$savePath = $filePath;
 				
-				if($file->saveAs($savePath) && (($photo = $photoAlbum->addPhoto($user->id, $filePath)) !== null))
+				if($file->saveAs($savePath)===true && (($photo = $photoAlbum->addPhoto($user->id, $filePath)) !== null))
 				{
 					$user->profile->saveAttributes(array(
 						'photo_id'=>$photo->id,

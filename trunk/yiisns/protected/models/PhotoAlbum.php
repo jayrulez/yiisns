@@ -91,11 +91,11 @@ class PhotoAlbum extends CActiveRecord
 	
 	public function getPath()
 	{
-		$path = $this->user->getPath().'/album/'.$this->id;
-		if(!is_dir($path))
-		{
-			@mkdir($path, 777, true);
-		}
-		return $path;
+		return Environment::getPhotoAlbumPath($this->user->id, $this->id);
+	}
+	
+	public function getDir()
+	{
+		return Environment::getPhotoAlbumDir($this->user->id, $this->id);
 	}
 }
