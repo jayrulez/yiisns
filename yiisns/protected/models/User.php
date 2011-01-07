@@ -281,11 +281,11 @@ class User extends CActiveRecord
 	
 	public function getPath()
 	{
-		$path = UPLOAD_PATH.'/user/'.$this->id;
-		if(!is_dir($path))
-		{
-			@mkdir($path, 777, true);
-		}
-		return $path;
+		return Environment::getUserPath($this->id);
+	}
+	
+	public function getDir()
+	{
+		return Environment::getUserDir($this->id);
 	}
 }
