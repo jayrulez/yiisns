@@ -24,24 +24,38 @@ class EditprofileController extends Controller
 		);
 	}
 	
+	public function init()
+	{
+		parent::init();
+		Layout::addBlock('sidebar.right', array(
+			'id'=>'right_sidebar',
+			'content'=>$this->renderPartial('/partial/editprofile_right', array('user'=>Yii::app()->getUser()->getModel()), true),
+		));
+	}
+	
 	public function actionBasic()
 	{	
 		$user = Yii::app()->getUser()->getModel();
 		
 		$profile = $user->profile === null ? new Profile : $user->profile;
 		
+		if($profile->getIsNewRecord())
+		{
+			$profile->user_id = $user->id;
+		}
+		
 		if(($post = Yii::app()->getRequest()->getPost('Profile')) !== null)
 		{
 			$profile->attributes = $post;
 			
-			if(!$profile->save())
+			if($profile->save())
 			{
-			
+				Yii::app()->getUser()->setFlash('success',Yii::t('application','Your changes have been saved.'));
 			}
 		}
 		
 		$this->render('basic', array(
-			'profile'=>$profile,
+			'model'=>$profile,
 		));
 	}
 	
@@ -80,6 +94,7 @@ class EditprofileController extends Controller
 					$user->profile->saveAttributes(array(
 						'photo_id'=>$photo->id,
 					));
+					Yii::app()->getUser()->setFlash('success',Yii::t('application','Your changes have been saved.'));
 				}else{
 					throw new CException(Yii::t('application','Unable to save your profile picture.'));
 				}
@@ -88,6 +103,7 @@ class EditprofileController extends Controller
 		
 		$this->render('picture', array(
 			'form'=>$photoUploadForm,
+			'user'=>$user,
 		));
 	}
 }
